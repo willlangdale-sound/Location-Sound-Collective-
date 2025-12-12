@@ -1,0 +1,51 @@
+{{ define "main" }}
+<div class="flex flex-col w-full sm:px-6 lg:px-8 mx-auto">
+
+  <!-- Page content -->
+  <h1 class="glitch text-center mx-auto mb-3" data-text="{{ .Title}}">
+    {{ .Title}}
+  </h1>
+  <div class="flex flex-col items-center sm:flex-row sm:justify-around mb-3">
+    <div class="flex flex-row items-center">
+      <span class="material-symbols-outlined text-primary scale-120 mr-3">call</span>
+      <h2 class=" tracking-wide "> {{ .Site.Params.author.phone}} </h2>
+    </div>
+    <div class="flex flex-row items-center">
+      <span class="material-symbols-outlined text-primary scale-120 mr-3">mail</span>
+      <h2 class="tracking-wide"> {{ .Site.Params.author.email}} </h2>
+    </div>
+  </div>
+  <div class="flex-auto max-w-3xl mx-auto indent-8 text-justify">
+    
+    <div class="italic text-center ">{{ .Content }}</div>
+  </div>
+  {{/* Divider */}}
+  {{ partial "divider.html" (dict "style" "double") }}
+
+  <!-- Our Mission section -->
+  <div class="w-full">
+    {{ partial "home/home_mission.html" . }}
+  </div>
+  {{/* Divider */}}
+  {{ partial "divider.html" (dict "style" "icon") }}
+  <!-- Our Mission section -->
+  <div class="w-full">
+    {{ partial "home/home_work_tv.html" . }}
+  </div>
+  {{/* Icon with lines */}}
+  {{ partial "divider.html" (dict "style" "icon") }}
+  <!-- Meat the team section -->
+  <div class="flex-none max-w-3xl mx-auto">
+    {{ partial "home/home_team.html" . }}
+  </div>
+  {{/* Divider */}}
+  {{ partial "divider.html" (dict "style" "gradient") }}
+  <!-- Contact section -->
+  <div class="flex-none max-w-3xl mx-auto">
+    {{ partial "home/home_contact.html" . }}
+  </div>
+  {{/* Divider */}}
+  {{ partial "divider.html" . }}
+
+</div>
+{{ end }}

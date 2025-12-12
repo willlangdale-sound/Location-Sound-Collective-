@@ -1,0 +1,109 @@
+# config/_default/hugo.toml
+
+baseURL = 'https://lscollective.netlify.app'
+languageCode = 'en-uk'
+title = 'Location Sound Collective'
+
+[taxonomies]
+  #====comment to disable Taxonomies! =====
+  tag = "tags"
+  category = "categories"
+  recordist = "recordists"
+
+# ============================================
+# SEO SETTINGS
+# ============================================
+
+# Enable automatic robots.txt generation
+enableRobotsTXT = true
+
+# Sitemap settings
+[sitemap]
+  changefreq = "monthly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+# ============================================
+# SITE PARAMETERS
+# ============================================
+
+[params]
+  # Site description (used as fallback for pages without description)
+  description = "Location Sound Collective offers professional location sound recording, audio post-production, and sound design for film, television, and media projects."
+  
+  # Short tagline for titles
+  tagline = "Professional Sound Recording & Production"
+  
+  # Keywords (comma-separated, used for meta keywords if needed)
+  keywords = "sound recording, location sound, audio post-production, sound design, film sound, London, UK"
+
+  # Feature toggles
+  [params.features]
+    enableRecordistsTaxonomy = true  # Set to true to enable recordists taxonomy and "View Projects" button
+    enableWorkSection = true  # Set to true to enable work/portfolio section and menu items
+
+  # Author information
+  [params.author]
+    name = "Location Sound Collective"
+    email = "info@lsc.com"
+
+  # Social media handles (just the username, not full URL)
+  [params.social]
+    instagram = ""    # e.g., "lscollective"
+    twitter = ""      # e.g., "lscollective"
+    facebook = ""     # e.g., "Locationsoundcollective"
+    linkedin = ""     # e.g., "company/Location-sound-collective"
+    youtube = ""      # e.g., "channel/xxxxx"
+
+  # Menu settings (your existing settings)
+  [params.menu]
+    closeButtonColor = "black"
+    closeButtonHoverColor = "black"
+    homeContactButtonColor = "amber"
+
+# ============================================
+# IMAGE PROCESSING SETTINGS
+# ============================================
+
+[imaging]
+  # Resample filter for resizing images (box, nearest, linear, lanczos)
+  resampleFilter = "lanczos"
+
+  # Image quality for JPEG and WebP (0-100)
+  quality = 85
+
+  # Anchor position for cropping
+  anchor = "smart"
+
+  # Background color for transparent images
+  bgColor = "#ffffff"
+
+  # Exif settings
+  [imaging.exif]
+    includeFields = ""
+    excludeFields = "GPS.*"
+    disableDate = false
+    disableLatLong = true
+
+# ============================================
+# BUILD SETTINGS (your existing settings)
+# ============================================
+
+[build]
+  [build.buildStats]
+    enable = true
+  [[build.cachebusters]]
+    source = 'assets/notwatching/hugo_stats\.json'
+    target = 'css'
+  [[build.cachebusters]]
+    source = '(postcss|tailwind)\.config\.js'
+    target = 'css'
+
+[module]
+  [[module.mounts]]
+    source = 'assets'
+    target = 'assets'
+  [[module.mounts]]
+    disableWatch = true
+    source = 'hugo_stats.json'
+    target = 'assets/notwatching/hugo_stats.json'

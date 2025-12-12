@@ -1,0 +1,109 @@
+/* assets/css/base.css */
+
+/* =========================================================================
+   COLOR PALETTE - CSS Custom Properties
+   Using HSL components (H S L) - wrap with hsl() when using
+   ========================================================================= */
+
+   :root {
+    /* === LIGHT THEME (Default) === */
+    
+    /* Core Colors */
+    --color-bg: 54 100% 98%;
+    --color-bg-inverse: 240 5% 10%;
+    --color-text: 0 0% 15%;
+    --color-text-accent: 240 5% 10%;
+  
+    /* Surface Colors */
+    --color-secondary: 0 0% 95%;
+    --color-surface-hover: 0 0% 90%;
+  
+    /* Brand Colors */
+    --color-primary: 242 59% 51%;
+    --color-accent: 183 52% 45%;
+  
+    /* Status Colors */
+    --color-error: 0 84% 60%;
+    --color-success: 134 62% 46%;
+    --color-warning: 28 94% 53%;
+    --color-info: 202 85% 50%;
+  
+    /* Effects */
+    --glow-color-1: rgba(0, 0, 0, 0.3);
+    --glow-color-2: rgba(0, 0, 0, 0.2);
+    --glow-color-3: rgba(0, 0, 0, 0.15);
+    --glitch-error-color-text: rgb(40, 35, 35);
+  }
+  
+  .dark {
+    /* === DARK THEME === */
+    
+    /* Core Colors */
+    --color-bg: 240 5% 10%;
+    --color-bg-inverse: 54 100% 98%;
+    --color-text: 0 0% 95%;
+    --color-text-accent: 0 0% 100%;
+  
+    /* Surface Colors */
+    --color-secondary: 240 5% 15%;
+    --color-surface-hover: 240 5% 20%;
+  
+    /* Brand Colors (Brightened for dark mode) */
+    --color-primary: 242 80% 70%;
+    --color-accent: 183 60% 70%;
+  
+    /* Status Colors (Brightened) */
+    --color-error: 0 84% 60%;
+    --color-success: 134 62% 60%;
+    --color-warning: 28 94% 65%;
+    --color-info: 202 85% 65%;
+  
+    /* Effects */
+    --glow-color-1: rgba(255, 255, 255, 0.6);
+    --glow-color-2: rgba(255, 255, 255, 0.4);
+    --glow-color-3: rgba(201, 201, 201, 0.3);
+    --glitch-error-color-text: rgb(244, 242, 240);
+  }
+  
+  /* =========================================================================
+     GLOBAL RESETS & TYPOGRAPHY
+     ========================================================================= */
+  
+  html,
+  body {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-display: swap;
+    overflow-x: hidden;
+  }
+  
+  body {
+    text-shadow:
+      1px 0 hsl(var(--color-bg) / 0.8),
+     -1px 0 hsl(var(--color-bg) / 0.8),
+      0 1px hsl(var(--color-bg) / 0.8),
+      0 -1px hsl(var(--color-bg) / 0.8);
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    color: hsl(var(--color-primary));
+    font-family: "Syne", sans-serif;
+    @apply font-bold;
+  }
+  
+  h1 { @apply text-3xl md:text-5xl tracking-widest uppercase; }
+  h2 { @apply text-2xl md:text-4xl tracking-widest uppercase; }
+  h3 { @apply text-2xl md:text-3xl tracking-widest uppercase; }
+  h4 { @apply text-2xl; }
+  h5 { @apply text-xl; }
+  h6 { @apply text-xl; }
+  
+  /* Body Text */
+  p, ul, li {
+    color: hsl(var(--color-text));
+  }
+  
+  /* Utility Classes */
+  .summary {
+    color: gray;
+  }

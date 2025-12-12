@@ -1,0 +1,103 @@
+{{ define "main" }}
+<div class="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
+  {{ partial "breadcrumb.html" . }}
+</div>
+<div class="text-center mb-4">
+  <h1 class="glitch" data-text="Contact Us">{{ .Title }}</h1>
+</div>
+<div class="max-w-3xl mx-auto indent-8 text-justify">
+  {{ .Content }}
+</div>
+
+<section class="py-12">
+  <div class="px-4 mx-auto max-w-screen-md">
+    <div class="shadow-lg rounded-2xl p-8 sm:p-12 transition-colors duration-500
+                bg-surface-hover border border-6 border-accent">
+      
+      <h3 class="text-center text-accent mb-8">Let's get in touch!</h3>
+
+      <form 
+        id="contact-form"
+        name="contact" 
+        method="POST" 
+        action="/thank-you" 
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="space-y-6 text-left">
+
+        <!-- Netlify form name -->
+        <input type="hidden" name="form-name" value="contact">
+        
+        <!-- Honeypot (spam protection) -->
+        <p class="hidden">
+          <label>Don't fill this out: <input name="bot-field"></label>
+        </p>
+
+        <!-- DYNAMIC SUBJECT - JavaScript will update this -->
+        <input type="hidden" id="email-subject" name="subject" value="New Contact from Location Sound Collective">
+
+        {{ $inputClasses := "shadow-sm bg-base border text-accent rounded-lg focus:border-accent focus:border-2 focus:ring-accent focus:outline-none block w-full p-2.5 border-accent transition-all duration-200" }}
+
+        <fieldset class="border border-2 border-accent rounded-lg p-4 space-y-4">
+          <legend class="font-semibold text-accent">Contact Details</legend>
+
+          <div>
+            <label for="firstName" class="block mb-2 text-accent">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="John" required
+                   class="{{ $inputClasses }}">
+          </div>
+
+          <div>
+            <label for="lastName" class="block mb-2 text-accent">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Doe" required
+                   class="{{ $inputClasses }}">
+          </div>
+
+          <div>
+            <label for="email" class="block mb-2 text-accent">Email</label>
+            <input type="email" id="email" name="email" placeholder="name@example.com" required
+                   class="{{ $inputClasses }}">
+          </div>
+        </fieldset>
+
+        <div>
+          <label for="phone" class="block mb-2 text-accent">Phone (optional)</label>
+          <input type="tel" id="phone" name="phone" placeholder="+44 20 1234 5678"
+                 class="{{ $inputClasses }}">
+        </div>
+
+        <div>
+          <label for="inquiry-subject" class="block mb-2 text-accent">Subject</label>
+          <input type="text" id="inquiry-subject" name="inquiry-subject" placeholder="Let us know how we can help you" required
+                 class="{{ $inputClasses }}">
+        </div>
+
+        <div>
+          <label for="message" class="block mb-2 text-accent">Message</label>
+          <textarea id="message" name="message" rows="6" maxlength="250" placeholder="What's your project about..." required
+                    class="{{ $inputClasses }}"></textarea>
+        </div>
+
+        <div class="flex justify-center pt-4">
+          <button type="submit"
+                  class="group relative flex items-center justify-center p-3 h-10 w-[200px]
+                         text-lg font-normal bg-transparent overflow-hidden transition-all duration-100">
+            <span class="absolute left-0 h-full w-8 border-y border-l border-accent
+                          transition-all duration-700 group-hover:w-full"></span>
+            <h4 class="absolute text-accent transition-all duration-200
+                       group-hover:opacity-0 group-hover:-translate-x-full">
+              Send Message
+            </h4>
+            <span class="absolute translate-x-full translate-y-1 opacity-0 transition-all duration-200
+                         group-hover:translate-x-0 group-hover:opacity-100">
+              <span class="material-icons text-accent">send</span>
+            </span>
+            <span class="absolute right-0 h-full w-8 border-y border-r border-accent
+                          transition-all duration-700 group-hover:w-full"></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{{ end }}

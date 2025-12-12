@@ -1,0 +1,159 @@
+<!-- layouts/_partials/home/home_work_tv.html -->
+{{/*
+  Broadcast TV Showcase Section - Homepage
+  Desktop: Grid layout with category list on left, images on right
+  Mobile: Carousel using the reusable home_carousel partial
+  
+  Images should be placed in: static/img/home/tv/
+*/}}
+
+{{ $folder := "img/home/tv" }}
+{{ $fullPath := path.Join "static" $folder }}
+{{ $images := slice }}
+
+{{/* Read all image files from folder */}}
+{{ $files := readDir $fullPath }}
+{{ range $files }}
+  {{ if not .IsDir }}
+    {{ $fileName := .Name }}
+    {{ $isImage := or 
+      (strings.HasSuffix $fileName ".jpg") 
+      (strings.HasSuffix $fileName ".jpeg") 
+      (strings.HasSuffix $fileName ".png") 
+      (strings.HasSuffix $fileName ".webp") 
+      (strings.HasSuffix $fileName ".gif")
+    }}
+    {{ if $isImage }}
+      {{ $imagePath := path.Join "/" $folder $fileName }}
+      {{ $altText := replaceRE `\.[^.]+$` "" $fileName }}
+      {{ $altText = replaceRE `[-_]` " " $altText }}
+      {{ $altText = $altText | title }}
+      {{ $images = $images | append (dict "path" $imagePath "alt" $altText "name" $fileName) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ $images = sort $images "name" }}
+
+{{ $categories := slice "Multi-cam" "PSC" "Reality TV" "Game show" "Fixed rig" }}
+
+<section class="work-tv-section bg-base">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Title -->
+    <div class="text-center mb-12">
+      <h2 class="glitch text-3xl md:text-4xl tracking-widest" data-text="What We Do">
+        What We Do
+      </h2>
+    </div>
+
+    <!-- Desktop Layout -->
+    <div class="hidden md:grid md:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left Column: Category & List -->
+      <div class="col-span-4 lg:col-span-3">
+        <h4 class=" lg:text-3xl mb-6 italic font-bold text-base-text">
+          Broadcast TV
+        </h4>
+        <ul class="space-y-3">
+          {{ range $categories }}
+          <li class="flex items-center gap-3 text-base-text">
+            <span class="w-2 h-2 rounded-full bg-accent"></span>
+            <span class="text-lg">{{ . }}</span>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      
+      <!-- Right Column: Image Grid -->
+      <div class="col-span-8 lg:col-span-9">
+        {{ if gt (len $images) 0 }}
+        <div class="grid grid-cols-2 gap-4">
+          <!-- First 4 images in 2x2 grid -->
+          {{ range first 4 $images }}
+          <div class="relative overflow-hidden rounded-lg aspect-video group">
+            <img 
+              src="{{ .path }}"
+              alt="{{ .alt }}"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              onerror="this.onerror=null; this.src='/img/logo.webp';">
+            <div class="absolute inset-0 bg-black/60
+                        flex items-center justify-center
+                        opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="text-white text-lg font-bold uppercase tracking-wider text-center px-4">
+                {{ .alt }}
+              </span>
+            </div>
+          </div>
+          {{ end }}
+          
+          <!-- Fifth image if exists -->
+          {{ if gt (len $images) 4 }}
+          <div class="relative overflow-hidden rounded-lg aspect-video group">
+            {{ with index $images 4 }}
+            <img 
+              src="{{ .path }}"
+              alt="{{ .alt }}"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              onerror="this.onerror=null; this.src='/img/logo.webp';">
+            <div class="absolute inset-0 bg-black/60
+                        flex items-center justify-center
+                        opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="text-white text-lg font-bold uppercase tracking-wider text-center px-4">
+                {{ .alt }}
+              </span>
+            </div>
+            {{ end }}
+          </div>
+          {{ end }}
+          
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+    <!-- See More Link -->
+    <div class="hidden md:block mt-8 text-center">
+      {{ partial "menu-item.html" (dict 
+          "URL" "/work" 
+          "Name" "See More" 
+          "Icon" "arrow_forward"
+          "Width" "180px"
+          "Class" "") }}
+    </div>
+
+    <!-- Mobile Layout: Carousel -->
+    <div class="md:hidden">
+      
+      <!-- Category Header -->
+      <div class="mb-6">
+        <h3 class="text-2xl mb-4 italic font-bold text-base-text">
+          Broadcast TV
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {{ range $categories }}
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary text-sm text-base-text">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            {{ . }}
+          </span>
+          {{ end }}
+        </div>
+      </div>
+      
+      <!-- Reusable Carousel -->
+      {{ partial "home/home_carousel.html" (dict "folder" "img/home/tv" "id" "tv-carousel") }}
+      
+      <!-- See More Link (Mobile) -->
+      <div class="mt-8 text-center">
+        {{ partial "menu-item.html" (dict 
+            "URL" "/work" 
+            "Name" "See More" 
+            "Icon" "arrow_forward"
+            "Width" "180px"
+            "Class" "") }}
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,190 @@
+{{ define "main" }}
+{{ if .Site.Params.features.enableWorkSection }}
+<!-- Feature is ENABLED - Show work page -->
+<div class="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
+  {{ partial "breadcrumb.html" . }}
+</div>
+
+<main class="w-full">
+
+  <!-- Hero Section - Find cover image from bundle -->
+  {{ $cover := "" }}
+  
+  {{/* Method 1: Direct GetMatch */}}
+  {{ with .Resources.GetMatch "cover*" }}
+    {{ $cover = . }}
+  {{ end }}
+  
+  {{/* Method 2: From front matter */}}
+  {{ if not $cover }}
+    {{ with .Params.cover }}
+      {{ $cover = $.Resources.GetMatch . }}
+    {{ end }}
+  {{ end }}
+  
+  {{/* Method 3: First image in bundle */}}
+  {{ if not $cover }}
+    {{ with .Resources.ByType "image" }}
+      {{ $cover = index . 0 }}
+    {{ end }}
+  {{ end }}
+
+  <!-- Mobile: stacked layout -->
+  <section class="md:hidden rounded-b-3xl shadow-lg overflow-hidden">
+    {{ with $cover }}
+      {{ $img := .Fill "800x600 Smart webp q85" }}
+      <img 
+        src="{{ $img.RelPermalink }}"
+        alt="{{ $.Title }}"
+        class="w-full h-auto"
+        loading="eager"
+        fetchpriority="high"
+        width="800"
+        height="600">
+    {{ else }}
+      <img src="/img/logo.webp" alt="{{ .Title }}" class="w-full h-auto" width="800" height="600" fetchpriority="high">
+    {{ end }}
+    <div class="bg-secondary p-6">
+      <h1 class="mb-2 text-base-text break-words hyphens-auto">{{ .Title }}</h1>
+      <div class="text-base-text flex flex-wrap gap-4 items-center">
+        {{ with .Params.recordists }}<span class="italic underline">Recorded by: </span><span> {{ delimit . ", " }}</span>{{ end }}
+        {{ with .Params.location }}<span>• Location: {{ . }}</span>{{ end }}
+        {{ with .Params.client }}<span>• Client: {{ . }}</span>{{ end }}
+      </div>
+      {{ with .Params.tags }}
+      <div class="mt-4 flex flex-wrap gap-2">
+        {{ range . }}<span class="text-xs px-2 py-1 rounded-full bg-accent text-secondary">{{ . }}</span>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </section>
+
+  <!-- Desktop: overlay layout -->
+  <section class="hidden md:block relative h-[70vh] lg:h-[80vh] rounded-b-3xl shadow-lg overflow-hidden">
+    {{ with $cover }}
+      {{ $img := .Fill "1920x1080 Smart webp q85" }}
+      <img 
+        src="{{ $img.RelPermalink }}"
+        alt="{{ $.Title }}"
+        class="absolute inset-0 w-full h-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high"
+        width="1920"
+        height="1080">
+    {{ else }}
+      <img src="/img/logo.webp" alt="{{ .Title }}" class="absolute inset-0 w-full h-full object-cover object-center" width="1920" height="1080" fetchpriority="high">
+    {{ end }}
+    <div class="absolute inset-0 flex flex-col justify-end">
+      <div class="mask-t-from-50% bg-secondary p-8">
+        <h1 class="mb-2 mt-30 text-base-text break-words hyphens-auto">{{ .Title }}</h1>
+        <div class="text-base-text flex flex-wrap gap-4 items-center">
+          {{ with .Params.recordists }}<span class="italic underline">Recorded by: </span><span> {{ delimit . ", " }}</span>{{ end }}
+          {{ with .Params.location }}<span>• {{ . }}</span>{{ end }}
+          {{ with .Params.client }}<span>• Client: {{ . }}</span>{{ end }}
+        </div>
+        {{ with .Params.tags }}
+        <div class="mt-4 flex flex-wrap gap-2">
+          {{ range . }}<span class="text-sm px-2 py-1 rounded-full bg-accent text-secondary">{{ . }}</span>{{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Content -->
+  <section class="container mx-auto px-6 py-12 flex flex-col gap-12 max-w-5xl">
+
+    {{ with .Content }}
+    <div class="max-w-full prose prose-lg dark:prose-invert
+    prose-p:indent-8 prose-p:text-justify
+    prose-blockquote:border-accent 
+    prose-blockquote:bg-secondary
+    prose-blockquote:rounded-r-lg
+    prose-li:marker:text-accent
+    prose-a:text-accent hover:prose-a:text-primary
+    prose-headings:text-primary
+    prose-strong:text-accent
+    prose-code:text-accent
+    prose-hr:border-accent">
+{{ . | safeHTML }}
+</div>
+    {{ end }}
+
+    {{ with .Params.equipment }}
+      <div>
+        <h2 class="mb-2">Equipment Used</h2>
+        <ul class="list-disc list-inside">
+          {{ range . }}<li>{{ . }}</li>{{ end }}
+        </ul>
+      </div>
+    {{ end }}
+
+    {{ with .Params.challenges }}
+      <div>
+        <h2 class="text-xl font-semibold mb-2">Challenges</h2>
+        <ul class="list-disc list-inside">
+          {{ range . }}<li>{{ . }}</li>{{ end }}
+        </ul>
+      </div>
+    {{ end }}
+
+    {{ with .Params.outcome }}
+      <div>
+        <h2 class="text-xl font-semibold mb-2">Outcome</h2>
+        <ul class="list-disc list-inside">
+          {{ range . }}<li>{{ . }}</li>{{ end }}
+        </ul>
+      </div>
+    {{ end }}
+
+    {{ with .Params.notes }}
+      <div>
+        <h2 class="text-xl font-semibold mb-2">Additional Notes</h2>
+        <p>{{ . }}</p>
+      </div>
+    {{ end }}
+  </section>
+  <!-- Add carousel anywhere you want it to appear -->
+  {{ partial "project-carousel.html" . }}
+  <!-- YouTube Video Section -->
+  {{ partial "project-youtube.html" . }}
+  </section>
+
+    {{/* Divider */}}
+    {{ partial "divider.html" }}
+</main>
+
+{{ else }}
+<!-- Feature is DISABLED - Redirect to home -->
+<script>
+  window.location.href = "/";
+</script>
+
+<div class="w-screen h-screen bg-base fixed top-0 right-0 left-0 bottom-0 flex flex-col gap-4 justify-center items-center">
+  <h1 class="glitch" data-text="Redirecting...">
+    Redirecting...
+  </h1>
+  <p class="text-base-text">This content is currently unavailable. Redirecting you to the home page...</p>
+  <a href="/"
+      class="group relative flex items-center justify-center p-3 h-10 w-[200px]
+             text-lg font-normal bg-transparent overflow-hidden transition-all duration-100">
+    
+    <span class="absolute left-0 h-full w-8 border-y border-l border-secondary
+                  transition-all duration-700 group-hover:w-full"></span>
+    
+    <h4 class="absolute text-base-text transition-all duration-200
+               group-hover:opacity-0 group-hover:-translate-x-full">
+      Go to Home
+    </h4>
+    
+    <span class="absolute translate-x-full translate-y-1 opacity-0 transition-all duration-200
+                 group-hover:translate-x-0 group-hover:opacity-100">
+      <span class="material-icons text-base-text">home</span>
+    </span>
+    
+    <span class="absolute right-0 h-full w-8 border-y border-r border-secondary
+                  transition-all duration-700 group-hover:w-full"></span>
+  </a>
+</div>
+{{ end }}
+{{ end }}

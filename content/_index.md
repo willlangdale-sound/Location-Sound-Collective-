@@ -1,0 +1,20 @@
+---
+date: '2025-11-07T14:21:50+01:00'
+draft: false
+title: 'Location Sound Collective'
+description: "Professional location sound recording, audio post-production, and sound design for film, television, and media projects in London and across the UK."
+keywords:
+  - "location sound recording"
+  - "audio post-production"
+  - "sound design"
+  - "film sound"
+  - "Location sound recordist"
+featured_image: "/img/logo.webp"
+layout: 'coming-soon'
+---
+
+
+We are a dedicated group of sound recordists who are passionate about capturing the perfect audio for your projects.
+
+
+

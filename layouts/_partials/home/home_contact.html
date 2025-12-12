@@ -1,0 +1,44 @@
+
+
+<div class="contact-container flex flex-col items-center justify-center  p-5 border-2 border-solid
+w-full max-w-3xl mx-auto text-center 
+
+/* Apply dynamic colors to the container */
+text-base-text transition-colors duration-500
+border-primary/50 dark:border-accent">
+
+<p class="mb-4">
+    Ready to bring your sound to the next level? Get in touch with us today to discuss your project needs.
+</p>
+<div class="flex justify-center mb-4">
+    <a href="/contact"
+        class="m-3 group p-5 cursor-pointer relative text-xl font-normal border-0 flex items-center justify-center 
+               bg-transparent h-auto w-[170px] overflow-hidden transition-all duration-100 
+               text-{{ .Site.Params.menu.homeContactButtonColor | default "red" }}-500">
+        
+        <!-- Left border animation -->
+        <span class="group-hover:w-full absolute left-0 h-full w-5 border-y border-l border-{{ .Site.Params.menu.homeContactButtonColor | default "red" }}-500 transition-all duration-500"></span>
+        
+        <!-- Default label -->
+        <p class="group-hover:opacity-0 group-hover:-translate-x-full absolute translate-x-0 text-{{ .Site.Params.menu.homeContactButtonColor | default "red" }}-500 transition-all duration-200">
+            Contact Us
+        </p>
+        
+        <!-- Hover icon -->
+        <span class="group-hover:translate-x-0 group-hover:opacity-100 absolute top-1/2 -translate-y-1/2 translate-x-full opacity-0 transition-all duration-200">
+            <span class="material-icons">
+                mail
+            </span>
+        </span>
+        
+        <!-- Right border animation -->
+        <span class="group-hover:w-full absolute right-0 h-full w-5 border-y border-r border-{{ .Site.Params.menu.homeContactButtonColor | default "red" }}-500 transition-all duration-500"></span>
+    </a>    
+</div>
+
+
+
+    <p>
+        We look forward to collaborating with you and bringing your creative vision to life through the power of sound.
+    </p>
+</div>

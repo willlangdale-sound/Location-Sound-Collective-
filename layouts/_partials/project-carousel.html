@@ -1,0 +1,86 @@
+<!-- layouts/_partials/project-carousel.html -->
+{{/* 
+  Usage: {{ partial "project-carousel.html" . }}
+  
+  This partial creates a horizontal scroll carousel of project images.
+  It automatically includes all images in the project folder EXCEPT cover.* files.
+*/}}
+
+{{ $images := slice }}
+
+{{/* Get all images from the page bundle, excluding cover.* */}}
+{{ range .Resources.Match "*.{jpg,jpeg,png,webp,gif}" }}
+  {{ if not (strings.HasPrefix .Name "cover.") }}
+    {{ $images = $images | append . }}
+  {{ end }}
+{{ end }}
+
+{{/* Only render carousel if we have images */}}
+{{ if gt (len $images) 0 }}
+<section class="project-carousel overflow-x-visible">
+  <h2 class="text-center mb-6">Project Gallery</h2>
+  
+  <!-- Carousel Container -->
+  <div class="relative w-full max-w-6xl mx-auto overflow-x-visible">
+    
+    <!-- Scroll Container with Snap Points -->
+    <div class="
+      carousel-track
+      flex overflow-x-auto 
+      snap-x snap-mandatory
+      scroll-smooth
+      gap-6
+      px-4
+      pb-4
+      scrollbar-hide
+      items-center
+    ">
+      
+      {{ range $index, $image := $images }}
+      <!-- Individual Slide -->
+      <div class="
+        carousel-slide
+        snap-center snap-always
+        flex-shrink-0
+        h-[60vh] portrait:h-[50vh] lg:h-[60vh]
+        w-auto
+        rounded-2xl
+        overflow-visible
+        transition-transform duration-300
+        hover:scale-[1.02]
+        hover:z-10
+      ">
+        {{ partial "image.html" (dict
+          "src" $image
+          "alt" (printf "Project image %d" (add $index 1))
+          "class" "h-full w-auto object-contain rounded-2xl shadow-lg"
+          "loading" "lazy"
+          "width" 1536
+        ) }}
+      </div>
+      {{ end }}
+      
+    </div>
+    
+    <!-- Navigation Dots (Optional) -->
+    <div class="flex justify-center gap-2 mt-4">
+      {{ range $index, $image := $images }}
+      <button 
+        class="carousel-dot w-2 h-2 rounded-full bg-secondary border border-accent transition-all duration-200 hover:scale-125"
+        data-slide="{{ $index }}"
+        aria-label="Go to slide {{ add $index 1 }}"
+      ></button>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ else }}
+<!-- No images found message (only visible in development) -->
+{{ if hugo.IsDevelopment }}
+<div class="text-center p-4 text-base-text opacity-50">
+  <p>No carousel images found in this project folder.</p>
+  <p class="text-sm">Add .jpg, .jpeg, .png, .webp, or .gif files (except cover.*) to display them here.</p>
+</div>
+{{ end }}
+{{ end }}

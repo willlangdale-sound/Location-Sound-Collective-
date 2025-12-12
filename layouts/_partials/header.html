@@ -1,0 +1,14 @@
+<div class="flex flex-col justify-center items-center gap-2 pt-2 pb-2 grayscale-30">
+  <a href="{{ .Site.BaseURL }}">
+    <img id="logo" src="/img/logo.webp" alt="{{ .Site.Title }}" class="md:w-100 md:h-auto w-64 h-auto p-5 animate-[spin_3s_ease-in-out] img-glow" width="150" height="150" fetchpriority="high">
+  </a>
+  <button class="menu-toggle pt-3 flex flex-row scale-200 ">
+    <span class="material-symbols-outlined content-center text-base-text">
+      instant_mix
+    </span>
+  </button>
+</div>
+
+<nav id="nav" class="z-50 hidden transition-colors duration-200">
+  {{ partial "nav.html" . }}
+</nav>

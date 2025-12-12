@@ -1,0 +1,94 @@
+/* assets/css/utilities.css */
+
+/* =========================================================================
+   CUSTOM UTILITIES
+   Maps CSS variables to utility classes
+   Note: hsl() wrapper required because variables hold HSL components
+   ========================================================================= */
+
+/* === BACKGROUND === */
+.bg-base          { background-color: hsl(var(--color-bg)); }
+.bg-secondary     { background-color: hsl(var(--color-secondary)); }
+.bg-surface-hover { background-color: hsl(var(--color-surface-hover)); }
+.bg-primary       { background-color: hsl(var(--color-primary)); }
+.bg-accent        { background-color: hsl(var(--color-accent)); }
+.bg-error         { background-color: hsl(var(--color-error)); }
+.bg-success       { background-color: hsl(var(--color-success)); }
+.bg-warning       { background-color: hsl(var(--color-warning)); }
+.bg-info          { background-color: hsl(var(--color-info)); }
+
+/* === TEXT === */
+.text-base-text { color: hsl(var(--color-text)); }
+.text-contrast  { color: hsl(var(--color-text-accent)); }
+.text-primary   { color: hsl(var(--color-primary)); }
+.text-secondary { color: hsl(var(--color-secondary)); }
+.text-accent    { color: hsl(var(--color-accent)); }
+
+/* === BORDER === */
+.border-primary   { border-color: hsl(var(--color-primary)); }
+.border-secondary { border-color: hsl(var(--color-text)); }
+.border-accent    { border-color: hsl(var(--color-accent)); }
+
+/* === HOVER STATES === */
+@media (hover: hover) {
+  .hover\:bg-primary:hover   { background-color: hsl(var(--color-primary)); }
+  .hover\:bg-accent:hover    { background-color: hsl(var(--color-accent)); }
+  .hover\:bg-secondary:hover { background-color: hsl(var(--color-secondary)); }
+  .hover\:text-base:hover    { color: hsl(var(--color-bg)); }
+  .hover\:text-accent:hover  { color: hsl(var(--color-accent)); }
+}
+
+/* === FOCUS STATES === */
+.focus\:ring-accent:focus {
+  outline: none;
+  border-color: hsl(var(--color-accent));
+  box-shadow: 
+    0 0 0 2px hsl(var(--color-accent) / 0.2),
+    0 0 0 4px hsl(var(--color-accent) / 0.1),
+    0 0 8px hsl(var(--color-accent) / 0.3);
+}
+
+/* =========================================================================
+   PROSE CUSTOMIZATION (Typography plugin overrides)
+   ========================================================================= */
+
+.prose blockquote {
+  border-left-color: hsl(var(--color-accent));
+  background-color: hsl(var(--color-secondary) / 0.5);
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 1rem 1.5rem;
+}
+
+.prose :where(ul > li)::marker,
+.prose :where(ol > li)::marker {
+  color: hsl(var(--color-accent));
+}
+
+.prose a {
+  color: hsl(var(--color-accent));
+}
+
+.prose a:hover {
+  color: hsl(var(--color-primary));
+}
+
+.prose strong {
+  color: hsl(var(--color-accent));
+}
+
+.prose h1, 
+.prose h2, 
+.prose h3, 
+.prose h4, 
+.prose h5, 
+.prose h6 {
+  color: hsl(var(--color-primary));
+}
+
+.prose code {
+  color: hsl(var(--color-accent));
+}
+
+.prose hr {
+  border-color: hsl(var(--color-accent));
+}

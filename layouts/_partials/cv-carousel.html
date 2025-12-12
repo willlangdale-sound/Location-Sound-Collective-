@@ -1,0 +1,108 @@
+{{/* Usage: {{ partial "cv-carousel.html" . }}
+  
+  This partial creates a horizontal scroll carousel of CV/Project images 
+  for the current team member.
+  It looks for images in static/img/team/cv/ matching the pattern:
+  <member-slug>*.{jpg,jpeg,png,webp,gif}
+  e.g., for page title "Rich Morgan", it looks for "static/img/team/cv/rich-morgan01.jpg"
+*/}}
+
+{{ $memberSlug := .Title | urlize }}
+{{ $baseDir := "img/team/cv/" }}
+{{ $fullPath := path.Join "static" $baseDir }}
+{{ $images := slice }}
+
+{{/* Read all files in the static folder */}}
+{{ $files := readDir $fullPath }}
+
+{{/* Filter files by member slug */}}
+{{ range $files }}
+  {{ if not .IsDir }}
+    {{ $fileBaseName := .Name }}
+    {{ $pathPrefix := printf "%s" $memberSlug }}
+    {{ $imagePath := path.Join "/" $baseDir $fileBaseName }}
+    
+    {{/* Check if the file name starts with the member's slug and has a valid extension */}}
+    {{ $isImage := hasPrefix $fileBaseName $pathPrefix }}
+    {{ $isImage = and $isImage (or 
+      (strings.HasSuffix $fileBaseName ".jpg") 
+      (strings.HasSuffix $fileBaseName ".jpeg") 
+      (strings.HasSuffix $fileBaseName ".png") 
+      (strings.HasSuffix $fileBaseName ".webp") 
+      (strings.HasSuffix $fileBaseName ".gif")
+    ) }}
+
+    {{ if $isImage }}
+      {{ $images = $images | append $imagePath }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* Sort images numerically if they have numbers (e.g., rich-morgan01, rich-morgan02) */}}
+{{ $images = $images | sort }}
+
+{{/* Only render carousel if we have images */}}
+{{ if gt (len $images) 0 }}
+<section class="cv-carousel my-12 overflow-x-visible">
+  <h2 class="text-center mb-6">Behind the scene</h2>
+  
+  <div class="relative w-full max-w-6xl mx-auto overflow-x-visible">
+
+    <div class="
+      carousel-track
+      flex overflow-x-auto 
+      snap-x snap-mandatory
+      scroll-smooth
+      gap-6
+      px-6
+      pb-4
+      scrollbar-hide
+      items-center
+    ">
+      
+      {{ range $index, $imagePath := $images }}
+      <div class="
+        carousel-slide
+        snap-center snap-always
+        flex-shrink-0
+        h-[60vh] portrait:h-[50vh] lg:h-[60vh]
+        w-auto
+        rounded-2xl
+        overflow-visible
+        transition-transform duration-300
+        hover:scale-[1.02]
+        hover:z-10
+        my-3
+      ">
+        {{ partial "image.html" (dict
+          "src" $imagePath
+          "alt" (printf "%s CV image %d" $memberSlug (add $index 1))
+          "class" "h-full w-auto object-contain rounded-2xl shadow-lg"
+          "loading" "lazy"
+          "width" 1536
+        ) }}
+      </div>
+      {{ end }}
+      
+    </div>
+    
+    <div class="flex justify-center gap-2 mt-4">
+      {{ range $index, $imagePath := $images }}
+      <button 
+        class="carousel-dot w-2 h-2 rounded-full bg-secondary border border-accent transition-all duration-200 hover:scale-125"
+        data-slide="{{ $index }}"
+        aria-label="Go to slide {{ add $index 1 }}"
+      ></button>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ else }}
+{{ if hugo.IsDevelopment }}
+<div class="text-center p-4 text-base-text opacity-50">
+  <p>No CV carousel images found for {{ $memberSlug }} in the {{ $baseDir }} folder.</p>
+  <p class="text-sm">Expected file pattern: **{{ $memberSlug }}**01.jpg, **{{ $memberSlug }}**02.png, etc.</p>
+</div>
+{{ end }}
+{{ end }}

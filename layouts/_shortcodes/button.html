@@ -1,0 +1,55 @@
+{{ $color := "red" }}
+{{ $text := "Contact Us" }}
+{{ $icon := "mail" }}
+{{ $width := "170px" }}
+
+{{ with .Get "color" }}{{ $color = . }}{{ end }}
+{{ with .Get "text" }}{{ $text = . }}{{ end }}
+{{ with .Get "icon" }}{{ $icon = . }}{{ end }}
+{{ with .Get "width" }}{{ $width = . }}{{ end }}
+
+<div class="flex justify-center">
+<button class="
+      group
+      p-5
+      cursor-pointer 
+      relative  
+      text-xl 
+      font-normal 
+      border-0 
+      flex 
+      items-center 
+      justify-center
+      bg-transparent
+      text-{{ $color }}-500 
+      h-auto  
+      w-[{{ $width }}]  
+      overflow-hidden   
+      transition-all
+      duration-100">
+    <span class="
+         group-hover:w-full
+         absolute 
+         left-0 
+         h-full 
+         w-5 
+         border-y
+         border-l
+         border-{{ $color }}-500
+         transition-all
+         duration-500">
+    </span>
+    <p class="group-hover:opacity-0 group-hover:translate-x-[-100%] absolute translate-x-0 transition-all
+         duration-200 text-{{ $color }}-500">{{ $text }}</p>
+    <span class="group-hover:translate-x-0  group-hover:opacity-100 absolute  translate-x-full opacity-0  transition-all duration-200">
+        <span class="material-icons">{{ $icon }}</span>
+    </span>
+    <span class="group-hover:w-full absolute right-0 h-full w-5  border-y border-r  border-{{ $color }}-500 transition-all duration-500">
+    </span>
+  </button>
+</div>
+
+{{/*  Uses in .md
+     {{< button >}}
+
+     {{< button text="Send Message" color="green" icon="send" >}}  */}}

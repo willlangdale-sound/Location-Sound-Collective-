@@ -1,0 +1,55 @@
+{{ if not .IsHome }}
+<div class="hidden md:block">
+    <nav aria-label="Breadcrumb" class="breadcrumb mb-6 ">
+        <ol class="flex flex-wrap items-center gap-2 text-sm" 
+        itemscope itemtype="https://schema.org/BreadcrumbList">
+        
+        <!-- Home -->
+        {{/*  <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="{{ .Site.BaseURL }}" 
+            itemprop="item"
+            class="text-accent border-2 rounded-xl p-2 bg-surface-hover transition-colors">
+            <span itemprop="name">Home</span>
+        </a>
+        <meta itemprop="position" content="1" />
+    </li>  */}}
+    
+    {{ $currentPage := . }}
+    {{ $pages := slice }}
+    
+    {{ range $currentPage.Ancestors.Reverse }}
+    {{ $pages = $pages | append . }}
+    {{ end }}
+    
+    {{ range $index, $page := $pages }}
+    <li class="flex items-center gap-2" 
+    itemprop="itemListElement" 
+    itemscope 
+    itemtype="https://schema.org/ListItem">
+    <a href="{{ .Permalink }}" 
+    itemprop="item"
+    class="text-accent border-2 rounded-xl p-2 bg-surface-hover transition-colors">
+    <span itemprop="name">{{ .Title }}</span>
+    </a>
+    <span class="text-accent opacity-80">></span>
+    <meta itemprop="position" content="{{ add $index 2 }}" />
+    </li>
+    {{ end }}
+
+    <!-- Current page -->
+    <li class="flex items-center gap-2" 
+    itemprop="itemListElement" 
+    itemscope 
+    itemtype="https://schema.org/ListItem">
+    {{/*  <span class="text-base-text opacity-50">></span>  */}}
+    <span itemprop="item">
+        <span itemprop="name" class="text-accent border-2 rounded-xl p-2 bg-surface-hover transition-colors  uppercase " aria-current="page">
+            {{ .Title }}
+        </span>
+    </span>
+    <meta itemprop="position" content="{{ add (len $pages) 2 }}" />
+    </li>
+    </ol>
+    </nav>
+    {{ end }}
+</div>

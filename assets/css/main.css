@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@source "hugo_stats.json";
+
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+/* plugin typography*/
+@plugin "@tailwindcss/typography";
+
+/* Base styles using CSS variables */
+@layer base {
+  @import "./base.css";
+  @import "./effects.css";
+  @import "./animations.css";
+}
+
+@layer utilities {
+  @import "./utilities.css";
+}
+
+@layer components {
+  @import "./components.css";
+}
+

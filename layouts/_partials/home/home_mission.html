@@ -1,0 +1,64 @@
+<!-- layouts/_partials/home/home_mission.html -->
+{{/*
+  Mission Statement Section - Homepage
+  Two-column layout: Mission text (left) + Benefits list (right)
+*/}}
+
+<section class="mission-section w-full">
+    <div class="max-w-6xl mx-auto px-4">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start lg:items-center">
+        
+        <!-- Left Column: Mission Statement -->
+        <div class="mission-content text-center lg:text-left">
+          
+          <h2 class="glitch text-3xl md:text-4xl mb-8 underline decoration-2 underline-offset-8" 
+              data-text="Our Mission">
+            Our Mission
+          </h2>
+          
+          <div class="space-y-6">
+            <p class="text-lg leading-relaxed">
+              <span class="font-bold italic uppercase tracking-wide">Location Sound Collective</span> 
+              is your one-stop-shop for booking location sound services for your project, no matter how big or small.
+            </p>
+            
+            <p class="text-lg leading-relaxed">
+              One centralised contact for booking multiple recordists, as well as all of your equipment requirements. Tell us what you need and we'll take care of the rest.
+            </p>
+            
+            <p class="text-lg leading-relaxed">
+              Our mission is simple, to provide high end sound recording services that elevate your projects to new heights.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Right Column: Benefits List -->
+        <div class="benefits-list flex flex-col items-center justify-center">
+          
+          <ul class="space-y-6">
+            {{ $benefits := slice 
+              "One point of contact"
+              "Book multiple recordists"
+              "All equipment from one place"
+              "Decades of experience"
+              "London and Glasgow bases"
+              "Any size or genre"
+            }}
+            
+            {{ range $benefits }}
+            <li class="flex items-center gap-4">
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
+              <span class="text-xl md:text-2xl font-bold text-accent italic">
+                {{ . }}
+              </span>
+            </li>
+            {{ end }}
+          </ul>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>

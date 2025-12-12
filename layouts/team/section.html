@@ -1,0 +1,121 @@
+{{ define "main" }}
+  <div class="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
+    {{ partial "breadcrumb.html" . }}
+  </div>
+
+<section class="team-intro transition-colors duration-500">
+  <div class="text-center mx-auto mb-4">
+    <h1 class="glitch" data-text="Our Team">{{ .Title }}</h1>
+    <p class="mb-4 tracking-widest italic summary" data-text="{{ .Summary }}">{{ .Summary }}</p>
+  </div>
+  
+  <div class="max-w-3xl mx-auto indent-8 text-justify">
+    {{ .Content }}
+  </div>
+</section>
+
+  {{/* Divider */}}
+  {{ partial "divider.html" (dict "style" "soundwave") }}
+
+<!-- TEAM GROUP PHOTO -->
+{{/*  <section class="team-hero relative w-full h-[50vh] md:h-[60vh] lg:h-[70vh] overflow-hidden">
+  {{ $teamHero := resources.Get "img/team/team_hero.png" }}
+  {{ if $teamHero }}
+    {{ partial "image.html" (dict
+      "src" $teamHero
+      "alt" "Location Sound Collective Team - Professional Sound Recording Experts"
+      "class" "w-full h-full object-cover object-center"
+      "width" 1920
+      "height" 1080
+      "fetchpriority" "high"
+      "loading" "eager"
+    ) }}
+  {{ else }}
+    <img
+      src="/img/team/team_hero.png"
+      alt="Location Sound Collective Team - Professional Sound Recording Experts"
+      class="w-full h-full object-cover object-center"
+      width="1920"
+      height="1080"
+      fetchpriority="high"
+      onerror="this.onerror=null; this.src='/img/logo.webp';">
+  {{ end }}
+</section>  */}}
+
+<section class="team-members container mx-auto px-4  grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+  {{ range .Pages.ByWeight }}
+  
+  <div class="team-member rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl flex flex-col bg-secondary">
+    
+    <!-- Image with square aspect ratio -->
+    <div class="w-full aspect-square overflow-hidden flex items-center justify-center">
+      {{ $profilePic := .Resources.GetMatch "profile*" }}
+      {{ if $profilePic }}
+        {{ $altText := printf "%s - Location Sound Collective Team Member" .Title }}
+        {{ if .Params.role }}
+          {{ $altText = printf "%s, %s - Location Sound Collective Team Member" .Title .Params.role }}
+        {{ end }}
+        {{ partial "image.html" (dict
+          "src" $profilePic
+          "alt" $altText
+          "class" "w-full h-full object-cover object-top transition-transform duration-700 ease-out hover:scale-110"
+          "width" 400
+          "height" 400
+          "loading" "lazy"
+        ) }}
+      {{ else }}
+        <img
+          src="{{ .Params.profile_picture | default "/img/logo.webp" }}"
+          alt="{{ .Title }}{{ with .Params.role }}, {{ . }}{{ end }} - Location Sound Collective Team Member"
+          class="w-full h-full object-cover object-top transition-transform duration-700 ease-out hover:scale-110"
+          width="400"
+          height="400"
+          loading="lazy"
+          onerror="this.onerror=null; this.src='/img/logo.webp';">
+      {{ end }}
+    </div>
+    
+    <!-- Content -->
+    <div class="p-4 flex-1 flex flex-col">
+      
+      <h3 class="mb-1 text-xl">{{ .Title }}</h3>
+      
+      {{ with .Params.role }}
+      <p class="text-accent italic text-sm mb-3">{{ . }}</p>
+      {{ end }}
+
+      <div class="mb-4">
+        {{ .Summary | truncate 150 }}
+      </div>
+
+      <!-- View CV Button -->
+      <div class="mt-auto flex justify-center">
+        <a href="{{ .RelPermalink }}"
+           class="group relative flex items-center justify-center p-2 h-9 w-[160px]
+                  text-base font-normal bg-transparent overflow-hidden transition-all duration-100">
+          
+          <span class="absolute left-0 h-full w-6 border-y border-l border-accent
+                        transition-all duration-700 group-hover:w-full"></span>
+          
+          <span class="absolute text-accent text-sm transition-all duration-200
+                     group-hover:opacity-0 group-hover:-translate-x-full">
+            View CV
+          </span>
+          
+          <span class="absolute translate-x-full opacity-0 transition-all duration-200
+                       group-hover:translate-x-0 group-hover:opacity-100">
+            <span class="material-icons text-accent text-lg">person</span>
+          </span>
+          
+          <span class="absolute right-0 h-full w-6 border-y border-r border-accent
+                        transition-all duration-700 group-hover:w-full"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+  {{ end }}
+</section>
+  
+  {{/* Divider */}}
+  {{ partial "divider.html" . }}
+{{ end }}

@@ -1,0 +1,79 @@
+{{ define "main" }}
+{{ if .Site.Params.features.enableRecordistsTaxonomy }}
+<!-- Feature is ENABLED - Show recordists taxonomy page -->
+<div class="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
+  {{ partial "breadcrumb.html" . }}
+</div>
+
+<main class="w-full">
+  <header class="max-w-3xl mx-auto mb-12 text-center">
+    <h1 class="glitch mb-4" data-text="Work by Recordist">Work by Recordist</h1>
+    <p class="text-base-text">Browse projects by team member</p>
+  </header>
+
+  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    {{ range .Data.Terms.Alphabetical }}
+    <a href="{{ .Page.RelPermalink }}" 
+       class="bg-secondary rounded-2xl p-6 shadow-md hover:scale-[1.02] transition-all duration-300 text-center">
+      <h3 class="mb-2">{{ .Page.Title }}</h3>
+      
+      <!-- Find the matching team member and get their profile_picture_circle -->
+      {{ $circle := "/img/logo.webp" }}
+      {{ $recordistSlug := .Page.Title | urlize }}
+      {{ range where $.Site.Pages "Section" "team" }}
+        {{ if eq (.Title | urlize) $recordistSlug }}
+          {{ with .Params.profile_picture_circle }}
+            {{ $circle = . }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      
+      <img
+        src="{{ $circle }}"
+        alt="{{ .Page.Title }}'s Profile Picture"
+        class="w-40 h-40 rounded-full object-cover mx-auto mb-4"
+        width="160"
+        height="160"
+        loading="lazy"
+        onerror="this.onerror=null; this.src='/img/logo.webp';"/>
+      
+      <p class="text-accent italic">{{ .Count }} project{{ if ne .Count 1 }}s{{ end }}</p>
+    </a>
+    {{ end }}
+  </section>
+</main>
+
+{{ else }}
+<!-- Feature is DISABLED - Redirect to team page -->
+<script>
+  window.location.href = "/team";
+</script>
+
+<div class="w-screen h-screen bg-base fixed top-0 right-0 left-0 bottom-0 flex flex-col gap-4 justify-center items-center">
+  <h1 class="glitch" data-text="Redirecting...">
+    Redirecting...
+  </h1>
+  <p class="text-base-text">This feature is currently disabled. Redirecting you to the team page...</p>
+  <a href="/team"
+      class="group relative flex items-center justify-center p-3 h-10 w-[200px]
+             text-lg font-normal bg-transparent overflow-hidden transition-all duration-100">
+    
+    <span class="absolute left-0 h-full w-8 border-y border-l border-secondary
+                  transition-all duration-700 group-hover:w-full"></span>
+    
+    <h4 class="absolute text-base-text transition-all duration-200
+               group-hover:opacity-0 group-hover:-translate-x-full">
+      Go to Team
+    </h4>
+    
+    <span class="absolute translate-x-full translate-y-1 opacity-0 transition-all duration-200
+                 group-hover:translate-x-0 group-hover:opacity-100">
+      <span class="material-icons text-base-text">groups</span>
+    </span>
+    
+    <span class="absolute right-0 h-full w-8 border-y border-r border-secondary
+                  transition-all duration-700 group-hover:w-full"></span>
+  </a>
+</div>
+{{ end }}
+{{ end }}

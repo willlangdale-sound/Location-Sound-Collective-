@@ -1,0 +1,70 @@
+# config/_default/menus.toml
+
+# --- MAIN MENU DEFINITION ---
+
+[[main]]
+  name = "Home"
+  pageRef = "/"
+  weight = 10
+  [main.params]
+    color = "slate"
+    icon = "home"
+
+[[main]]
+  name = "Team"
+  pageRef = "/team"
+  weight = 20
+  [main.params]
+    color = "slate"
+    icon = "groups"
+
+[[main]]
+  name = "Latest Work"
+  pageRef = "/work"
+  weight = 30
+  [main.params]
+    color = "slate"
+    icon = "movie"
+    requiresFeature = "enableWorkSection"
+
+[[main]]
+  name = "Contact"
+  pageRef = "/contact"
+  weight = 40
+  [main.params]
+    color = "slate"
+    icon = "mail"
+
+# --- FOOTER MENU DEFINITION ---
+
+[[footer]]
+  name = "Home"
+  pageRef = "/"
+  weight = 10
+
+[[footer]]
+  name = "Team"
+  pageRef = "/team"
+  weight = 20
+
+[[footer]]
+  name = "Latest Work"
+  pageRef = "/work"
+  weight = 30
+  [footer.params]
+    requiresFeature = "enableWorkSection"
+
+[[footer]]
+  name = "Contact"
+  pageRef = "/contact"
+  weight = 40
+
+[[footer]]
+  name = 'Privacy Policy'
+  pageRef = '/privacy'
+  weight = 50
+
+# [[footer]]
+#   name = 'Instagram'
+#   pageRef = '/'
+#   weight = 60

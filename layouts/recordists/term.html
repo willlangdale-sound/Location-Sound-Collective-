@@ -1,0 +1,224 @@
+{{ define "main" }}
+{{ if .Site.Params.features.enableRecordistsTaxonomy }}
+<!-- Feature is ENABLED - Show recordist's projects -->
+<div class="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
+  {{ partial "breadcrumb.html" . }}
+</div>
+<main class="w-full">
+  
+  <!-- Recordist header -->
+  <header class="max-w-3xl mx-auto mb-12">
+    <div class="text-center mx-auto mb-4">
+      <h1 class="glitch mb-4" data-text="{{ .Title }}'s Work">
+        {{ .Title }}'s Work
+      </h1>
+      
+      <!-- Access profile_picture_circle from team member -->
+      {{ $circle := "/img/logo.webp" }}
+      {{ $recordistSlug := .Title | urlize }}
+      {{ range where .Site.Pages "Section" "team" }}
+        {{ if eq (.Title | urlize) $recordistSlug }}
+          {{ with .Params.profile_picture_circle }}
+            {{ $circle = . }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+
+      <img
+        src="{{ $circle }}"
+        alt="{{ .Page.Title }}'s Profile Picture"
+        class="w-40 h-40 rounded-full object-cover mx-auto mb-4"
+        width="160"
+        height="160"
+        fetchpriority="high"
+        onerror="this.onerror=null; this.src='/img/logo.webp';"/>
+      
+      <!-- Access role from team member -->
+      {{ $recordistSlug := .Title | urlize }}
+      {{ range where .Site.Pages "Section" "team" }}
+        {{ if eq (.Title | urlize) $recordistSlug }}
+          {{ with .Params.role }}
+          <div class="mt-4 summary">
+            {{ . | markdownify }}
+          </div>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      
+      <p class="text-accent italic mb-4">
+        {{ len .Pages }} project{{ if ne (len .Pages) 1 }}s{{ end }}
+      </p>
+
+    </div>
+    
+  </header>
+
+  <!-- Projects list -->
+  <section class="flex flex-col gap-12">
+    {{ range .Pages.ByDate.Reverse }}
+    <article class="project-card flex flex-col md:flex-row bg-secondary rounded-2xl shadow-md overflow-hidden hover:scale-[1.01] transition-all duration-300">
+
+    <!-- Cover image -->
+      {{ $cover := .Resources.GetMatch "cover.*" }}
+      {{ if not $cover }}
+        {{ $cover = .Resources.GetMatch "cover*" }}
+      {{ end }}
+      {{ if not $cover }}
+        {{ $cover = .Resources.GetMatch "featured*" }}
+      {{ end }}
+      {{ if not $cover }}
+        {{ if .Params.cover }}
+          {{ $cover = .Resources.GetMatch .Params.cover }}
+        {{ end }}
+      {{ end }}
+
+  <!-- Cover image -->
+  {{ $cover := "" }}
+        
+  {{/* Method 1: Direct GetMatch */}}
+  {{ with .Resources.GetMatch "cover*" }}
+    {{ $cover = . }}
+  {{ end }}
+
+  {{/* Method 2: Match with extension */}}
+  {{ if not $cover }}
+    {{ with .Resources.Match "cover.*" }}
+      {{ $cover = index . 0 }}
+    {{ end }}
+  {{ end }}
+
+  {{/* Method 3: Loop through all images */}}
+  {{ if not $cover }}
+    {{ range .Resources.ByType "image" }}
+      {{ if not $cover }}
+        {{ $cover = . }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  <a href="{{ .RelPermalink }}" class="md:w-2/3 w-full shrink-0 relative block">
+    <div class="w-full h-64 md:h-full min-h-[320px] lg:min-h-[384px] bg-gray-800 overflow-hidden relative">
+      {{ with $cover }}
+        {{ $altText := printf "%s - Sound Recording Project" $.Title }}
+        {{ if $.Params.location }}
+          {{ $altText = printf "%s - %s - Sound Recording Project" $.Title $.Params.location }}
+        {{ end }}
+        {{ $img := .Fill "800x600 center webp q85" }}
+        <img 
+          src="{{ $img.RelPermalink }}"
+          alt="{{ $altText }}"
+          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out hover:scale-105"
+          loading="lazy"
+          width="800"
+          height="600">
+      {{ else }}
+        <img
+          src="/img/logo.webp"
+          alt="{{ .Title }} - Sound Recording Project"
+          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out hover:scale-105"
+          loading="lazy"
+          width="800"
+          height="600">
+      {{ end }}
+    </div>
+  </a>
+
+      <!-- Content -->
+      <div class="md:w-1/3 w-full p-6 flex flex-col justify-between">
+        <a href="{{ .RelPermalink }}">
+          <h3 class="mb-3">{{ .Title }}</h3>
+        </a>
+
+        <!-- Meta -->
+        <div class="mb-4 italic text-base-text flex flex-col gap-1">
+          {{ with .Params.recordists }}
+            <span>• <span class="underline">Recorded by</span>: {{ delimit . ", " }}</span>
+          {{ end }}
+          {{ with .Params.location }}
+            <span>• <span class="underline">Location</span>: {{ . }}</span>
+          {{ end }}
+          {{ with .Params.client }}
+            <span>• <span class="underline">Client</span>: {{ . }}</span>
+          {{ end }}
+        </div>
+
+        <!-- Summary -->
+        <p class="flex-1 mb-4">
+          {{ if .Summary }}
+            {{ .Summary | plainify | truncate 100 }}
+          {{ else if .Plain }}
+            {{ .Plain | truncate 100 }}
+          {{ else }}
+            {{ .Content | plainify | truncate 100 }}
+          {{ end }}
+        </p>
+
+        <!-- Tags -->
+        {{ with .Params.tags }}
+        <div class="flex flex-wrap gap-2 mt-auto">
+          {{ range first 4 . }}
+            <span class="text-sm px-2 py-1 rounded-full bg-accent text-secondary">{{ . }}</span>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </article>
+    {{ end }}
+  </section>
+
+  <!-- Back to team link -->
+  <div class="text-center mt-12">
+    <a href="/team" 
+       class="group relative inline-flex items-center justify-center p-3 h-10 w-[200px]
+              text-lg font-normal bg-transparent overflow-hidden transition-all duration-100">
+      <span class="absolute left-0 h-full w-8 border-y border-l border-secondary
+                    transition-all duration-700 group-hover:w-full"></span>
+      <h4 class="absolute text-base-text transition-all duration-200
+                 group-hover:opacity-0 group-hover:-translate-x-full">
+        Back to Team
+      </h4>
+      <span class="absolute translate-x-full translate-y-1 opacity-0 transition-all duration-200
+                   group-hover:translate-x-0 group-hover:opacity-100">
+        <span class="material-icons">groups</span>
+      </span>
+      <span class="absolute right-0 h-full w-8 border-y border-r border-secondary
+                    transition-all duration-700 group-hover:w-full"></span>
+    </a>
+  </div>
+
+</main>
+
+{{ else }}
+<!-- Feature is DISABLED - Redirect to team page -->
+<script>
+  window.location.href = "/team";
+</script>
+
+<div class="w-screen h-screen bg-base fixed top-0 right-0 left-0 bottom-0 flex flex-col gap-4 justify-center items-center">
+  <h1 class="glitch" data-text="Redirecting...">
+    Redirecting...
+  </h1>
+  <p class="text-base-text">This feature is currently disabled. Redirecting you to the team page...</p>
+  <a href="/team"
+      class="group relative flex items-center justify-center p-3 h-10 w-[200px]
+             text-lg font-normal bg-transparent overflow-hidden transition-all duration-100">
+    
+    <span class="absolute left-0 h-full w-8 border-y border-l border-secondary
+                  transition-all duration-700 group-hover:w-full"></span>
+    
+    <h4 class="absolute text-base-text transition-all duration-200
+               group-hover:opacity-0 group-hover:-translate-x-full">
+      Go to Team
+    </h4>
+    
+    <span class="absolute translate-x-full translate-y-1 opacity-0 transition-all duration-200
+                 group-hover:translate-x-0 group-hover:opacity-100">
+      <span class="material-icons text-base-text">groups</span>
+    </span>
+    
+    <span class="absolute right-0 h-full w-8 border-y border-r border-secondary
+                  transition-all duration-700 group-hover:w-full"></span>
+  </a>
+</div>
+{{ end }}
+{{ end }}

@@ -1,0 +1,104 @@
+<!-- layouts/_partials/schema.html -->
+
+<!-- ============================================
+     ORGANIZATION SCHEMA (All Pages)
+     Tells Google about your business
+     ============================================ -->
+     <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "{{ .Site.Title }}",
+          "url": "{{ .Site.BaseURL }}",
+          "logo": "{{ "/img/logo.webp" | absURL }}",
+          "description": "{{ .Site.Params.description }}",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "London",
+            "addressCountry": "GB"
+          }
+          {{- with .Site.Params.social.instagram }},
+          "sameAs": [
+            "https://instagram.com/{{ . }}"
+            {{- with $.Site.Params.social.twitter }},"https://twitter.com/{{ . }}"{{ end }}
+            {{- with $.Site.Params.social.facebook }},"https://facebook.com/{{ . }}"{{ end }}
+            {{- with $.Site.Params.social.linkedin }},"https://linkedin.com/{{ . }}"{{ end }}
+            {{- with $.Site.Params.social.youtube }},"https://youtube.com/{{ . }}"{{ end }}
+          ]
+          {{- end }}
+        }
+        </script>
+        
+        <!-- ============================================
+             WEBSITE SCHEMA (All Pages)
+             Tells Google about your website structure
+             ============================================ -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "{{ .Site.Title }}",
+          "url": "{{ .Site.BaseURL }}"
+        }
+        </script>
+        
+        <!-- ============================================
+             PAGE-SPECIFIC SCHEMAS
+             ============================================ -->
+        
+        {{- if eq .Section "work" }}
+        {{- if .IsPage }}
+        <!-- CREATIVE WORK SCHEMA (Portfolio Projects) -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          "name": "{{ .Title }}",
+          "description": "{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
+          "url": "{{ .Permalink }}",
+          "datePublished": "{{ .PublishDate.Format "2006-01-02" }}",
+          "dateModified": "{{ .Lastmod.Format "2006-01-02" }}"
+          {{- with .Params.location }},
+          "locationCreated": {
+            "@type": "Place",
+            "name": "{{ . }}"
+          }
+          {{- end }}
+          {{- with .Params.recordist }},
+          "creator": [
+            {{- range $index, $person := . }}
+            {{- if $index }},{{ end }}
+            {
+              "@type": "Person",
+              "name": "{{ $person }}"
+            }
+            {{- end }}
+          ]
+          {{- end }}
+        }
+        </script>
+        {{- end }}
+        {{- end }}
+        
+        {{- if eq .Section "team" }}
+        {{- if .IsPage }}
+        <!-- PERSON SCHEMA (Team Members) -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "{{ .Title }}",
+          {{- with .Params.role }}
+          "jobTitle": "{{ . }}",
+          {{- end }}
+          {{- with .Params.profile_picture }}
+          "image": "{{ . | absURL }}",
+          {{- end }}
+          "worksFor": {
+            "@type": "Organization",
+            "name": "{{ .Site.Title }}"
+          }
+        }
+        </script>
+        {{- end }}
+        {{- end }}

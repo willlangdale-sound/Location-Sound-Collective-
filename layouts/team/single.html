@@ -1,0 +1,278 @@
+{{ define "main" }}
+
+<div class="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
+  {{ partial "breadcrumb.html" . }}
+</div>
+
+<main class="w-full max-w-4xl mx-auto">
+
+  <!-- Profile Header -->
+  <section class="flex flex-col md:flex-row gap-8 mb-12">
+    
+    <!-- Profile Picture -->
+    <div class="md:w-1/3 w-full">
+      <div class="[aspect-ratio:2/3] overflow-hidden rounded-2xl shadow-lg bg-secondary">
+        {{ $profilePic := .Resources.GetMatch "profile*" }}
+        {{ if $profilePic }}
+          {{ partial "image.html" (dict
+            "src" $profilePic
+            "alt" (printf "%s - %s" .Title .Params.role)
+            "class" "w-full h-full object-cover object-center"
+            "width" 600
+            "height" 900
+            "fetchpriority" "high"
+            "loading" "eager"
+          ) }}
+        {{ else }}
+          <img
+            src="{{ .Params.profile_picture | default "/img/logo.webp" }}"
+            alt="{{ .Title }} - {{ .Params.role }}"
+            class="w-full h-full object-cover object-center"
+            width="600"
+            height="900"
+            fetchpriority="high"
+            onerror="this.onerror=null; this.src='/img/logo.webp';">
+        {{ end }}
+      </div>
+    </div>
+
+    <!-- Basic Info -->
+    <div class="md:w-2/3 w-full flex flex-col justify-center">
+      <h1 class="glitch mb-2" data-text="{{ .Title }}">{{ .Title }}</h1>
+      
+      {{ with .Params.role }}
+      <p class="text-2xl text-accent italic mb-4">{{ . }}</p>
+      {{ end }}
+
+      {{ with .Params.specializations }}
+      <div class="mb-4">
+        <h3 class="text-xl mb-2">Specializations</h3>
+        <div class="flex flex-wrap gap-2">
+          {{ range . }}
+            <span class="px-3 py-1 rounded-full bg-accent text-secondary text-sm">{{ . }}</span>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+
+      {{ if or .Params.contact.email .Params.contact.phone .Params.contact.website }}
+      <div class="mb-4">
+        <h3 class="text-xl mb-2">Contact</h3>
+        <div class="flex flex-col gap-1 text-base-text">
+          {{ with .Params.contact.email }}
+            <a href="mailto:{{ . }}" class="hover:text-accent transition-colors">
+              <span class="material-icons text-sm">email</span> {{ . }}
+            </a>
+          {{ end }}
+          {{ with .Params.contact.phone }}
+            <a href="tel:{{ . }}" class="hover:text-accent transition-colors">
+              <span class="material-icons text-sm">phone</span> {{ . }}
+            </a>
+          {{ end }}
+          {{ with .Params.contact.website }}
+            <a href="{{ . }}" target="_blank" class="hover:text-accent transition-colors">
+              <span class="material-icons text-sm">language</span> {{ . }}
+            </a>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+
+      <!-- Buttons Section -->
+      <div class="mt-4 flex flex-col gap-4 items-center md:items-start">
+        <!-- Contact Button -->
+        <a href="/contact"
+           class="group relative flex items-center justify-center p-3 h-10 w-[200px]
+                  text-lg font-normal bg-transparent overflow-hidden transition-all duration-100">
+
+          <span class="absolute left-0 h-full w-8 border-y border-l border-accent
+                        transition-all duration-700 group-hover:w-full"></span>
+
+          <h4 class="absolute text-accent transition-all duration-200
+                     group-hover:opacity-0 group-hover:-translate-x-full">
+            Contact
+          </h4>
+
+          <span class="absolute translate-x-full translate-y-1 opacity-0 transition-all duration-200
+                       group-hover:translate-x-0 group-hover:opacity-100">
+            <span class="material-icons text-accent">email</span>
+          </span>
+
+          <span class="absolute right-0 h-full w-8 border-y border-r border-accent
+                        transition-all duration-700 group-hover:w-full"></span>
+        </a>
+
+        <!-- Instagram Button -->
+        {{ with .Params.social }}
+        {{ with .instagram }}
+        <a href="{{ . }}" target="_blank"
+           class="group relative flex items-center justify-center p-3 h-10 w-[200px]
+                  text-lg font-normal bg-transparent overflow-hidden transition-all duration-100">
+
+          <span class="absolute left-0 h-full w-8 border-y border-l border-accent
+                        transition-all duration-700 group-hover:w-full"></span>
+
+          <h4 class="absolute text-accent transition-all duration-200
+                     group-hover:opacity-0 group-hover:-translate-x-full">
+            Instagram
+          </h4>
+
+          <span class="absolute translate-x-full translate-y-1 opacity-0 transition-all duration-200
+                       group-hover:translate-x-0 group-hover:opacity-100">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram text-accent"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </span>
+
+          <span class="absolute right-0 h-full w-8 border-y border-r border-accent
+                        transition-all duration-700 group-hover:w-full"></span>
+        </a>
+        {{ end }}
+        {{ end }}
+
+        <!-- View Projects Button - Only show if enableRecordistsTaxonomy is true -->
+        {{ if .Site.Params.features.enableRecordistsTaxonomy }}
+        {{ $recordistSlug := .Title | urlize }}
+        <a href="/recordists/{{ $recordistSlug }}"
+           class="group relative flex items-center justify-center p-3 h-10 w-[200px]
+                  text-lg font-normal bg-transparent overflow-hidden transition-all duration-100">
+
+          <span class="absolute left-0 h-full w-8 border-y border-l border-accent
+                        transition-all duration-700 group-hover:w-full"></span>
+
+          <h4 class="absolute text-accent transition-all duration-200
+                     group-hover:opacity-0 group-hover:-translate-x-full">
+            View Projects
+          </h4>
+
+          <span class="absolute translate-x-full translate-y-1 opacity-0 transition-all duration-200
+                       group-hover:translate-x-0 group-hover:opacity-100">
+            <span class="material-icons text-accent">movie</span>
+          </span>
+
+          <span class="absolute right-0 h-full w-8 border-y border-r border-accent
+                        transition-all duration-700 group-hover:w-full"></span>
+        </a>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+
+  {{ partial "cv-carousel.html" . }}
+  
+  <!-- Bio / About -->
+  <section class="mb-12 p-6 bg-secondary rounded-2xl shadow-md">
+    <h2 class="mb-4">About</h2>
+    <div class="indent-8 text-justify">
+      {{ .Content }}
+    </div>
+  </section>
+
+  <!-- Experience -->
+  {{ with .Params.experience }}
+  <section class="mb-12 p-6 bg-secondary rounded-2xl shadow-md">
+    <h2 class="mb-6">Experience</h2>
+    <div class="space-y-6">
+      {{ range . }}
+      <div class="border-l-4 border-accent pl-4">
+        <h3 class="text-xl mb-1">{{ .title }}</h3>
+        <p class="text-accent italic mb-2">{{ .company }} • {{ .period }}</p>
+        {{ with .description }}
+        <p class="text-base-text">{{ . }}</p>
+        {{ end }}
+        {{ with .highlights }}
+        <ul class="mt-2 list-disc list-inside text-base-text">
+          {{ range . }}
+          <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  <!-- Education -->
+  {{ with .Params.education }}
+  <section class="mb-12 p-6 bg-secondary rounded-2xl shadow-md">
+    <h2 class="mb-6">Education</h2>
+    <div class="space-y-4">
+      {{ range . }}
+      <div class="border-l-4 border-accent pl-4">
+        <h3 class="text-xl mb-1">{{ .degree }}</h3>
+        <p class="text-accent italic">{{ .institution }} • {{ .year }}</p>
+        {{ with .description }}
+        <p class="text-base-text mt-2">{{ . }}</p>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  <!-- Skills -->
+  {{ with .Params.skills }}
+  <section class="mb-12 p-6 bg-secondary rounded-2xl shadow-md">
+    <h2 class="mb-6">Skills & Equipment</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      {{ with .technical }}
+      <div>
+        <h3 class="text-lg mb-3 text-accent">Technical Skills</h3>
+        <ul class="list-disc list-inside text-base-text space-y-1">
+          {{ range . }}
+          <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+      {{ with .equipment }}
+      <div>
+        <h3 class="text-lg mb-3 text-accent">Equipment Proficiency</h3>
+        <ul class="list-disc list-inside text-base-text space-y-1">
+          {{ range . }}
+          <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  <!-- Notable Projects / Highlights -->
+  {{ with .Params.highlights }}
+  <section class="mb-12 p-6 bg-secondary rounded-2xl shadow-md">
+    <h2 class="mb-6">Notable Projects & Achievements</h2>
+    <ul class="space-y-2 list-disc list-inside text-base-text">
+      {{ range . }}
+      <li>{{ . }}</li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  <!-- Back to Team Button -->
+  <div class="text-center mt-12 ">
+    <a href="/team" 
+       class="group relative inline-flex items-center justify-center p-3 h-10 w-[200px]
+              text-lg font-normal bg-transparent overflow-hidden transition-all duration-100">
+      <span class="absolute left-0 h-full w-8 border-y border-l border-secondary
+                    transition-all duration-700 group-hover:w-full"></span>
+      <h4 class="absolute text-base-text transition-all duration-200
+                 group-hover:opacity-0 group-hover:-translate-x-full">
+        Back to Team
+      </h4>
+      <span class="absolute translate-x-full translate-y-1 opacity-0 transition-all duration-200
+                   group-hover:translate-x-0 group-hover:opacity-100">
+        <span class="material-icons">groups</span>
+      </span>
+      <span class="absolute right-0 h-full w-8 border-y border-r border-secondary
+                    transition-all duration-700 group-hover:w-full"></span>
+    </a>
+  </div>
+
+</main>
+
+{{/* Divider */}}
+{{ partial "divider.html" . }}
+{{ end }}

@@ -1,0 +1,114 @@
+<!-- layouts/_partials/head.html -->
+
+<!-- Theme detection (runs before CSS) -->
+<script>
+  (function() {
+    document.documentElement.classList.toggle(
+      "dark",
+      localStorage.theme === "dark" ||
+        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    );
+  })();
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<!-- ============================================
+     SEO: TITLE & DESCRIPTION
+     ============================================ -->
+{{ $siteTitle := .Site.Title }}
+{{ $title := "" }}
+{{ $description := "" }}
+
+{{ if .IsHome }}
+  {{ $title = printf "%s | Professional Sound Recording & Production" $siteTitle }}
+  {{ $description = "Location Sound Collective offers professional location sound recording, audio post-production, and sound design for film, television, and media projects." }}
+{{ else }}
+  {{ $title = printf "%s | %s" .Title $siteTitle }}
+  {{ if .Description }}
+    {{ $description = .Description }}
+  {{ else if .Summary }}
+    {{ $description = .Summary | plainify | truncate 160 }}
+  {{ else }}
+    {{ $description = printf "%s - %s" .Title $siteTitle }}
+  {{ end }}
+{{ end }}
+
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $description }}">
+
+<!-- ============================================
+     SEO: CANONICAL URL
+     ============================================ -->
+<link rel="canonical" href="{{ .Permalink }}">
+
+<!-- ============================================
+     SEO: OPEN GRAPH (Facebook, LinkedIn)
+     ============================================ -->
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ $siteTitle }}">
+
+{{ $ogImage := "/img/og-logo.webp" | absURL }}
+{{ with .Params.featured_image }}
+  {{ $ogImage = . | absURL }}
+{{ end }}
+{{ with .Resources.GetMatch "cover.*" }}
+  {{ $ogImage = .Permalink }}
+{{ end }}
+<meta property="og:image" content="{{ $ogImage }}">
+
+<!-- ============================================
+     SEO: TWITTER CARD
+     ============================================ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
+
+<!-- ============================================
+     FAVICON
+     ============================================ -->
+<link rel="icon" href="/img/logo.webp" type="image/png">
+<link rel="apple-touch-icon" href="/img/logo.webp">
+
+<!-- ============================================
+     CSS & FONTS
+     ============================================ -->
+{{ with (templates.Defer (dict "key" "global")) }}
+  {{ partial "css.html" . }}
+{{ end }}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Preload critical text fonts -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Syne:wght@400..800&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+
+<!-- Load icon fonts asynchronously (non-render-blocking) -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=swap" rel="stylesheet">
+</noscript>
+
+<!-- Structured Data (Schema.org) -->
+{{ partial "schema.html" . }}
+
+<!-- Meta Keywords (optional, low SEO value but doesn't hurt) -->
+{{ with .Params.keywords }}
+<meta name="keywords" content="{{ delimit . ", " }}">
+{{ else }}
+{{ with .Site.Params.keywords }}
+<meta name="keywords" content="{{ . }}">
+{{ end }}
+{{ end }}
+
+<!-- Netlify Identity Widget (for Decap CMS) -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+

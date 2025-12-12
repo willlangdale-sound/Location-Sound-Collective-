@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html class="" lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="bg-base transition-colors duration-200">
+  <!-- CRT Overlay -->
+  <div class="crt ">
+    <div class="crt-shake-wrapper">
+      <div class="screen-glow"></div>
+      <div class="scanline"></div>
+    </div>
+    <div class="vignette"></div>
+  </div>
+
+  <header class="transition-colors duration-200 pb-10">
+    {{ partial "header.html" . }}
+  </header>
+  <main class="flex justify-center glow ">
+    <div class="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      {{ block "main" . }}
+      {{ end }}
+    </div>
+  </main>
+  <footer class="transition-colors px-4 duration-200">
+    {{ partial "footer.html" . }}
+  </footer>
+  {{ partial "script.html" . }}
+
+    <!-- Netlify Identity Redirect (for Decap CMS login flow) -->
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

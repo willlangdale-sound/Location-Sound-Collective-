@@ -1,0 +1,110 @@
+{{/*
+  Responsive Image Partial with WebP support and CLS prevention
+
+  Usage:
+    {{ partial "image.html" (dict
+      "src" $imageResource         (required: Hugo resource or string path)
+      "alt" "Description"          (required: alt text for accessibility)
+      "class" "custom-class"       (optional: CSS classes)
+      "loading" "lazy"             (optional: "lazy" or "eager", default: "lazy")
+      "width" 800                  (optional: target width in pixels)
+      "height" 600                 (optional: target height in pixels)
+      "sizes" "(min-width: 1024px) 800px, 100vw" (optional: sizes attribute)
+      "fetchpriority" "high"       (optional: "high" for LCP images)
+    ) }}
+*/}}
+
+{{ $src := .src }}
+{{ $alt := .alt | default "Image" }}
+{{ $class := .class | default "" }}
+{{ $loading := .loading | default "lazy" }}
+{{ $sizes := .sizes | default "100vw" }}
+{{ $width := .width }}
+{{ $height := .height }}
+{{ $fetchpriority := .fetchpriority | default "" }}
+
+{{ $imgURL := "" }}
+{{ $imgWidth := 0 }}
+{{ $imgHeight := 0 }}
+{{ $srcset := "" }}
+{{ $srcsetWebP := "" }}
+
+{{/* Check if src is a Hugo resource (from page bundle) */}}
+{{ if reflect.IsMap $src }}
+  {{ $resource := $src }}
+
+  {{/* Get original dimensions */}}
+  {{ $imgWidth = $resource.Width }}
+  {{ $imgHeight = $resource.Height }}
+
+  {{/*
+    FORCE WebP conversion for ALL images
+    This ensures every image is served in WebP format for optimal performance
+    regardless of the original format (JPEG, PNG, WebP, etc.)
+  */}}
+
+  {{/* Process image based on requested dimensions */}}
+  {{ if and $width $height }}
+    {{ $resource = $resource.Fill (printf "%dx%d webp q85" $width $height) }}
+    {{ $imgWidth = $width }}
+    {{ $imgHeight = $height }}
+  {{ else if $width }}
+    {{ $resource = $resource.Resize (printf "%dx webp q85" $width) }}
+    {{ $imgWidth = $width }}
+    {{ $imgHeight = $resource.Height }}
+  {{ else if $height }}
+    {{ $resource = $resource.Resize (printf "x%d webp q85" $height) }}
+    {{ $imgWidth = $resource.Width }}
+    {{ $imgHeight = $height }}
+  {{ else }}
+    {{/* No dimensions specified - convert to WebP at original size or max width */}}
+    {{ $maxWidth := 1920 }}
+    {{ if gt $imgWidth $maxWidth }}
+      {{ $resource = $resource.Resize (printf "%dx webp q85" $maxWidth) }}
+      {{ $imgWidth = $maxWidth }}
+      {{ $imgHeight = $resource.Height }}
+    {{ else }}
+      {{ $resource = $resource.Resize (printf "%dx webp q85" $imgWidth) }}
+    {{ end }}
+  {{ end }}
+
+  {{ $imgURL = $resource.RelPermalink }}
+
+  {{/* Generate responsive srcset - all WebP */}}
+  {{ $widths := slice 320 640 768 1024 1280 1536 }}
+  {{ $srcsetSlice := slice }}
+  {{ range $widths }}
+    {{ if le . $imgWidth }}
+      {{ $resized := $resource.Resize (printf "%dx webp q85" .) }}
+      {{ $srcsetSlice = $srcsetSlice | append (printf "%s %dw" $resized.RelPermalink .) }}
+    {{ end }}
+  {{ end }}
+  {{ if gt (len $srcsetSlice) 0 }}
+    {{ $srcsetWebP = delimit $srcsetSlice ", " }}
+  {{ end }}
+
+{{ else }}
+  {{/* Static image path - use as-is */}}
+  {{ $imgURL = $src }}
+
+  {{/* For static images, try to infer dimensions from provided params */}}
+  {{ if $width }}
+    {{ $imgWidth = $width }}
+  {{ end }}
+  {{ if $height }}
+    {{ $imgHeight = $height }}
+  {{ end }}
+{{ end }}
+
+<img
+  src="{{ $imgURL }}"
+  {{ with $srcsetWebP }}srcset="{{ . }}"{{ end }}
+  {{ with $sizes }}sizes="{{ . }}"{{ end }}
+  alt="{{ $alt }}"
+  {{ if gt $imgWidth 0 }}width="{{ $imgWidth }}"{{ end }}
+  {{ if gt $imgHeight 0 }}height="{{ $imgHeight }}"{{ end }}
+  {{ with $class }}class="{{ . }}"{{ end }}
+  loading="{{ $loading }}"
+  {{ with $fetchpriority }}fetchpriority="{{ . }}"{{ end }}
+  onerror="this.onerror=null; this.src='/img/logo.webp';"
+>

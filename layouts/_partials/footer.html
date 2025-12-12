@@ -1,0 +1,20 @@
+<div class="mb-10 flex flex-col items-center gap-1">
+    <p>© 2025 {{ .Site.Title}} <span class="italic">All rights reserved</span> </p>
+    <ul class="flex flex-wrap flex-row gap-3">
+        {{ range .Site.Menus.footer }}
+          {{ $showItem := true }}
+          
+          {{ if .Params.requiresFeature }}
+            {{ if eq .Params.requiresFeature "enableWorkSection" }}
+              {{ $showItem = $.Site.Params.features.enableWorkSection }}
+            {{ end }}
+          {{ end }}
+          
+          {{ if $showItem }}
+          <li>
+              <a href="{{ .URL }}">{{ .Name }}</a>
+          </li>
+          {{ end }}
+        {{ end }}
+    </ul>
+</div>

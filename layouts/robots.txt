@@ -1,0 +1,23 @@
+# layouts/robots.txt
+
+# Allow all search engines to crawl everything
+User-agent: *
+Allow: /
+
+# Block pages that don't need indexing
+Disallow: /thank-you/
+Disallow: /404.html
+
+{{ if not .Site.Params.features.enableRecordistsTaxonomy }}
+# Block recordists taxonomy pages when feature is disabled
+Disallow: /recordists/
+{{ end }}
+
+{{ if not .Site.Params.features.enableWorkSection }}
+# Block work section pages when feature is disabled
+Disallow: /work/
+{{ end }}
+
+
+# Sitemap location (helps search engines find all pages)
+Sitemap: {{ .Site.BaseURL }}sitemap.xml
