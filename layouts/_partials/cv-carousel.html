@@ -1,10 +1,13 @@
-{{/* Usage: {{ partial "cv-carousel.html" . }}
+<!-- layouts/_partials/cv-carousel.html -->
+{{/*
+  CV/Behind the Scenes Carousel - Team Member Pages
+  Horizontal scroll carousel with auto-slide functionality
   
-  This partial creates a horizontal scroll carousel of CV/Project images 
-  for the current team member.
-  It looks for images in static/img/team/cv/ matching the pattern:
-  <member-slug>*.{jpg,jpeg,png,webp,gif}
-  e.g., for page title "Rich Morgan", it looks for "static/img/team/cv/rich-morgan01.jpg"
+  Usage: {{ partial "cv-carousel.html" . }}
+  
+  Images should be placed in: static/img/team/cv/
+  Matching pattern: <member-slug>*.{jpg,jpeg,png,webp,gif}
+  e.g., for "Rich Morgan": rich-morgan01.jpg, rich-morgan02.png, etc.
 */}}
 
 {{ $memberSlug := .Title | urlize }}
@@ -43,13 +46,13 @@
 
 {{/* Only render carousel if we have images */}}
 {{ if gt (len $images) 0 }}
-<section class="cv-carousel my-12 overflow-x-visible">
-  <h2 class="text-center mb-6">Behind the scene</h2>
+<section class="cv-carousel my-12 overflow-x-visible" id="cv-auto-carousel" data-slide-count="{{ len $images }}">
+  <h2 class="text-center mb-6">Behind the Scenes</h2>
   
   <div class="relative w-full max-w-6xl mx-auto overflow-x-visible">
 
     <div class="
-      carousel-track
+      cv-carousel-track
       flex overflow-x-auto 
       snap-x snap-mandatory
       scroll-smooth
@@ -62,7 +65,7 @@
       
       {{ range $index, $imagePath := $images }}
       <div class="
-        carousel-slide
+        cv-carousel-slide
         snap-center snap-always
         flex-shrink-0
         h-[60vh] portrait:h-[50vh] lg:h-[60vh]
@@ -86,14 +89,20 @@
       
     </div>
     
+    <!-- Navigation Dots -->
     <div class="flex justify-center gap-2 mt-4">
       {{ range $index, $imagePath := $images }}
       <button 
-        class="carousel-dot w-2 h-2 rounded-full bg-secondary border border-accent transition-all duration-200 hover:scale-125"
+        class="cv-carousel-dot w-2 h-2 rounded-full bg-secondary border border-accent transition-all duration-200 hover:scale-125 {{ if eq $index 0 }}bg-accent scale-125{{ end }}"
         data-slide="{{ $index }}"
         aria-label="Go to slide {{ add $index 1 }}"
       ></button>
       {{ end }}
+    </div>
+    
+    <!-- Image counter -->
+    <div class="text-center mt-2 text-sm text-base-text opacity-70">
+      <span class="cv-carousel-current">1</span> / {{ len $images }}
     </div>
   </div>
 </section>
@@ -102,7 +111,7 @@
 {{ if hugo.IsDevelopment }}
 <div class="text-center p-4 text-base-text opacity-50">
   <p>No CV carousel images found for {{ $memberSlug }} in the {{ $baseDir }} folder.</p>
-  <p class="text-sm">Expected file pattern: **{{ $memberSlug }}**01.jpg, **{{ $memberSlug }}**02.png, etc.</p>
+  <p class="text-sm">Expected file pattern: <strong>{{ $memberSlug }}</strong>01.jpg, <strong>{{ $memberSlug }}</strong>02.png, etc.</p>
 </div>
 {{ end }}
 {{ end }}

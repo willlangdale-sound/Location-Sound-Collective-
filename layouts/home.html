@@ -5,6 +5,7 @@
   <h1 class="glitch text-center mx-auto mb-3" data-text="{{ .Title}}">
     {{ .Title}}
   </h1>
+  <!--
   <div class="flex flex-col items-center sm:flex-row sm:justify-around mb-3">
     <div class="flex flex-row items-center">
       <span class="material-symbols-outlined text-primary scale-120 mr-3">call</span>
@@ -15,12 +16,14 @@
       <h2 class="tracking-wide"> {{ .Site.Params.author.email}} </h2>
     </div>
   </div>
+  -->
   <div class="flex-auto max-w-3xl mx-auto indent-8 text-justify">
     
     <div class="italic text-center ">{{ .Content }}</div>
   </div>
   {{/* Divider */}}
-  {{ partial "divider.html" (dict "style" "double") }}
+  {{ partial "divider.html" (dict "style" "double" "width" "md" ) }}
+  
 
   <!-- Our Mission section -->
   <div class="w-full">
@@ -39,7 +42,7 @@
     {{ partial "home/home_team.html" . }}
   </div>
   {{/* Divider */}}
-  {{ partial "divider.html" (dict "style" "gradient") }}
+  {{/*  {{ partial "divider.html" (dict "style" "" "width" "md" ) }}  */}}
   <!-- Contact section -->
   <div class="flex-none max-w-3xl mx-auto">
     {{ partial "home/home_contact.html" . }}

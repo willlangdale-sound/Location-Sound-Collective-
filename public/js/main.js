@@ -25,11 +25,11 @@
       localStorage.setItem("menu", "closed");
     }
   }
-  menuButtons.forEach((btn) => {
+  menuButtons.forEach(function(btn) {
     btn.addEventListener("click", toggleMenu);
   });
-  menuItems.forEach((item) => {
-    item.addEventListener("click", () => {
+  menuItems.forEach(function(item) {
+    item.addEventListener("click", function() {
       if (nav) {
         nav.classList.add("hidden");
         localStorage.setItem("menu", "closed");
@@ -40,7 +40,7 @@
     const toggle = document.getElementById("theme-toggle");
     if (!toggle) return;
     const htmlEl = document.documentElement;
-    const applyTheme = (isDark) => {
+    const applyTheme = function(isDark) {
       htmlEl.classList.toggle("dark", isDark);
       localStorage.setItem("theme", isDark ? "dark" : "light");
     };
@@ -50,7 +50,7 @@
     } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       applyTheme(true);
     }
-    toggle.addEventListener("click", () => {
+    toggle.addEventListener("click", function() {
       const isCurrentlyDark = htmlEl.classList.contains("dark");
       applyTheme(!isCurrentlyDark);
     });
@@ -67,7 +67,7 @@
       crtActive = savedCrtState === "true";
     }
     applyCrtState(crtActive);
-    crtToggleButton.addEventListener("click", () => {
+    crtToggleButton.addEventListener("click", function() {
       applyCrtState(!crtActive);
     });
   }
@@ -89,11 +89,11 @@
     if (crtActive) {
       crtToggleIcon.textContent = "toggle_off";
       crtToggleTvIcon.style.opacity = "1";
-      crtToggleButton?.setAttribute("aria-pressed", "true");
+      if (crtToggleButton) crtToggleButton.setAttribute("aria-pressed", "true");
     } else {
       crtToggleIcon.textContent = "toggle_on";
       crtToggleTvIcon.style.opacity = "0.6";
-      crtToggleButton?.setAttribute("aria-pressed", "false");
+      if (crtToggleButton) crtToggleButton.setAttribute("aria-pressed", "false");
     }
   }
   function initCarousel() {
@@ -111,7 +111,7 @@
       const scrollLeft = track.scrollLeft;
       const slideWidth = getSlideWidth();
       const currentSlide = Math.round(scrollLeft / slideWidth);
-      dots.forEach((dot, index) => {
+      dots.forEach(function(dot, index) {
         if (index === currentSlide) {
           dot.classList.add("bg-accent", "scale-125");
           dot.classList.remove("bg-secondary");
@@ -121,8 +121,8 @@
         }
       });
     }
-    dots.forEach((dot, index) => {
-      dot.addEventListener("click", () => {
+    dots.forEach(function(dot, index) {
+      dot.addEventListener("click", function() {
         const slideWidth = getSlideWidth();
         track.scrollTo({
           left: slideWidth * index,
@@ -136,11 +136,11 @@
   }
   function initHomeCarousels() {
     const carousels = document.querySelectorAll(".home-carousel-container");
-    carousels.forEach((container) => {
+    carousels.forEach(function(container) {
       const carouselId = container.dataset.carouselId;
-      const track = container.querySelector(`[data-carousel-track="${carouselId}"]`);
-      const dots = container.querySelectorAll(`[data-carousel-dot="${carouselId}"]`);
-      const slides = track?.querySelectorAll(".home-carousel-slide");
+      const track = container.querySelector('[data-carousel-track="' + carouselId + '"]');
+      const dots = container.querySelectorAll('[data-carousel-dot="' + carouselId + '"]');
+      const slides = track ? track.querySelectorAll(".home-carousel-slide") : [];
       if (!track || !slides.length) return;
       const autoSlideEnabled = container.dataset.autoSlide === "true";
       const slideInterval = parseInt(container.dataset.slideInterval) || 3e3;
@@ -164,7 +164,7 @@
         } else if (currentSlide < 0) {
           currentSlide = slideCount - 1;
         }
-        dots.forEach((dot, index) => {
+        dots.forEach(function(dot, index) {
           if (index === currentSlide) {
             dot.classList.add("bg-accent", "scale-125");
             dot.classList.remove("bg-secondary");
@@ -174,7 +174,8 @@
           }
         });
       }
-      function scrollToSlide(index, behavior = "smooth") {
+      function scrollToSlide(index, behavior) {
+        behavior = behavior || "smooth";
         const slideWidth = getSlideWidth();
         track.scrollTo({
           left: slideWidth * index,
@@ -211,13 +212,13 @@
         if (interactionTimeout) {
           clearTimeout(interactionTimeout);
         }
-        interactionTimeout = setTimeout(() => {
+        interactionTimeout = setTimeout(function() {
           isUserInteracting = false;
           startAutoSlide();
         }, 5e3);
       }
-      dots.forEach((dot, index) => {
-        dot.addEventListener("click", () => {
+      dots.forEach(function(dot, index) {
+        dot.addEventListener("click", function() {
           handleUserInteraction();
           currentSlide = index;
           scrollToSlide(index);
@@ -226,7 +227,7 @@
       track.addEventListener("scroll", updateActiveDot);
       track.addEventListener("touchstart", handleUserInteraction, { passive: true });
       track.addEventListener("mousedown", handleUserInteraction);
-      document.addEventListener("visibilitychange", () => {
+      document.addEventListener("visibilitychange", function() {
         if (document.hidden) {
           stopAutoSlide();
         } else if (!isUserInteracting) {
@@ -234,9 +235,9 @@
         }
       });
       let resizeTimeout;
-      window.addEventListener("resize", () => {
+      window.addEventListener("resize", function() {
         clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
+        resizeTimeout = setTimeout(function() {
           updateActiveDot();
           if (window.innerWidth >= 768) {
             stopAutoSlide();
@@ -250,6 +251,239 @@
         setTimeout(startAutoSlide, 1e3);
       }
     });
+  }
+  function initTvCarousel() {
+    const wrapper = document.getElementById("tv-auto-carousel");
+    if (!wrapper) return;
+    const slides = wrapper.querySelectorAll(".tv-carousel-slide");
+    const dots = wrapper.querySelectorAll(".tv-carousel-dot");
+    const prevBtn = wrapper.querySelector(".tv-carousel-prev");
+    const nextBtn = wrapper.querySelector(".tv-carousel-next");
+    if (!slides.length) return;
+    let currentSlide = 0;
+    const slideCount = slides.length;
+    let autoSlideTimer = null;
+    let isUserInteracting = false;
+    let interactionTimeout = null;
+    const slideInterval = 4e3;
+    function showSlide(index) {
+      if (index >= slideCount) index = 0;
+      if (index < 0) index = slideCount - 1;
+      currentSlide = index;
+      slides.forEach(function(slide, i) {
+        if (i === currentSlide) {
+          slide.classList.add("opacity-100");
+          slide.classList.remove("opacity-0");
+        } else {
+          slide.classList.remove("opacity-100");
+          slide.classList.add("opacity-0");
+        }
+      });
+      dots.forEach(function(dot, i) {
+        if (i === currentSlide) {
+          dot.classList.add("bg-accent", "scale-125");
+          dot.classList.remove("bg-secondary");
+        } else {
+          dot.classList.remove("bg-accent", "scale-125");
+          dot.classList.add("bg-secondary");
+        }
+      });
+    }
+    function nextSlide() {
+      if (isUserInteracting) return;
+      showSlide(currentSlide + 1);
+    }
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+    function startAutoSlide() {
+      if (autoSlideTimer) return;
+      autoSlideTimer = setInterval(nextSlide, slideInterval);
+    }
+    function stopAutoSlide() {
+      if (autoSlideTimer) {
+        clearInterval(autoSlideTimer);
+        autoSlideTimer = null;
+      }
+    }
+    function handleUserInteraction() {
+      isUserInteracting = true;
+      stopAutoSlide();
+      if (interactionTimeout) {
+        clearTimeout(interactionTimeout);
+      }
+      interactionTimeout = setTimeout(function() {
+        isUserInteracting = false;
+        startAutoSlide();
+      }, 6e3);
+    }
+    dots.forEach(function(dot, index) {
+      dot.addEventListener("click", function() {
+        handleUserInteraction();
+        showSlide(index);
+      });
+    });
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function() {
+        handleUserInteraction();
+        prevSlide();
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener("click", function() {
+        handleUserInteraction();
+        showSlide(currentSlide + 1);
+      });
+    }
+    wrapper.addEventListener("mouseenter", function() {
+      stopAutoSlide();
+    });
+    wrapper.addEventListener("mouseleave", function() {
+      if (!isUserInteracting) {
+        startAutoSlide();
+      }
+    });
+    let touchStartX = 0;
+    let touchEndX = 0;
+    wrapper.addEventListener("touchstart", function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    wrapper.addEventListener("touchend", function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        handleUserInteraction();
+        if (diff > 0) {
+          showSlide(currentSlide + 1);
+        } else {
+          prevSlide();
+        }
+      }
+    }, { passive: true });
+    document.addEventListener("visibilitychange", function() {
+      if (document.hidden) {
+        stopAutoSlide();
+      } else if (!isUserInteracting) {
+        startAutoSlide();
+      }
+    });
+    showSlide(0);
+    setTimeout(startAutoSlide, 2e3);
+  }
+  function initCvCarousel() {
+    const wrapper = document.getElementById("cv-auto-carousel");
+    if (!wrapper) return;
+    const track = wrapper.querySelector(".cv-carousel-track");
+    const slides = wrapper.querySelectorAll(".cv-carousel-slide");
+    const dots = wrapper.querySelectorAll(".cv-carousel-dot");
+    const counter = wrapper.querySelector(".cv-carousel-current");
+    if (!track || !slides.length) return;
+    let currentSlide = 0;
+    const slideCount = parseInt(wrapper.dataset.slideCount) || slides.length;
+    let autoSlideTimer = null;
+    let isUserInteracting = false;
+    let interactionTimeout = null;
+    const slideInterval = 5e3;
+    function getSlideWidth() {
+      const firstSlide = slides[0];
+      const style = window.getComputedStyle(track);
+      const gap = parseInt(style.gap) || 0;
+      return firstSlide.offsetWidth + gap;
+    }
+    function scrollToSlide(index) {
+      const slideWidth = getSlideWidth();
+      track.scrollTo({
+        left: slideWidth * index,
+        behavior: "smooth"
+      });
+    }
+    function updateUI() {
+      dots.forEach(function(dot, i) {
+        if (i === currentSlide) {
+          dot.classList.add("bg-accent", "scale-125");
+          dot.classList.remove("bg-secondary");
+        } else {
+          dot.classList.remove("bg-accent", "scale-125");
+          dot.classList.add("bg-secondary");
+        }
+      });
+      if (counter) {
+        counter.textContent = currentSlide + 1;
+      }
+    }
+    function updateFromScroll() {
+      const scrollLeft = track.scrollLeft;
+      const slideWidth = getSlideWidth();
+      currentSlide = Math.round(scrollLeft / slideWidth);
+      if (currentSlide >= slideCount) currentSlide = slideCount - 1;
+      if (currentSlide < 0) currentSlide = 0;
+      updateUI();
+    }
+    function nextSlide() {
+      if (isUserInteracting) return;
+      currentSlide++;
+      if (currentSlide >= slideCount) {
+        currentSlide = 0;
+      }
+      scrollToSlide(currentSlide);
+      updateUI();
+    }
+    function startAutoSlide() {
+      if (autoSlideTimer) return;
+      autoSlideTimer = setInterval(nextSlide, slideInterval);
+    }
+    function stopAutoSlide() {
+      if (autoSlideTimer) {
+        clearInterval(autoSlideTimer);
+        autoSlideTimer = null;
+      }
+    }
+    function handleUserInteraction() {
+      isUserInteracting = true;
+      stopAutoSlide();
+      if (interactionTimeout) {
+        clearTimeout(interactionTimeout);
+      }
+      interactionTimeout = setTimeout(function() {
+        isUserInteracting = false;
+        startAutoSlide();
+      }, 8e3);
+    }
+    dots.forEach(function(dot, index) {
+      dot.addEventListener("click", function() {
+        handleUserInteraction();
+        currentSlide = index;
+        scrollToSlide(index);
+        updateUI();
+      });
+    });
+    track.addEventListener("scroll", updateFromScroll);
+    track.addEventListener("touchstart", handleUserInteraction, { passive: true });
+    track.addEventListener("mousedown", handleUserInteraction);
+    wrapper.addEventListener("mouseenter", function() {
+      stopAutoSlide();
+    });
+    wrapper.addEventListener("mouseleave", function() {
+      if (!isUserInteracting) {
+        startAutoSlide();
+      }
+    });
+    document.addEventListener("visibilitychange", function() {
+      if (document.hidden) {
+        stopAutoSlide();
+      } else if (!isUserInteracting) {
+        startAutoSlide();
+      }
+    });
+    let resizeTimeout;
+    window.addEventListener("resize", function() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function() {
+        updateFromScroll();
+      }, 250);
+    });
+    updateUI();
+    setTimeout(startAutoSlide, 2e3);
   }
   function initDice() {
     const scene = document.getElementById("dice-scene");
@@ -269,7 +503,7 @@
     let autoRotate = true;
     let autoRotateId = null;
     function updateCube() {
-      cube.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+      cube.style.transform = "rotateX(" + rotationX + "deg) rotateY(" + rotationY + "deg)";
     }
     function startAutoRotate() {
       if (autoRotateId) return;
@@ -381,15 +615,19 @@
     scene.addEventListener("touchstart", onPointerDown, { passive: true });
     document.addEventListener("touchmove", onPointerMove, { passive: false });
     document.addEventListener("touchend", onPointerUp);
-    scene.addEventListener("contextmenu", (e) => e.preventDefault());
+    scene.addEventListener("contextmenu", function(e) {
+      e.preventDefault();
+    });
     updateCube();
     startAutoRotate();
   }
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", function() {
     initTheme();
     initCrt();
     initCarousel();
     initHomeCarousels();
+    initTvCarousel();
+    initCvCarousel();
     initDice();
   });
 })();

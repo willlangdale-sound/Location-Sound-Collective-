@@ -10,11 +10,10 @@ keywords:
   - "film sound"
   - "Location sound recordist"
 featured_image: "/img/logo.webp"
-layout: 'coming-soon'
+# layout: 'coming-soon'
 ---
 
 
-We are a dedicated group of sound recordists who are passionate about capturing the perfect audio for your projects.
 
 
 

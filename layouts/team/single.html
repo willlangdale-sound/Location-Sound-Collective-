@@ -7,10 +7,10 @@
 <main class="w-full max-w-4xl mx-auto">
 
   <!-- Profile Header -->
-  <section class="flex flex-col md:flex-row gap-8 mb-12">
+  <section class="flex flex-col md:flex-row gap-8 mb-12 landscape:flex-row">
     
     <!-- Profile Picture -->
-    <div class="md:w-1/3 w-full">
+    <div class="md:w-1/2 w-full landscape:w-1/2">
       <div class="[aspect-ratio:2/3] overflow-hidden rounded-2xl shadow-lg bg-secondary">
         {{ $profilePic := .Resources.GetMatch "profile*" }}
         {{ if $profilePic }}

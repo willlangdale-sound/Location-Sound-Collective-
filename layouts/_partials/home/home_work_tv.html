@@ -1,8 +1,7 @@
 <!-- layouts/_partials/home/home_work_tv.html -->
 {{/*
   Broadcast TV Showcase Section - Homepage
-  Desktop: Grid layout with category list on left, images on right
-  Mobile: Carousel using the reusable home_carousel partial
+  Auto-sliding carousel for both mobile and desktop
   
   Images should be placed in: static/img/home/tv/
 */}}
@@ -40,119 +39,83 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Section Title -->
-    <div class="text-center mb-12">
+    <div class="text-center mb-8">
       <h2 class="glitch text-3xl md:text-4xl tracking-widest" data-text="What We Do">
         What We Do
       </h2>
     </div>
 
-    <!-- Desktop Layout -->
-    <div class="hidden md:grid md:grid-cols-12 gap-8 items-start">
-      
-      <!-- Left Column: Category & List -->
-      <div class="col-span-4 lg:col-span-3">
-        <h4 class=" lg:text-3xl mb-6 italic font-bold text-base-text">
-          Broadcast TV
-        </h4>
-        <ul class="space-y-3">
-          {{ range $categories }}
-          <li class="flex items-center gap-3 text-base-text">
-            <span class="w-2 h-2 rounded-full bg-accent"></span>
-            <span class="text-lg">{{ . }}</span>
-          </li>
-          {{ end }}
-        </ul>
+    <!-- Category Header -->
+    <div class="text-center mb-6">
+      <h3 class="text-2xl md:text-3xl mb-4 italic font-bold text-base-text">
+        Broadcast TV
+      </h3>
+      <div class="flex flex-wrap justify-center gap-2">
+        {{ range $categories }}
+        <span class="inline-flex items-center gap-2 px-3 py-1 text-md text-base-text">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+          {{ . }}
+        </span>
+        {{ end }}
       </div>
-      
-      <!-- Right Column: Image Grid -->
-      <div class="col-span-8 lg:col-span-9">
-        {{ if gt (len $images) 0 }}
-        <div class="grid grid-cols-2 gap-4">
-          <!-- First 4 images in 2x2 grid -->
-          {{ range first 4 $images }}
-          <div class="relative overflow-hidden rounded-lg aspect-video group">
-            <img 
-              src="{{ .path }}"
-              alt="{{ .alt }}"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-              onerror="this.onerror=null; this.src='/img/logo.webp';">
-            <div class="absolute inset-0 bg-black/60
-                        flex items-center justify-center
-                        opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span class="text-white text-lg font-bold uppercase tracking-wider text-center px-4">
-                {{ .alt }}
-              </span>
-            </div>
-          </div>
-          {{ end }}
-          
-          <!-- Fifth image if exists -->
-          {{ if gt (len $images) 4 }}
-          <div class="relative overflow-hidden rounded-lg aspect-video group">
-            {{ with index $images 4 }}
-            <img 
-              src="{{ .path }}"
-              alt="{{ .alt }}"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-              onerror="this.onerror=null; this.src='/img/logo.webp';">
-            <div class="absolute inset-0 bg-black/60
-                        flex items-center justify-center
-                        opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span class="text-white text-lg font-bold uppercase tracking-wider text-center px-4">
-                {{ .alt }}
-              </span>
-            </div>
-            {{ end }}
-          </div>
-          {{ end }}
-          
-        </div>
-      </div>
-      {{ end }}
     </div>
 
+    <!-- Auto-Slide Carousel -->
+    {{ if gt (len $images) 0 }}
+    <div class="tv-carousel-wrapper relative max-w-4xl mx-auto" id="tv-auto-carousel">
+      
+      <!-- Main Carousel Container -->
+      <div class="tv-carousel-container relative overflow-hidden rounded-2xl aspect-video">
+        {{ range $index, $image := $images }}
+        <div class="tv-carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out {{ if eq $index 0 }}opacity-100{{ end }}"
+             data-slide-index="{{ $index }}">
+          <img 
+            src="{{ $image.path }}"
+            alt="{{ $image.alt }}"
+            class="w-full h-full object-cover"
+            {{ if eq $index 0 }}loading="eager"{{ else }}loading="lazy"{{ end }}
+            onerror="this.onerror=null; this.src='/img/logo.webp';">
+          <!-- Title overlay -->
+          <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 md:p-6">
+            <span class="text-white text-lg md:text-xl font-bold uppercase tracking-wider">
+              {{ $image.alt }}
+            </span>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+      
+      <!-- Navigation Dots -->
+      <div class="flex justify-center gap-2 mt-4">
+        {{ range $index, $image := $images }}
+        <button 
+          class="tv-carousel-dot w-2.5 h-2.5 rounded-full bg-secondary border border-accent transition-all duration-300 hover:scale-125 {{ if eq $index 0 }}bg-accent scale-125{{ end }}"
+          data-slide="{{ $index }}"
+          aria-label="Go to slide {{ add $index 1 }}"
+        ></button>
+        {{ end }}
+      </div>
+      
+      <!-- Prev/Next Arrows (visible on hover) -->
+      <button class="tv-carousel-prev absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 text-white flex items-center justify-center opacity-0 hover:opacity-100 focus:opacity-100 transition-opacity duration-300 hover:bg-black/70"
+              aria-label="Previous slide">
+        <span class="material-icons">chevron_left</span>
+      </button>
+      <button class="tv-carousel-next absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 text-white flex items-center justify-center opacity-0 hover:opacity-100 focus:opacity-100 transition-opacity duration-300 hover:bg-black/70"
+              aria-label="Next slide">
+        <span class="material-icons">chevron_right</span>
+      </button>
+    </div>
+    {{ end }}
+
     <!-- See More Link -->
-    <div class="hidden md:block mt-8 text-center">
+    <div class="mt-8 text-center">
       {{ partial "menu-item.html" (dict 
           "URL" "/work" 
           "Name" "See More" 
           "Icon" "arrow_forward"
           "Width" "180px"
           "Class" "") }}
-    </div>
-
-    <!-- Mobile Layout: Carousel -->
-    <div class="md:hidden">
-      
-      <!-- Category Header -->
-      <div class="mb-6">
-        <h3 class="text-2xl mb-4 italic font-bold text-base-text">
-          Broadcast TV
-        </h3>
-        <div class="flex flex-wrap gap-2">
-          {{ range $categories }}
-          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary text-sm text-base-text">
-            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-            {{ . }}
-          </span>
-          {{ end }}
-        </div>
-      </div>
-      
-      <!-- Reusable Carousel -->
-      {{ partial "home/home_carousel.html" (dict "folder" "img/home/tv" "id" "tv-carousel") }}
-      
-      <!-- See More Link (Mobile) -->
-      <div class="mt-8 text-center">
-        {{ partial "menu-item.html" (dict 
-            "URL" "/work" 
-            "Name" "See More" 
-            "Icon" "arrow_forward"
-            "Width" "180px"
-            "Class" "") }}
-      </div>
     </div>
 
   </div>

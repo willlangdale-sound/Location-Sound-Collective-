@@ -65,7 +65,7 @@
       Meet The Team
     </h2>
     <p>Our collective brings together UK's finest sound recordists — each with their own unique expertise, from intimate documentary work to large-scale broadcast productions.</p>
-    <div class="mt-2 mb-8">
+    <div class="mt-4 mb-4">
       {{ partial "menu-item.html" (dict 
           "URL" "/team" 
           "Name" "Discover Us" 
@@ -73,9 +73,17 @@
           "Width" "220px"
           "Class" "") }}
     </div>
+    <div class="mt-4 mb-4">
+      {{ partial "menu-item.html" (dict 
+          "URL" "/work" 
+          "Name" "Latest Work" 
+          "Icon" "groups"
+          "Width" "220px"
+          "Class" "") }}
+    </div>
   </div>
 
-  <div class="dice-scene group" 
+  {{/*  <div class="dice-scene group" 
        id="dice-scene" 
        style="perspective: 1000px; --dice-grayscale: {{ $grayscale }}%; --dice-contrast: {{ $contrast }}; --dice-grayscale-hover: {{ $grayscaleHover }}%; --dice-contrast-hover: {{ $contrastHover }};">
     <div class="dice-cube" id="dice-cube">
@@ -141,9 +149,11 @@
       </div>
 
     </div>
-  </div>
+  </div>  */}}
   
-  <p class="mt-2 summary italic tracking-wider">
+  {{/*  <p class="mt-2 summary italic tracking-wider">
     Drag or click to spin • Click name to view profile
-  </p>
+  </p>  */}}
+
+
 </section>

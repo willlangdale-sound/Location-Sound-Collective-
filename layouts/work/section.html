@@ -96,7 +96,7 @@
         </div>
 
         <!-- Summary -->
-        <p class="flex-1 mb-4">
+        <p class="flex-1">
           {{ if .Summary }}
             {{ .Summary | plainify | truncate 100 }}
           {{ else if .Plain }}
@@ -105,6 +105,15 @@
               {{ .Content | plainify | truncate 100 }}
           {{ end }}
         </p>
+            <!-- See More Link -->
+        <div class="my-3">
+          {{ partial "menu-item.html" (dict 
+              "URL" .RelPermalink 
+              "Name" "See More" 
+              "Icon" "arrow_forward"
+              "Width" "180px"
+              "Class" "") }}
+        </div>
 
         <!-- Tags -->
         {{ with .Params.tags }}
