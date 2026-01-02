@@ -53,34 +53,13 @@ menuItems.forEach(function(item) {
 });
 
 // ============================================
-// THEME TOGGLE (Light/Dark)
+// THEME - ALWAYS DARK MODE
 // ============================================
-// function initTheme() {
-//   const toggle = document.getElementById('theme-toggle');
-//   if (!toggle) return;
-
-//   const htmlEl = document.documentElement;
-
-//   // Apply theme helper
-//   const applyTheme = function(isDark) {
-//     htmlEl.classList.toggle('dark', isDark);
-//     localStorage.setItem('theme', isDark ? 'dark' : 'light');
-//   };
-
-//   // Load saved theme or use system preference
-//   const savedTheme = localStorage.getItem('theme');
-//   if (savedTheme) {
-//     applyTheme(savedTheme === 'dark');
-//   } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-//     applyTheme(true);
-//   }
-
-//   // Toggle on click
-//   toggle.addEventListener('click', function() {
-//     const isCurrentlyDark = htmlEl.classList.contains('dark');
-//     applyTheme(!isCurrentlyDark);
-//   });
-// }
+function initTheme() {
+  // Always force dark mode
+  document.documentElement.classList.add('dark');
+  localStorage.setItem('theme', 'dark');
+}
 
 // ============================================
 // CRT EFFECT TOGGLE

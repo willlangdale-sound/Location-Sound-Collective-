@@ -36,6 +36,10 @@
       }
     });
   });
+  function initTheme() {
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  }
   function initCrt() {
     crtToggleButton = document.getElementById("crt-toggle");
     if (!crtToggleButton) return;
