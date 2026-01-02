@@ -340,11 +340,21 @@ function initHomeCarousels() {
 // ============================================
 // TV AUTO-SLIDE CAROUSEL (Fade transition)
 // Works on both mobile and desktop
+// Now supports MULTIPLE carousels on the same page
 // ============================================
 function initTvCarousel() {
-  const wrapper = document.getElementById('tv-auto-carousel');
-  if (!wrapper) return;
+  // Find all TV carousels by class instead of single ID
+  const carouselWrappers = document.querySelectorAll('.tv-auto-carousel');
   
+  if (!carouselWrappers.length) return;
+  
+  // Initialize each carousel independently
+  carouselWrappers.forEach(function(wrapper) {
+    initSingleTvCarousel(wrapper);
+  });
+}
+
+function initSingleTvCarousel(wrapper) {
   const slides = wrapper.querySelectorAll('.tv-carousel-slide');
   const dots = wrapper.querySelectorAll('.tv-carousel-dot');
   const prevBtn = wrapper.querySelector('.tv-carousel-prev');

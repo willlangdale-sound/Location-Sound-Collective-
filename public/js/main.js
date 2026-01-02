@@ -238,8 +238,13 @@
     });
   }
   function initTvCarousel() {
-    const wrapper = document.getElementById("tv-auto-carousel");
-    if (!wrapper) return;
+    const carouselWrappers = document.querySelectorAll(".tv-auto-carousel");
+    if (!carouselWrappers.length) return;
+    carouselWrappers.forEach(function(wrapper) {
+      initSingleTvCarousel(wrapper);
+    });
+  }
+  function initSingleTvCarousel(wrapper) {
     const slides = wrapper.querySelectorAll(".tv-carousel-slide");
     const dots = wrapper.querySelectorAll(".tv-carousel-dot");
     const prevBtn = wrapper.querySelector(".tv-carousel-prev");

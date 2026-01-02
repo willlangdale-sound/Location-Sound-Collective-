@@ -1,9 +1,9 @@
-<!-- layouts/_partials/home/home_work_tv.html -->
+<!-- layouts/_partials/home/home_work_brand.html -->
 {{/*
-  Broadcast TV Showcase Section - Homepage
+  Social / Brand Showcase Section - Homepage
   Auto-sliding carousel for both mobile and desktop
   
-  Images should be placed in: static/img/home/tv/
+  Images should be placed in: static/img/home/brand/
 */}}
 
 {{ $folder := "img/home/brand" }}
@@ -37,13 +37,6 @@
 
 <section class="work-tv-section bg-base">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <!-- Section Title -->
-    {{/*  <div class="text-center mb-8">
-      <h2 class="glitch text-3xl md:text-4xl tracking-widest" data-text="What We Do">
-        What We Do
-      </h2>
-    </div>  */}}
 
     <!-- Category Header -->
     <div class="text-center mb-6">
@@ -62,7 +55,7 @@
 
     <!-- Auto-Slide Carousel -->
     {{ if gt (len $images) 0 }}
-    <div class="tv-carousel-wrapper relative max-w-4xl mx-auto" id="tv-auto-carousel">
+    <div class="tv-carousel-wrapper tv-auto-carousel relative max-w-4xl mx-auto" id="tv-carousel-brand">
       
       <!-- Main Carousel Container -->
       <div class="tv-carousel-container relative overflow-hidden rounded-2xl aspect-video md:h-auto md:w-3/4 flex justify-self-center">

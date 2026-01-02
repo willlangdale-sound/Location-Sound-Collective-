@@ -387,6 +387,7 @@
       "translate-x-0",
       "translate-x-full",
       "translate-y-1",
+      "tv-auto-carousel",
       "tv-carousel-container",
       "tv-carousel-dot",
       "tv-carousel-next",
@@ -442,7 +443,8 @@
       "recording-process",
       "results",
       "technical-setup",
-      "tv-auto-carousel"
+      "tv-carousel-brand",
+      "tv-carousel-broadcast"
     ]
   }
 }
