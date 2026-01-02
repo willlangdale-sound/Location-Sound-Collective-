@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="" lang="en-uk" dir="ltr">
+<html class="dark" lang="en-uk" dir="ltr">
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   
 
@@ -150,14 +150,14 @@
     <div class="vignette"></div>
   </div>
 
-  <header class="transition-colors duration-200 pb-10">
+  <header class="transition-colors duration-200 md:pb-0 md:pt-10 ">
     
-<div class="flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 pt-2 pb-2 grayscale-30 max-w-screen-xl mx-auto px-4 lg:px-8">
+<div class="flex flex-col md:flex-row justify-center md:justify-around items-center gap-4 pt-2 pb-2 grayscale-30 max-w-screen-xl mx-auto px-4 lg:px-8">
   
   
   <a href="http://localhost:1313/" class="flex-shrink-0">
     <img id="logo" src="/img/logo.webp" alt="Location Sound Collective" 
-         class="w-40 md:w-28 lg:w-36 h-auto p-2 animate-[spin_3s_ease-in-out] img-glow" 
+         class="w-40 md:w-36 lg:w-50 h-auto p-2 animate-[spin_3s_ease-in-out] img-glow" 
          width="150" height="150" fetchpriority="high">
   </a>
   
@@ -174,10 +174,10 @@
 <div id="menu-wrapper" class="group/menu p-4 md:p-0 transition-colors duration-200">
   
   
-  <div class="flex flex-col items-center gap-4 md:gap-2">
+  <div class="flex flex-col items-center gap-4 md:gap-10">
     
     
-    <h1 class="hidden md:block glitch text-center" data-text="Location Sound Collective">
+    <h1 class="hidden md:block glitch text-center glow" data-text="Location Sound Collective">
       Location Sound Collective
     </h1>
     
@@ -352,58 +352,12 @@
       </ul>
       
       
-      <div class="hidden md:block w-px h-8 bg-accent opacity-40"></div>
+      
       
       
       <div class="flex flex-row items-center gap-1">
         
-<button id="theme-toggle" type="button" 
-  class="
-    /* Styling uses your custom utilities */
-    hover:bg-surface-hover text-accent 
-     dark:hover:bg-surface-hover dark:text-base-text
-    " 
-  aria-label="Toggle theme">
-  
-  <span class="material-symbols-outlined dark:material-symbols-inlined">
-    brightness_6
-    </span>
-</button>
-
-
         
-<button
-  id="crt-toggle"
-  type="button"
-  class="
-    group inline-flex items-center gap-1 rounded-md px-2 py-1
-    text-base-text dark:text-base-text
-    transition-colors duration-200
-    hover:bg-surface-hover dark:hover:bg-surface-hover
-  "
-  aria-label="Toggle CRT mode"
->
-  <span
-    class="
-      material-symbols-outlined crt-icon-tv
-      text-2xl transition-transform duration-200 transform
-      text-accent
-    "
-  >
-    tv_gen
-  </span>
-  <span
-    class="
-      material-symbols-outlined crt-icon-toggle text-accent
-      text-2xl transition-transform duration-200 transform
-      group-hover:translate-x-0.5
-    "
-  >
-    toggle_on
-  </span>
-</button>
-
-
       </div>
       
     </div>
@@ -418,10 +372,10 @@
 <div id="menu-wrapper" class="group/menu p-4 md:p-0 transition-colors duration-200">
   
   
-  <div class="flex flex-col items-center gap-4 md:gap-2">
+  <div class="flex flex-col items-center gap-4 md:gap-10">
     
     
-    <h1 class="hidden md:block glitch text-center" data-text="Location Sound Collective">
+    <h1 class="hidden md:block glitch text-center glow" data-text="Location Sound Collective">
       Location Sound Collective
     </h1>
     
@@ -596,65 +550,76 @@
       </ul>
       
       
-      <div class="hidden md:block w-px h-8 bg-accent opacity-40"></div>
+      
       
       
       <div class="flex flex-row items-center gap-1">
         
-<button id="theme-toggle" type="button" 
-  class="
-    /* Styling uses your custom utilities */
-    hover:bg-surface-hover text-accent 
-     dark:hover:bg-surface-hover dark:text-base-text
-    " 
-  aria-label="Toggle theme">
-  
-  <span class="material-symbols-outlined dark:material-symbols-inlined">
-    brightness_6
-    </span>
-</button>
-
-
         
-<button
-  id="crt-toggle"
-  type="button"
-  class="
-    group inline-flex items-center gap-1 rounded-md px-2 py-1
-    text-base-text dark:text-base-text
-    transition-colors duration-200
-    hover:bg-surface-hover dark:hover:bg-surface-hover
-  "
-  aria-label="Toggle CRT mode"
->
-  <span
-    class="
-      material-symbols-outlined crt-icon-tv
-      text-2xl transition-transform duration-200 transform
-      text-accent
-    "
-  >
-    tv_gen
-  </span>
-  <span
-    class="
-      material-symbols-outlined crt-icon-toggle text-accent
-      text-2xl transition-transform duration-200 transform
-      group-hover:translate-x-0.5
-    "
-  >
-    toggle_on
-  </span>
-</button>
-
-
       </div>
       
     </div>
   </div>
 </div>
 </nav>
+
+<h1 class="md:hidden glitch flex text-center glow justify-center" data-text="Location Sound Collective">
+  Location Sound Collective
+</h1>
   </header>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="divider py-8 w-full" aria-hidden="true">
+  <div class="max-w-4xl mx-auto px-4">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="flex flex-col gap-1">
+      <div class="h-px bg-accent opacity-20"></div>
+      <div class="h-px bg-accent opacity-40"></div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+</div>
   <main class="flex justify-center glow ">
     <div class="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
       

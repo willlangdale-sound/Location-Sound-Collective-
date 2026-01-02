@@ -36,25 +36,6 @@
       }
     });
   });
-  function initTheme() {
-    const toggle = document.getElementById("theme-toggle");
-    if (!toggle) return;
-    const htmlEl = document.documentElement;
-    const applyTheme = function(isDark) {
-      htmlEl.classList.toggle("dark", isDark);
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-    };
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      applyTheme(savedTheme === "dark");
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      applyTheme(true);
-    }
-    toggle.addEventListener("click", function() {
-      const isCurrentlyDark = htmlEl.classList.contains("dark");
-      applyTheme(!isCurrentlyDark);
-    });
-  }
   function initCrt() {
     crtToggleButton = document.getElementById("crt-toggle");
     if (!crtToggleButton) return;

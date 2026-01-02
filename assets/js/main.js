@@ -55,32 +55,32 @@ menuItems.forEach(function(item) {
 // ============================================
 // THEME TOGGLE (Light/Dark)
 // ============================================
-function initTheme() {
-  const toggle = document.getElementById('theme-toggle');
-  if (!toggle) return;
+// function initTheme() {
+//   const toggle = document.getElementById('theme-toggle');
+//   if (!toggle) return;
 
-  const htmlEl = document.documentElement;
+//   const htmlEl = document.documentElement;
 
-  // Apply theme helper
-  const applyTheme = function(isDark) {
-    htmlEl.classList.toggle('dark', isDark);
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  };
+//   // Apply theme helper
+//   const applyTheme = function(isDark) {
+//     htmlEl.classList.toggle('dark', isDark);
+//     localStorage.setItem('theme', isDark ? 'dark' : 'light');
+//   };
 
-  // Load saved theme or use system preference
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    applyTheme(savedTheme === 'dark');
-  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    applyTheme(true);
-  }
+//   // Load saved theme or use system preference
+//   const savedTheme = localStorage.getItem('theme');
+//   if (savedTheme) {
+//     applyTheme(savedTheme === 'dark');
+//   } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+//     applyTheme(true);
+//   }
 
-  // Toggle on click
-  toggle.addEventListener('click', function() {
-    const isCurrentlyDark = htmlEl.classList.contains('dark');
-    applyTheme(!isCurrentlyDark);
-  });
-}
+//   // Toggle on click
+//   toggle.addEventListener('click', function() {
+//     const isCurrentlyDark = htmlEl.classList.contains('dark');
+//     applyTheme(!isCurrentlyDark);
+//   });
+// }
 
 // ============================================
 // CRT EFFECT TOGGLE
