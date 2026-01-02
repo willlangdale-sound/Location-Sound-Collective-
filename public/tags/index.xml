@@ -2,33 +2,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Location Sound Collective</title>
-    <link>http://192.168.1.110:1313/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Location Sound Collective</description>
     <generator>Hugo</generator>
     <language>en-uk</language>
     <managingEditor>info@lsc.com (Aurel)</managingEditor>
     <webMaster>info@lsc.com (Aurel)</webMaster>
     <lastBuildDate>Fri, 28 Nov 2025 10:15:37 +0100</lastBuildDate>
-    <atom:link href="http://192.168.1.110:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Documentary</title>
-      <link>http://192.168.1.110:1313/tags/documentary/</link>
+      <link>http://localhost:1313/tags/documentary/</link>
       <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
-      <guid>http://192.168.1.110:1313/tags/documentary/</guid>
+      <guid>http://localhost:1313/tags/documentary/</guid>
       <description></description>
     </item>
     <item>
       <title>Field-Recording</title>
-      <link>http://192.168.1.110:1313/tags/field-recording/</link>
+      <link>http://localhost:1313/tags/field-recording/</link>
       <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
-      <guid>http://192.168.1.110:1313/tags/field-recording/</guid>
+      <guid>http://localhost:1313/tags/field-recording/</guid>
       <description></description>
     </item>
     <item>
       <title>Sports</title>
-      <link>http://192.168.1.110:1313/tags/sports/</link>
+      <link>http://localhost:1313/tags/sports/</link>
       <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
-      <guid>http://192.168.1.110:1313/tags/sports/</guid>
+      <guid>http://localhost:1313/tags/sports/</guid>
       <description></description>
     </item>
   </channel>

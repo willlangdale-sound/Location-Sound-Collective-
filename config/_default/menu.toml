@@ -19,7 +19,7 @@
     icon = "groups"
 
 [[main]]
-  name = "Latest Work"
+  name = "Work"
   pageRef = "/work"
   weight = 30
   [main.params]
