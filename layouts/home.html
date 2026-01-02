@@ -35,6 +35,11 @@
   <div class="w-full">
     {{ partial "home/home_work_tv.html" . }}
   </div>
+  {{/* Divider */}}
+  {{ partial "divider.html" (dict "width" "sm" ) }}
+  <div class="w-full">
+    {{ partial "home/home_work_brand.html" . }}
+  </div>
   {{/* Icon with lines */}}
   {{ partial "divider.html" (dict "style" "icon") }}
   <!-- Meat the team section -->
