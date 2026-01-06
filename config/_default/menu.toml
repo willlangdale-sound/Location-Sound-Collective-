@@ -48,7 +48,7 @@
   weight = 20
 
 [[footer]]
-  name = "Latest Work"
+  name = "Work"
   pageRef = "/work"
   weight = 30
   [footer.params]

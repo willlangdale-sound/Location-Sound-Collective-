@@ -1329,9 +1329,6 @@
       margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
-  .justify-self-center {
-    justify-self: center;
-  }
   .truncate {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1983,11 +1980,6 @@
   .md\:h-\[60vh\] {
     @media (width >= 48rem) {
       height: 60vh;
-    }
-  }
-  .md\:h-auto {
-    @media (width >= 48rem) {
-      height: auto;
     }
   }
   .md\:h-full {
