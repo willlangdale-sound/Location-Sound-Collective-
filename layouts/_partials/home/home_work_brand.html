@@ -58,8 +58,7 @@
     <div class="tv-carousel-wrapper tv-auto-carousel relative max-w-4xl mx-auto" id="tv-carousel-brand">
       
       <!-- Main Carousel Container -->
-      {{/*  <div class="tv-carousel-container relative overflow-hidden rounded-2xl aspect-video md:h-auto md:w-3/4 flex justify-self-center">  */}}
-        <div class="tv-carousel-container relative overflow-hidden rounded-2xl aspect-video w-full md:w-3/4 mx-auto"></div>
+      <div class="tv-carousel-container relative overflow-hidden rounded-2xl aspect-video w-full md:w-3/4 mx-auto">
         {{ range $index, $image := $images }}
         <div class="tv-carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out {{ if eq $index 0 }}opacity-100{{ end }}"
              data-slide-index="{{ $index }}">
