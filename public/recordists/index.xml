@@ -2,47 +2,47 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Recordists on Location Sound Collective</title>
-    <link>http://localhost:1313/recordists/</link>
+    <link>http://192.168.1.110:1313/recordists/</link>
     <description>Recent content in Recordists on Location Sound Collective</description>
     <generator>Hugo</generator>
     <language>en-uk</language>
     <managingEditor>info@lsc.com (Aurel)</managingEditor>
     <webMaster>info@lsc.com (Aurel)</webMaster>
     <lastBuildDate>Fri, 28 Nov 2025 10:15:37 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/recordists/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://192.168.1.110:1313/recordists/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Edouard Puhl</title>
-      <link>http://localhost:1313/recordists/edouard-puhl/</link>
+      <link>http://192.168.1.110:1313/recordists/edouard-puhl/</link>
       <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
-      <guid>http://localhost:1313/recordists/edouard-puhl/</guid>
+      <guid>http://192.168.1.110:1313/recordists/edouard-puhl/</guid>
       <description></description>
     </item>
     <item>
       <title>Nick Gladwin</title>
-      <link>http://localhost:1313/recordists/nick-gladwin/</link>
+      <link>http://192.168.1.110:1313/recordists/nick-gladwin/</link>
       <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
-      <guid>http://localhost:1313/recordists/nick-gladwin/</guid>
+      <guid>http://192.168.1.110:1313/recordists/nick-gladwin/</guid>
       <description></description>
     </item>
     <item>
       <title>Rich Morgan</title>
-      <link>http://localhost:1313/recordists/rich-morgan/</link>
+      <link>http://192.168.1.110:1313/recordists/rich-morgan/</link>
       <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
-      <guid>http://localhost:1313/recordists/rich-morgan/</guid>
+      <guid>http://192.168.1.110:1313/recordists/rich-morgan/</guid>
       <description></description>
     </item>
     <item>
       <title>Steve Llewellyn</title>
-      <link>http://localhost:1313/recordists/steve-llewellyn/</link>
+      <link>http://192.168.1.110:1313/recordists/steve-llewellyn/</link>
       <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
-      <guid>http://localhost:1313/recordists/steve-llewellyn/</guid>
+      <guid>http://192.168.1.110:1313/recordists/steve-llewellyn/</guid>
       <description></description>
     </item>
     <item>
       <title>William Langdale</title>
-      <link>http://localhost:1313/recordists/william-langdale/</link>
+      <link>http://192.168.1.110:1313/recordists/william-langdale/</link>
       <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
-      <guid>http://localhost:1313/recordists/william-langdale/</guid>
+      <guid>http://192.168.1.110:1313/recordists/william-langdale/</guid>
       <description></description>
     </item>
   </channel>

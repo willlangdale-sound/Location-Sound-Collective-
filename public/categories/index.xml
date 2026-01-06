@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Location Sound Collective</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>http://192.168.1.110:1313/categories/</link>
     <description>Recent content in Categories on Location Sound Collective</description>
     <generator>Hugo</generator>
     <language>en-uk</language>
     <managingEditor>info@lsc.com (Aurel)</managingEditor>
     <webMaster>info@lsc.com (Aurel)</webMaster>
     <lastBuildDate>Fri, 28 Nov 2025 10:15:37 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://192.168.1.110:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Broadcast</title>
-      <link>http://localhost:1313/categories/broadcast/</link>
+      <link>http://192.168.1.110:1313/categories/broadcast/</link>
       <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
-      <guid>http://localhost:1313/categories/broadcast/</guid>
+      <guid>http://192.168.1.110:1313/categories/broadcast/</guid>
       <description></description>
     </item>
     <item>
       <title>Film</title>
-      <link>http://localhost:1313/categories/film/</link>
+      <link>http://192.168.1.110:1313/categories/film/</link>
       <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
-      <guid>http://localhost:1313/categories/film/</guid>
+      <guid>http://192.168.1.110:1313/categories/film/</guid>
       <description></description>
     </item>
   </channel>

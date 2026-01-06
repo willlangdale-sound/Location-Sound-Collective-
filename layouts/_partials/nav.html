@@ -16,16 +16,20 @@
       <ul class="menu flex flex-col md:flex-row justify-center items-center gap-2 md:gap-1 lg:gap-2
                  bg-base md:bg-transparent backdrop-blur-md md:backdrop-blur-none">
         
-        {{ range .Site.Menus.main }}
-          {{ $showItem := true }}
+          {{ range .Site.Menus.main }}
+          {{/* 1. Vérifier si l'URL du menu correspond à la page actuelle */}}
+          {{ $isCurrentPage := eq $.RelPermalink .URL }}
           
+          {{/* 2. Logique existante pour les features */}}
+          {{ $showItem := true }}
           {{ if .Params.requiresFeature }}
             {{ if eq .Params.requiresFeature "enableWorkSection" }}
               {{ $showItem = $.Site.Params.features.enableWorkSection }}
             {{ end }}
           {{ end }}
           
-          {{ if $showItem }}
+          {{/* 3. N'afficher que si showItem est vrai ET que ce n'est pas la page actuelle */}}
+          {{ if and $showItem (not $isCurrentPage) }}
           <li class="relative group">
             {{ partial "menu-item.html" (dict 
               "URL" .URL 
