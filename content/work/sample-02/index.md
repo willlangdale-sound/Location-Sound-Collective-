@@ -39,6 +39,7 @@ weight: 10       # Lower numbers appear first in listings
 featured: false  # Set to true to highlight this project
 ---
 ## Social Media Shoot | Ibiza
+---
 We partnered with Hotcam for this shoot to provide flawless audio recording for 8
 YouTube stars and their 8 companions in Ibiza. Tinder wanted to promote their new
 double-dating feature on their app and so the shoots were framed around that idea.

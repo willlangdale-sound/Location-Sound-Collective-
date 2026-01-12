@@ -51,11 +51,11 @@
         {{ with .Params.location }}<span>• Location: {{ . }}</span>{{ end }}
         {{ with .Params.client }}<span>• Client: {{ . }}</span>{{ end }}
       </div>
-      {{ with .Params.tags }}
+      {{/*  {{ with .Params.tags }}
       <div class="mt-4 flex flex-wrap gap-2">
         {{ range . }}<span class="text-xs px-2 py-1 rounded-full bg-accent text-secondary">{{ . }}</span>{{ end }}
       </div>
-      {{ end }}
+      {{ end }}  */}}
     </div>
   </section>
 
@@ -82,11 +82,11 @@
           {{ with .Params.location }}<span>• {{ . }}</span>{{ end }}
           {{ with .Params.client }}<span>• Client: {{ . }}</span>{{ end }}
         </div>
-        {{ with .Params.tags }}
+        {{/*  {{ with .Params.tags }}
         <div class="mt-4 flex flex-wrap gap-2">
           {{ range . }}<span class="text-sm px-2 py-1 rounded-full bg-accent text-secondary">{{ . }}</span>{{ end }}
         </div>
-        {{ end }}
+        {{ end }}  */}}
       </div>
     </div>
   </section>
