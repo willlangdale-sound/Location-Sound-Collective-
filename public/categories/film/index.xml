@@ -11,18 +11,11 @@
     <lastBuildDate>Fri, 28 Nov 2025 10:15:37 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/film/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Sample</title>
-      <link>http://localhost:1313/work/sample-01/</link>
-      <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
-      <guid>http://localhost:1313/work/sample-01/</guid>
-      <description>&lt;h2 id=&#34;main-content-sample&#34;&gt;Main CONTENT SAMPLE&lt;/h2&gt;&#xA;&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;Write a compelling description of the project. What was the goal? What made it unique? What was the context?&lt;/p&gt;&#xA;&lt;p&gt;This content appears on the project&amp;rsquo;s detail page and should give readers a complete picture of the work.&lt;/p&gt;&#xA;&lt;h2 id=&#34;production-details&#34;&gt;Production Details&lt;/h2&gt;&#xA;&lt;h3 id=&#34;recording-process&#34;&gt;Recording Process&lt;/h3&gt;&#xA;&lt;p&gt;Describe your approach to capturing the sound. What techniques did you use? What were the environmental considerations?&lt;/p&gt;&#xA;&lt;h3 id=&#34;technical-setup&#34;&gt;Technical Setup&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Primary Microphones:&lt;/strong&gt;&#xA;Wisycom &amp;amp; DPA&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Backup/Additional Mics:&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Recorder/Interface:&lt;/strong&gt;&#xA;Sound Device 833&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Monitoring:&lt;/strong&gt;&#xA;Seinheiser HD&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Accessories:&lt;/strong&gt;&#xA;AudioRoot&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;challenges--solutions&#34;&gt;Challenges &amp;amp; Solutions&lt;/h3&gt;&#xA;&lt;p&gt;Discuss any obstacles encountered during production and how you overcame them.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Sample 2</title>
+      <title>Tinder ‘Double Date Island’</title>
       <link>http://localhost:1313/work/sample-02/</link>
       <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
       <guid>http://localhost:1313/work/sample-02/</guid>
-      <description>&lt;h2 id=&#34;main-content-sample&#34;&gt;Main CONTENT SAMPLE&lt;/h2&gt;&#xA;&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;Write a compelling description of the project. What was the goal? What made it unique? What was the context?&lt;/p&gt;&#xA;&lt;p&gt;This content appears on the project&amp;rsquo;s detail page and should give readers a complete picture of the work.&lt;/p&gt;&#xA;&lt;h2 id=&#34;production-details&#34;&gt;Production Details&lt;/h2&gt;&#xA;&lt;h3 id=&#34;recording-process&#34;&gt;Recording Process&lt;/h3&gt;&#xA;&lt;p&gt;Describe your approach to capturing the sound. What techniques did you use? What were the environmental considerations?&lt;/p&gt;&#xA;&lt;h3 id=&#34;technical-setup&#34;&gt;Technical Setup&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Primary Microphones:&lt;/strong&gt;&#xA;Wisycom &amp;amp; DPA&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Backup/Additional Mics:&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Recorder/Interface:&lt;/strong&gt;&#xA;Sound Device 833&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Monitoring:&lt;/strong&gt;&#xA;Seinheiser HD&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Accessories:&lt;/strong&gt;&#xA;AudioRoot&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;challenges--solutions&#34;&gt;Challenges &amp;amp; Solutions&lt;/h3&gt;&#xA;&lt;p&gt;Discuss any obstacles encountered during production and how you overcame them.&lt;/p&gt;</description>
+      <description>We partnered with Hotcam for this shoot to provide flawless audio recording for 8YouTube stars and their 8 companions in Ibiza. Tinder wanted to promote their new double-dating feature on their app and so the shoots were framed around that idea.To help support the shoot we provided 2 x dedicated sound recordists (Will Langdale andSteve Llewellyn) with Sound Devices mixer/recorders.</description>
     </item>
   </channel>
 </rss>

@@ -75,14 +75,13 @@ highlights:
 
 <!-- Main bio/about text goes here -->
 
-Write a compelling biography that tells your story. Focus on:
 
-- How you got into sound recording
-- Your approach to capturing audio
-- What drives your passion for sound
-- Your working style and philosophy
-- Any unique experiences or perspectives
+Will is a London-based freelance sound recordist specialising in capturing production sound for a wide range of projects, including documentaries, branded content, commercials, and corporate videos.
 
-This content appears on your CV page and gives readers insight into who you are as a professional.
+He has extensive experience on large multi-camera shoots, as well as providing sound for narrative dramas, field recording, musical performances, sound effects, and on-location voiceovers.
 
-Keep it conversational but professional, ideally 3-5 paragraphs.
+Will works with a comprehensive location sound kit comprising field recorders, boom microphones, radio microphones, headphone monitoring, timecode boxes, and more.
+
+His credits include factual content for: BBC, ITV, Channel 4, ABC (Australia), ESPN, Sky, and Amazon Prime.
+
+Commercial clients include: Nike, New Balance, Spotify, Argos, NBA, Samsung, HSBC, Virgin Media, Footasylum, JD Sports, Tesco, Sony, Apple, Paramount, and Facebook.

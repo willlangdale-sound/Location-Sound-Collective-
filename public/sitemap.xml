@@ -42,22 +42,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>http://localhost:1313/tags/broadcast/</loc>
+    <lastmod>2025-11-28T10:15:37+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2025-11-28T10:15:37+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/tags/documentary/</loc>
-    <lastmod>2025-11-28T10:15:37+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/recordists/edouard-puhl/</loc>
-    <lastmod>2025-11-28T10:15:37+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/tags/field-recording/</loc>
     <lastmod>2025-11-28T10:15:37+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -72,37 +62,27 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/recordists/nick-gladwin/</loc>
+    <loc>http://localhost:1313/tags/media/</loc>
     <lastmod>2025-11-28T10:15:37+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/recordists/</loc>
+    <loc>http://localhost:1313/tags/shoot/</loc>
     <lastmod>2025-11-28T10:15:37+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/recordists/rich-morgan/</loc>
+    <loc>http://localhost:1313/tags/show/</loc>
     <lastmod>2025-11-28T10:15:37+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/sports/</loc>
-    <lastmod>2025-11-28T10:15:37+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/recordists/steve-llewellyn/</loc>
+    <loc>http://localhost:1313/tags/social/</loc>
     <lastmod>2025-11-28T10:15:37+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-11-28T10:15:37+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/recordists/william-langdale/</loc>
     <lastmod>2025-11-28T10:15:37+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -119,6 +99,10 @@
   </url><url>
     <loc>http://localhost:1313/</loc>
     <lastmod>2025-11-07T14:21:50+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/recordists/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>

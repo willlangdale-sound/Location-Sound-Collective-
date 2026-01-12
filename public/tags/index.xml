@@ -11,24 +11,38 @@
     <lastBuildDate>Fri, 28 Nov 2025 10:15:37 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Documentary</title>
-      <link>http://localhost:1313/tags/documentary/</link>
+      <title>Broadcast</title>
+      <link>http://localhost:1313/tags/broadcast/</link>
       <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
-      <guid>http://localhost:1313/tags/documentary/</guid>
+      <guid>http://localhost:1313/tags/broadcast/</guid>
       <description></description>
     </item>
     <item>
-      <title>Field-Recording</title>
-      <link>http://localhost:1313/tags/field-recording/</link>
+      <title>Media</title>
+      <link>http://localhost:1313/tags/media/</link>
       <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
-      <guid>http://localhost:1313/tags/field-recording/</guid>
+      <guid>http://localhost:1313/tags/media/</guid>
       <description></description>
     </item>
     <item>
-      <title>Sports</title>
-      <link>http://localhost:1313/tags/sports/</link>
+      <title>Shoot</title>
+      <link>http://localhost:1313/tags/shoot/</link>
       <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
-      <guid>http://localhost:1313/tags/sports/</guid>
+      <guid>http://localhost:1313/tags/shoot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Show</title>
+      <link>http://localhost:1313/tags/show/</link>
+      <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
+      <guid>http://localhost:1313/tags/show/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Social</title>
+      <link>http://localhost:1313/tags/social/</link>
+      <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
+      <guid>http://localhost:1313/tags/social/</guid>
       <description></description>
     </item>
   </channel>

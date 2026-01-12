@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Broadcast on Location Sound Collective</title>
+    <link>http://localhost:1313/tags/broadcast/</link>
+    <description>Recent content in Broadcast on Location Sound Collective</description>
+    <generator>Hugo</generator>
+    <language>en-uk</language>
+    <managingEditor>info@lsc.com (Aurel)</managingEditor>
+    <webMaster>info@lsc.com (Aurel)</webMaster>
+    <lastBuildDate>Fri, 28 Nov 2025 10:15:37 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/broadcast/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Real Housewives of London - Season 1</title>
+      <link>http://localhost:1313/work/sample-01/</link>
+      <pubDate>Fri, 28 Nov 2025 10:15:37 +0100</pubDate><author>info@lsc.com (Aurel)</author>
+      <guid>http://localhost:1313/work/sample-01/</guid>
+      <description>The creative brief for &lt;em&gt;The Real Housewives of London&lt;/em&gt; was clear: the show needed to feel real, organic, and free-flowing. The cast had to be fully immersed in their environments, with production responding to events as they unfolded rather than controlling them. Scenes ranged from intimate two-person conversations to large-scale dinners and parties involving anywhere from eight to fifteen cast members.</description>
+    </item>
+  </channel>
+</rss>
