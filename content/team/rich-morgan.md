@@ -34,7 +34,7 @@ social:
   instagram: ""
 
 # Experience
-experience:
+# experience:
 #   - title: "Senior Sound Recordist"
 #     company: "Location Sound Collective"
 #     period: "2020 - Present"
@@ -49,14 +49,14 @@ experience:
 #     description: "Worked across commercials, short films, and corporate videos"
 
 # Education
-education:
+# education:
   # - degree: "BA (Hons) Sound Design"
   #   institution: "University of Arts London"
   #   year: "2015"
   #   description: "Specialized in location sound recording and post-production"
 
 # Skills
-skills:
+# skills:
   # technical:
   #   - "Multi-track field recording"
   #   - "Wireless microphone systems"
@@ -70,7 +70,7 @@ skills:
   #   - "K-Tek boom poles"
 
 # Notable achievements
-highlights:
+# highlights:
   # - "BAFTA-nominated documentary sound recording (2023)"
   # - "Featured in Sound on Sound magazine"
   # - "Guest lecturer at National Film School"

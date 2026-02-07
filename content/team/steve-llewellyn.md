@@ -31,46 +31,46 @@ social:
   instagram: ""
 
 # Experience
-experience:
-  - title: "Senior Sound Recordist"
-    company: "Location Sound Collective"
-    period: "2020 - Present"
-    description: "Lead sound recordist for feature films and documentaries"
-    highlights:
-      - "Recorded sound for over 50 productions"
-      - "Specialized in challenging outdoor locations"
-      - "Mentored junior sound recordists"
-  - title: "Freelance Sound Recordist"
-    company: "Various Productions"
-    period: "2015 - 2020"
-    description: "Worked across commercials, short films, and corporate videos"
+# experience:
+#   - title: "Senior Sound Recordist"
+#     company: "Location Sound Collective"
+#     period: "2020 - Present"
+#     description: "Lead sound recordist for feature films and documentaries"
+#     highlights:
+#       - "Recorded sound for over 50 productions"
+#       - "Specialized in challenging outdoor locations"
+#       - "Mentored junior sound recordists"
+#   - title: "Freelance Sound Recordist"
+#     company: "Various Productions"
+#     period: "2015 - 2020"
+#     description: "Worked across commercials, short films, and corporate videos"
 
-# Education
-education:
-  - degree: "BA (Hons) Sound Design"
-    institution: "University of Arts London"
-    year: "2015"
-    description: "Specialized in location sound recording and post-production"
+# # Education
+# education:
+#   - degree: "BA (Hons) Sound Design"
+#     institution: "University of Arts London"
+#     year: "2015"
+#     description: "Specialized in location sound recording and post-production"
 
-# Skills
-skills:
-  technical:
-    - "Multi-track field recording"
-    - "Wireless microphone systems"
-    - "Audio post-production (Pro Tools, Reaper)"
-    - "Noise reduction and audio restoration"
-  equipment:
-    - "Sound Devices 833"
-    - "Sennheiser MKH 416"
-    - "DPA 4060"
-    - "Lectrosonics wireless systems"
-    - "K-Tek boom poles"
+# # Skills
+# skills:
+#   technical:
+#     - "Multi-track field recording"
+#     - "Wireless microphone systems"
+#     - "Audio post-production (Pro Tools, Reaper)"
+#     - "Noise reduction and audio restoration"
+#   equipment:
+#     - "Sound Devices 833"
+#     - "Sennheiser MKH 416"
+#     - "DPA 4060"
+#     - "Lectrosonics wireless systems"
+#     - "K-Tek boom poles"
 
-# Notable achievements
-highlights:
-  - "BAFTA-nominated documentary sound recording (2023)"
-  - "Featured in Sound on Sound magazine"
-  - "Guest lecturer at National Film School"
+# # Notable achievements
+# highlights:
+#   - "BAFTA-nominated documentary sound recording (2023)"
+#   - "Featured in Sound on Sound magazine"
+#   - "Guest lecturer at National Film School"
 ---
 
 <!-- Main bio/about text goes here -->
