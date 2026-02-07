@@ -72,8 +72,20 @@
 <!-- ============================================
      FAVICON
      ============================================ -->
-<link rel="icon" href="/img/logo.webp" type="image/png">
-<link rel="apple-touch-icon" href="/img/logo.webp">
+<!-- Modern browsers: SVG favicon (scalable, small file) -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<!-- Fallback: ICO for legacy browsers -->
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+
+<!-- Apple devices -->
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- Web App Manifest (PWA support) -->
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Additional PNG favicons for various contexts -->
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
 
 <!-- ============================================
      CSS & FONTS
