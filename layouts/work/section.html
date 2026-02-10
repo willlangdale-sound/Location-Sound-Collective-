@@ -7,6 +7,8 @@
 
 <main class="w-full">
 
+  
+  
   <!-- Section header -->
   <header class="max-w-3xl mx-auto">
     <div class="text-center mx-auto mb-4">
@@ -15,17 +17,24 @@
         {{ .Params.description }}
       </div>
     </div>
-    <div class="mt-4 indent-8 text-justify">
-      {{ .Content }}
-    </div>
   </header>
+  
+  <!-- Work Gallery by Category -->
+  <section class="work-by-category max-w-7xl mx-auto px-4">
+    {{ partial "work/gallery-by-category.html" . }}
+  </section>
 
   {{/* Divider */}}
   {{ partial "divider.html" (dict "style" "soundwave") }}
+
+  <div class="mt-4 mb-4 font-bold ">
+    <h2 class=" text-center ">Featured Project</h2>
+    <p class="indent-8"> {{ .Content | plainify }} </p>>
+  </div>
   <!-- Projects list -->
   <section class="flex flex-col gap-12">
     {{ range .Pages.ByDate.Reverse }}
-    <article class="project-card flex flex-col lg:flex-row bg-secondary rounded-2xl shadow-md overflow-hidden hover:scale-[1.01] transition-all duration-300">
+    <article class="project-card flex flex-col lg:flex-row bg-secondary rounded-2xl shadow-md overflow-hidden  transition-all duration-300">
   <!-- Cover image -->
   {{ $cover := "" }}
         
@@ -50,7 +59,7 @@
     {{ end }}
   {{ end }}
 
-  <a href="{{ .RelPermalink }}" class="lg:w-2/3 w-full shrink-0 relative">
+  <a href="{{ .RelPermalink }}" class="lg:w-2/3 w-full shrink-0 relative z-[10000] hover:z-[10001]">
     <div class="w-full h-64 md:h-80 lg:h-96 bg-gray-800 overflow-hidden relative">
       {{ with $cover }}
         {{ $altText := printf "%s - Sound Recording Project" $.Title }}
@@ -61,7 +70,7 @@
         <img 
           src="{{ $img.RelPermalink }}"
           alt="{{ $altText }}"
-          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out hover:scale-105"
+          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out hover:scale-105 relative z-[10000] hover:z-[10001]"
           loading="lazy"
           width="800"
           height="600">
@@ -69,7 +78,7 @@
         <img
           src="/img/logo.webp"
           alt="{{ .Title }} - Sound Recording Project"
-          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out hover:scale-105"
+          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out hover:scale-105 "
           loading="lazy"
           width="800"
           height="600">

@@ -4,7 +4,7 @@ title: 'Steve Llewellyn'
 weight: 1
 role: 'Sound Recordist'
 profile_picture: '/img/team/steve-llewellyn.webp'
-profile_picture_circle: '/img/team/steve-llewellyn-circle.webp'
+photo: '/img/team/steve-llewellyn-circle.webp'
 
 # SEO
 keywords:

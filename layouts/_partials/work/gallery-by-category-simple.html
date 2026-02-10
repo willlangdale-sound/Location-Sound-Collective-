@@ -1,0 +1,78 @@
+<!-- layouts/partials/work/gallery-by-category-simple.html -->
+{{/*
+  Work Gallery - Simple grid display by category
+  Matches reference layout from email
+  
+  Reads from: static/img/work/{category}/
+*/}}
+
+{{ $basePath := "img/work" }}
+{{ $fullBasePath := path.Join "static" $basePath }}
+
+{{/* Define categories - adjust order/names as needed */}}
+{{ $categories := slice
+  (dict "folder" "broadcast" "name" "BROADCAST TV")
+  (dict "folder" "film-promo" "name" "FILM & PROMO")
+  (dict "folder" "social-media" "name" "SOCIAL MEDIA")
+  (dict "folder" "sports" "name" "SPORTS")
+}}
+
+<div class="work-gallery space-y-12">
+  {{ range $catIndex, $category := $categories }}
+    
+    {{ $folderPath := path.Join $fullBasePath $category.folder }}
+    {{ $images := slice }}
+    
+    {{/* Read images from category folder */}}
+    {{ if (fileExists $folderPath) }}
+      {{ $files := readDir $folderPath }}
+      {{ range $files }}
+        {{ if not .IsDir }}
+          {{ $fileName := .Name }}
+          {{ $isImage := or 
+            (strings.HasSuffix $fileName ".jpg") 
+            (strings.HasSuffix $fileName ".jpeg") 
+            (strings.HasSuffix $fileName ".png") 
+            (strings.HasSuffix $fileName ".webp") 
+            (strings.HasSuffix $fileName ".gif")
+          }}
+          {{ if $isImage }}
+            {{ $imagePath := path.Join "/" $basePath $category.folder $fileName }}
+            {{ $altText := replaceRE `\.[^.]+$` "" $fileName }}
+            {{ $altText = replaceRE `[-_]` " " $altText }}
+            {{ $altText = $altText | title }}
+            {{ $images = $images | append (dict "path" $imagePath "alt" $altText "name" $fileName) }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ $images = sort $images "name" }}
+    {{ end }}
+    
+    {{/* Only show category if it has images */}}
+    {{ if gt (len $images) 0 }}
+    <section class="category-section">
+      
+      <!-- Category Header -->
+      <h2 class="text-xl md:text-2xl font-bold text-text mb-4 tracking-wide">
+        {{ $category.name }}
+      </h2>
+      
+      <!-- Image Grid - flexible wrapping -->
+      <div class="flex flex-wrap gap-3">
+        {{ range $index, $image := $images }}
+        <div class="relative rounded overflow-hidden shadow-md" style="width: clamp(120px, 18%, 180px);">
+          <img 
+            src="{{ $image.path }}"
+            alt="{{ $image.alt }}"
+            class="w-full h-auto object-contain"
+            loading="lazy"
+            onerror="this.onerror=null; this.src='/img/logo.webp';">
+        </div>
+        {{ end }}
+      </div>
+      
+    </section>
+    {{ end }}
+    
+  {{ end }}
+</div>

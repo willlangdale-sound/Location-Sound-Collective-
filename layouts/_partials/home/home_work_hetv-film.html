@@ -1,0 +1,191 @@
+<!-- layouts/_partials/home/home_work_tv.html -->
+{{/*
+  Broadcast TV Showcase Section - Homepage
+  Auto-sliding carousel with responsive images:
+  - Vertical images on mobile
+  - Landscape images on desktop
+  
+  Images should be placed in: static/img/home/hetv-film/
+  Naming convention: 
+    - project-name-landscape.webp
+    - project-name-vertical.webp
+  
+  IMPORTANT: Base names must match exactly (case-insensitive)
+  Example pairs:
+    ✓ gladiator2-landscape.webp + gladiator2-vertical.webp
+    ✓ Mission-Impossible-landscape.webp + mission-impossible-vertical.webp (case doesn't matter)
+    ✗ sex-de-filmed-landscape.webp + sex-ed-s2-vertical.webp (different names!)
+*/}}
+
+{{ $folder := "img/home/hetv-film" }}
+{{ $fullPath := path.Join "static" $folder }}
+{{ $imageGroups := dict }}
+
+{{/* Read all image files and group by base name (case-insensitive) */}}
+{{ $files := readDir $fullPath }}
+{{ range $files }}
+  {{ if not .IsDir }}
+    {{ $fileName := .Name }}
+    {{ $isImage := or 
+      (strings.HasSuffix $fileName ".jpg") 
+      (strings.HasSuffix $fileName ".jpeg") 
+      (strings.HasSuffix $fileName ".png") 
+      (strings.HasSuffix $fileName ".webp") 
+      (strings.HasSuffix $fileName ".gif")
+    }}
+    {{ if $isImage }}
+      {{/* Extract base name and orientation */}}
+      {{ $baseName := "" }}
+      {{ $orientation := "" }}
+      {{ $fileNameLower := $fileName | lower }}
+      
+      {{ if strings.Contains $fileNameLower "-landscape" }}
+        {{ $baseName = replaceRE `(?i)-landscape\.[^.]+$` "" $fileName }}
+        {{ $orientation = "landscape" }}
+      {{ else if strings.Contains $fileNameLower "-vertical" }}
+        {{ $baseName = replaceRE `(?i)-vertical\.[^.]+$` "" $fileName }}
+        {{ $orientation = "vertical" }}
+      {{ else }}
+        {{/* Fallback for images without orientation suffix - treat as landscape */}}
+        {{ $baseName = replaceRE `\.[^.]+$` "" $fileName }}
+        {{ $orientation = "landscape" }}
+      {{ end }}
+      
+      {{/* Normalize base name to lowercase for grouping key */}}
+      {{ $groupKey := $baseName | lower }}
+      
+      {{ $imagePath := path.Join "/" $folder $fileName }}
+      
+      {{/* Get existing group or create new one */}}
+      {{ $existing := index $imageGroups $groupKey | default dict }}
+      {{ if eq $orientation "landscape" }}
+        {{ $existing = merge $existing (dict "landscape" $imagePath) }}
+      {{ else }}
+        {{ $existing = merge $existing (dict "vertical" $imagePath) }}
+      {{ end }}
+      
+      {{/* Generate alt text from base name (preserve original case for display) */}}
+      {{ $altText := replaceRE `[-_]` " " $baseName }}
+      {{ $altText = $altText | title }}
+      {{ $existing = merge $existing (dict "alt" $altText "baseName" $groupKey) }}
+      
+      {{ $imageGroups = merge $imageGroups (dict $groupKey $existing) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* Convert dict to sorted slice */}}
+{{ $images := slice }}
+{{ range $key, $value := $imageGroups }}
+  {{ $images = $images | append $value }}
+{{ end }}
+{{ $images = sort $images "baseName" }}
+
+{{/* DEBUG: Uncomment to see what images are grouped
+{{ range $images }}
+  <!-- DEBUG: {{ .baseName }} | landscape: {{ .landscape | default "MISSING" }} | vertical: {{ .vertical | default "MISSING" }} -->
+{{ end }}
+*/}}
+
+{{ $categories := slice "Multi-cam" "PSC" "Reality TV" "Game show" "Fixed rig" }}
+
+<section class="work-tv-section bg-base">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Category Header -->
+    <div class="text-center mb-6">
+      <h3 class="text-2xl md:text-3xl mb-4 italic font-bold text-base-text">
+        HETV &  Film
+      </h3>
+      <div class="flex flex-wrap justify-center gap-2">
+        {{ range $categories }}
+        <span class="inline-flex items-center gap-2 px-3 py-1 text-md text-base-text">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+          {{ . }}
+        </span>
+        {{ end }}
+      </div>
+    </div>
+
+    <!-- Auto-Slide Carousel -->
+    {{ if gt (len $images) 0 }}
+    <div class="tv-carousel-wrapper tv-auto-carousel relative max-w-4xl mx-auto" id="tv-carousel-broadcast">
+      
+      <!-- Main Carousel Container -->
+      <!-- Mobile: portrait aspect ratio, Desktop: landscape -->
+      <div class="z-10000 tv-carousel-container relative overflow-hidden rounded-2xl aspect-[3/4] md:aspect-video w-full md:w-3/4 mx-auto">
+        {{ range $index, $image := $images }}
+        <div class="tv-carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out bg-transparant {{ if eq $index 0 }}opacity-100{{ end }}"
+             data-slide-index="{{ $index }}">
+          
+          {{/* Determine which images are available */}}
+          {{ $hasLandscape := isset $image "landscape" }}
+          {{ $hasVertical := isset $image "vertical" }}
+          {{ $hasBoth := and $hasLandscape $hasVertical }}
+          
+          {{ if $hasBoth }}
+            {{/* Both orientations available - use <picture> for art direction */}}
+            <picture>
+              <source media="(min-width: 768px)" srcset="{{ $image.landscape }}">
+              <img 
+                src="{{ $image.vertical }}"
+                alt="{{ $image.alt }}"
+                class="w-full h-full object-contain"
+                {{ if eq $index 0 }}loading="eager"{{ else }}loading="lazy"{{ end }}>
+            </picture>
+          {{ else }}
+            {{/* Only one orientation - use single img tag */}}
+            {{ $src := $image.landscape | default $image.vertical | default "/img/logo.webp" }}
+            <img 
+              src="{{ $src }}"
+              alt="{{ $image.alt }}"
+              class="w-full h-full object-contain"
+              {{ if eq $index 0 }}loading="eager"{{ else }}loading="lazy"{{ end }}
+              onerror="this.onerror=null; this.src='/img/logo.webp';">
+          {{ end }}
+          
+          <!-- Title overlay -->
+          {{/*  <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 md:p-6">
+            <span class="text-white text-lg md:text-xl font-bold uppercase tracking-wider">
+              {{ $image.alt }}
+            </span>
+          </div>  */}}
+        </div>
+        {{ end }}
+      </div>
+      
+      <!-- Navigation Dots -->
+      <div class="flex justify-center gap-2 mt-4">
+        {{ range $index, $image := $images }}
+        <button 
+          class="tv-carousel-dot w-2.5 h-2.5 rounded-full bg-secondary border border-accent transition-all duration-300 hover:scale-125 {{ if eq $index 0 }}bg-accent scale-125{{ end }}"
+          data-slide="{{ $index }}"
+          aria-label="Go to slide {{ add $index 1 }}"
+        ></button>
+        {{ end }}
+      </div>
+      
+      <!-- Prev/Next Arrows -->
+      <button class="tv-carousel-prev absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 text-white border border-white/30 flex items-center justify-center transition-all duration-300 hover:bg-accent hover:border-accent hover:scale-110 hover:shadow-[0_0_15px_rgba(var(--color-accent-rgb),0.6)]"
+              aria-label="Previous slide">
+        <span class="material-icons">chevron_left</span>
+      </button>
+      <button class="tv-carousel-next absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/50 text-white border border-white/30 flex items-center justify-center transition-all duration-300 hover:bg-accent hover:border-accent hover:scale-110 hover:shadow-[0_0_15px_rgba(var(--color-accent-rgb),0.6)]"
+              aria-label="Next slide">
+        <span class="material-icons">chevron_right</span>
+      </button>
+    </div>
+    {{ end }}
+
+    <!-- See More Link -->
+    <div class="mt-8 text-center">
+      {{ partial "menu-item.html" (dict 
+          "URL" "/work" 
+          "Name" "See More" 
+          "Icon" "arrow_forward"
+          "Width" "180px"
+          "Class" "") }}
+    </div>
+
+  </div>
+</section>

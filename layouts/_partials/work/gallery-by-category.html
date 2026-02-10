@@ -1,0 +1,88 @@
+<!-- layouts/partials/work/gallery-by-category.html -->
+{{/*
+  Work Gallery - Display images grouped by category folders
+  
+  Reads from: static/img/work/{category}/
+  Expected folders: broadcast, film-promo, social-media, sports
+  
+  Usage: {{ partial "work/gallery-by-category.html" . }}
+*/}}
+
+{{ $basePath := "img/work" }}
+{{ $fullBasePath := path.Join "static" $basePath }}
+
+{{/* Define categories with display names and folder names */}}
+{{ $categories := slice
+  (dict "folder" "broadcast" "name" "Broadcast TV" "icon" "tv")
+  (dict "folder" "film-promo" "name" "Film & Promo" "icon" "movie")
+  (dict "folder" "social-media" "name" "Social Media" "icon" "share")
+  (dict "folder" "sports" "name" "Sports" "icon" "sports_soccer")
+}}
+
+<div class="work-gallery space-y-16">
+  {{ range $catIndex, $category := $categories }}
+    
+    {{ $folderPath := path.Join $fullBasePath $category.folder }}
+    {{ $images := slice }}
+    
+    {{/* Read images from category folder */}}
+    {{ if (fileExists $folderPath) }}
+      {{ $files := readDir $folderPath }}
+      {{ range $files }}
+        {{ if not .IsDir }}
+          {{ $fileName := .Name }}
+          {{ $isImage := or 
+            (strings.HasSuffix $fileName ".jpg") 
+            (strings.HasSuffix $fileName ".jpeg") 
+            (strings.HasSuffix $fileName ".png") 
+            (strings.HasSuffix $fileName ".webp") 
+            (strings.HasSuffix $fileName ".gif")
+          }}
+          {{ if $isImage }}
+            {{ $imagePath := path.Join "/" $basePath $category.folder $fileName }}
+            {{/* Generate alt text from filename */}}
+            {{ $altText := replaceRE `\.[^.]+$` "" $fileName }}
+            {{ $altText = replaceRE `[-_]` " " $altText }}
+            {{ $altText = $altText | title }}
+            {{ $images = $images | append (dict "path" $imagePath "alt" $altText "name" $fileName) }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ $images = sort $images "name" }}
+    {{ end }}
+    
+    {{/* Only show category if it has images */}}
+    {{ if gt (len $images) 0 }}
+    <section class="category-section">
+      
+      <!-- Category Header -->
+      <div class="flex items-center gap-3 mb-6">
+        <span class="material-icons text-accent text-2xl">{{ $category.icon }}</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-text">{{ $category.name }}</h2>
+        {{/*  <span class="text-sm text-text/50">({{ len $images }})</span>  */}}
+      </div>
+      
+      <!-- Image Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4 relative z-[10000]">
+        {{ range $index, $image := $images }}
+        <div class="group relative aspect-[3/4] rounded-lg overflow-hidden bg-secondary cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-accent/20">
+          <img 
+            src="{{ $image.path }}"
+            alt="{{ $image.alt }}"
+            class="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110"
+            loading="lazy"
+            onerror="this.onerror=null; this.src='/img/logo.webp';">
+          
+          <!-- Hover overlay with title -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+            <span class="text-white text-sm font-medium line-clamp-2">{{ $image.alt }}</span>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+      
+    </section>
+    {{ end }}
+    
+  {{ end }}
+</div>

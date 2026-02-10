@@ -5,6 +5,7 @@ weight: 1
 role: 'Sound Recordist'
 profile_picture: '/img/team/nick-gladwin.webp'
 profile_picture_circle: '/img/team/nick-gladwin-circle.webp'
+photo: '/img/team/nick-gladwin-circle.webp'
 
 # SEO
 keywords:

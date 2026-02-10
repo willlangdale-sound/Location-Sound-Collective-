@@ -5,6 +5,7 @@ weight: 1
 role: 'Sound Recordist'
 profile_picture: '/img/team/rich-morgan.webp'
 profile_picture_circle: '/img/team/rich-morgan-circle.webp'
+photo: '/img/team/rich-morgan-circle.webp'
 
 # Taxonomy - must match project recordists exactly
 # recordists: ['Rich Morgan']
