@@ -259,17 +259,8 @@
   .z-10000 {
     z-index: 10000;
   }
-  .z-20000 {
-    z-index: 20000;
-  }
-  .z-100000 {
-    z-index: 100000;
-  }
   .z-\[10000\] {
     z-index: 10000;
-  }
-  .z-\[10001\] {
-    z-index: 10001;
   }
   .row-span-1 {
     grid-row: span 1 / span 1;
@@ -1920,24 +1911,10 @@
       }
     }
   }
-  .hover\:relative {
-    &:hover {
-      @media (hover: hover) {
-        position: relative;
-      }
-    }
-  }
   .hover\:z-10 {
     &:hover {
       @media (hover: hover) {
         z-index: 10;
-      }
-    }
-  }
-  .hover\:z-\[10000\] {
-    &:hover {
-      @media (hover: hover) {
-        z-index: 10000;
       }
     }
   }
