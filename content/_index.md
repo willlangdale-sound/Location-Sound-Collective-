@@ -10,7 +10,7 @@ keywords:
   - "film sound"
   - "Location sound recordist"
 featured_image: "/img/logo.webp"
-# layout: 'coming-soon'
+layout: 'coming-soon'
 ---
 
 

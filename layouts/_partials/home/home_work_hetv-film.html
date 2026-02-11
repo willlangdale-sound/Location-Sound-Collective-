@@ -98,11 +98,15 @@
         HETV &  Film
       </h3>
       <div class="flex flex-wrap justify-center gap-2">
+        {{ with $categories }}
         {{ range $categories }}
-        <span class="inline-flex items-center gap-2 px-3 py-1 text-md text-base-text">
-          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-          {{ . }}
-        </span>
+        {{ if (trim . " ") }}
+          <span class="inline-flex items-center gap-2 px-3 py-1 text-md text-base-text">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            {{ . }}
+          </span>
+        {{ end }}
+        {{ end }}
         {{ end }}
       </div>
     </div>
