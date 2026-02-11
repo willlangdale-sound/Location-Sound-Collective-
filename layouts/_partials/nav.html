@@ -1,65 +1,73 @@
-<div id="menu-wrapper" class="group/menu m-4 p-4 border-accent transition-colors duration-200">
-  <div class="flex flex-col items-center gap-2">
-  <div>
-    <ul class="menu relative flex flex-col justify-center items-center gap-2 h-full
-    bg-base backdrop-blur-md
-    overflow-hidden transition-colors duration-200 md:flex-row">  
+<!-- Nav: Vertical on mobile | Horizontal on desktop -->
+<div id="menu-wrapper" class="group/menu p-4 md:p-0 transition-colors duration-200">
+  
+  <!-- Main nav container -->
+  <div class="flex flex-col items-center gap-4 md:gap-10">
     
+    <!-- Site title (desktop only, centered above menu) -->
+    <h1 class="hidden md:block glitch text-center glow" data-text="{{ .Site.Title }}">
+      {{ .Site.Title }}
+    </h1>
     
-    {{ range .Site.Menus.main }}
-    {{ $showItem := true }}
-    
-    {{ if .Params.requiresFeature }}
-    {{ if eq .Params.requiresFeature "enableWorkSection" }}
-    {{ $showItem = $.Site.Params.features.enableWorkSection }}
-    {{ end }}
-    {{ end }}
-    
-    {{ if $showItem }}
-    <li>
-      {{ partial "menu-item.html" (dict 
-      "URL" .URL 
-      "Name" .Name 
-      "Color" .Params.color 
-      "Icon" .Params.icon 
-      "Class" "menu-item") }}
-      {{ if .HasChildren }}
-      <ul class="space-y-2">
-        {{ range .Children }}
-        <li>
-          {{ partial "menu-item.html" (dict 
-          "URL" .URL 
-          "Name" .Name 
-          "Color" .Params.color 
-          "Icon" .Params.icon 
-          "Class" "menu-item") }}
-        </li>
+    <!-- Menu row: items + divider + toggles (horizontal on desktop) -->
+    <div class="flex flex-col md:flex-row items-center gap-4 md:gap-2 lg:gap-4">
+      
+      <!-- Menu items -->
+      <ul class="menu flex flex-col md:flex-row justify-center items-center gap-2 md:gap-1 lg:gap-2
+                 bg-base md:bg-transparent backdrop-blur-md md:backdrop-blur-none">
+        
+          {{ range .Site.Menus.main }}
+          {{/* 1. Vérifier si l'URL du menu correspond à la page actuelle */}}
+          {{ $isCurrentPage := eq $.RelPermalink .URL }}
+          
+          {{/* 2. Logique existante pour les features */}}
+          {{ $showItem := true }}
+          {{ if .Params.requiresFeature }}
+            {{ if eq .Params.requiresFeature "enableWorkSection" }}
+              {{ $showItem = $.Site.Params.features.enableWorkSection }}
+            {{ end }}
+          {{ end }}
+          
+          {{/* 3. N'afficher que si showItem est vrai ET que ce n'est pas la page actuelle */}}
+          {{ if and $showItem (not $isCurrentPage) }}
+          <li class="relative group">
+            {{ partial "menu-item.html" (dict 
+              "URL" .URL 
+              "Name" .Name 
+              "Color" .Params.color 
+              "Icon" .Params.icon 
+              "Width" "130px"
+              "Class" "menu-item") }}
+            
+            {{ if .HasChildren }}
+            <ul class="space-y-2 md:absolute md:top-full md:left-0 md:bg-base md:rounded-lg md:shadow-lg md:p-2 hidden group-hover:block z-50">
+              {{ range .Children }}
+              <li>
+                {{ partial "menu-item.html" (dict 
+                  "URL" .URL 
+                  "Name" .Name 
+                  "Color" .Params.color 
+                  "Icon" .Params.icon 
+                  "Width" "130px"
+                  "Class" "menu-item") }}
+              </li>
+              {{ end }}
+            </ul>
+            {{ end }}
+          </li>
+          {{ end }}
         {{ end }}
       </ul>
-      {{ end }}
-    </li>
-    {{ end }}
-    {{ end }}
-    <div class=" hidden ">
-      <button class="menu-toggle relative group transition-transform duration-200 items-center justify-center w-12 h-12">
-        
-        <!-- Left border animates from top to bottom -->
-        <span class="absolute left-0 top-0 h-0 w-1 border-l border-secondary transition-all duration-500 group-hover:h-full"></span>
-        
-        <!-- Right border animates from bottom to top -->
-        <span class="absolute right-0 bottom-0 h-0 w-1 border-r border-secondary transition-all duration-500 group-hover:h-full"></span>
-        
-        <!-- Icon spins on hover -->
-        <span class="material-icons relative z-10 transition-transform duration-500 ease-out group-hover:rotate-360 hover:scale-130">
-          close
-        </span>
-      </button>
+      
+      <!-- Divider (desktop only) -->
+      {{/*  <div class="hidden md:block w-px h-8 bg-accent opacity-40"></div>  */}}
+      
+      <!-- Theme and CRT toggles -->
+      <div class="flex flex-row items-center gap-1">
+        {{/*  {{ partial "theme-toggle.html" . }}  */}}
+        {{/*  {{ partial "crt-toggle.html" . }}  */}}
+      </div>
+      
     </div>
-    </ul>
   </div>
-  <div>
-    {{ partial "theme-toggle.html" . }}
-    {{ partial "crt-toggle.html" . }}
-  </div>
-</div>
 </div>

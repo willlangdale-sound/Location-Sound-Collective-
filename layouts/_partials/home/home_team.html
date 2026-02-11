@@ -1,149 +1,57 @@
 <!-- layouts/_partials/home/home_team.html -->
 {{/*
-  3D Rotating Dice - Team Introduction
-  Configure in hugo.toml [params.dice]
+  Simple Team Grid - Round photos with names
+  Dynamically pulls from /content/team/ pages
 */}}
 
-{{ $dice := .Site.Params.dice | default dict }}
+{{ $teamMembers := where .Site.RegularPages "Section" "team" }}
 
-{{ $bg := index $dice "background" | default "inverse" }}
-{{ $bgShade := index $dice "backgroundShade" | default 900 }}
-{{ $border := index $dice "borderColor" | default "accent" }}
-{{ $borderShade := index $dice "borderShade" | default 500 }}
-{{ $borderWidth := index $dice "borderWidth" | default 3 }}
-{{ $shadow := index $dice "shadowColor" | default "accent" }}
-{{ $shadowShade := index $dice "shadowShade" | default 500 }}
-{{ $shadowStyle := index $dice "shadowStyle" | default "glow" }}
-{{ $scanlines := index $dice "enableScanlines" | default true }}
-{{ $grayscale := index $dice "imageGrayscale" | default 30 }}
-{{ $contrast := index $dice "imageContrast" | default 1.1 }}
-{{ $grayscaleHover := index $dice "imageGrayscaleHover" | default 0 }}
-{{ $contrastHover := index $dice "imageContrastHover" | default 1.0 }}
-
-{{ $themeColors := slice "inverse" "base" "secondary" "accent" "primary" "text" }}
-{{ $tailwindColors := slice "slate" "gray" "zinc" "neutral" "stone" "red" "orange" "amber" "yellow" "lime" "green" "emerald" "teal" "cyan" "sky" "blue" "indigo" "violet" "purple" "fuchsia" "pink" "rose" }}
-
-{{ $bgClass := "dice-bg-inverse" }}
-{{ if in $themeColors $bg }}
-  {{ $bgClass = printf "dice-bg-%s" $bg }}
-{{ else if in $tailwindColors $bg }}
-  {{ $bgClass = printf "bg-%s-%v" $bg $bgShade }}
-{{ end }}
-
-{{ $borderColorClass := "dice-border-accent" }}
-{{ if in $themeColors $border }}
-  {{ $borderColorClass = printf "dice-border-%s" $border }}
-{{ else if in $tailwindColors $border }}
-  {{ $borderColorClass = printf "border-%s-%v" $border $borderShade }}
-{{ end }}
-{{ $borderWidthClass := printf "dice-border-w-%v" $borderWidth }}
-
-{{ $shadowClass := "dice-shadow-glow dice-glow-accent" }}
-{{ if eq $shadowStyle "none" }}
-  {{ $shadowClass = "dice-shadow-none" }}
-{{ else if eq $shadowStyle "soft" }}
-  {{ $shadowClass = "dice-shadow-soft" }}
-{{ else if eq $shadowStyle "hard" }}
-  {{ $shadowClass = "dice-shadow-hard" }}
-{{ else }}
-  {{ if in $themeColors $shadow }}
-    {{ $shadowClass = printf "dice-shadow-glow dice-glow-%s" $shadow }}
-  {{ else if in $tailwindColors $shadow }}
-    {{ $shadowClass = printf "dice-shadow-glow dice-glow-tw-%s-%v" $shadow $shadowShade }}
-  {{ end }}
-{{ end }}
-
-{{ $scanlineClass := "" }}
-{{ if $scanlines }}{{ $scanlineClass = "dice-scanlines" }}{{ end }}
-
-{{ $faceClasses := printf "dice-face %s %s %s %s %s" $bgClass $borderColorClass $borderWidthClass $shadowClass $scanlineClass }}
-
-<section class="team-dice-section  flex flex-col items-center justify-center gap-8">
+<section class="team-section py-16 flex flex-col items-center justify-center">
   
-  <div class="text-center">
-    <h2 class="glitch text-3xl md:text-4xl mb-2" data-text="Meet The Team">
+  <div class="text-center mb-10">
+    <h2 class="glitch text-3xl md:text-4xl mb-6" data-text="Meet The Team">
       Meet The Team
     </h2>
-    <p>Our collective brings together UK's finest sound recordists — each with their own unique expertise, from intimate documentary work to large-scale broadcast productions.</p>
-    <div class="mt-2 mb-8">
-      {{ partial "menu-item.html" (dict 
-          "URL" "/team" 
-          "Name" "Discover Us" 
-          "Icon" "groups"
-          "Width" "220px"
-          "Class" "") }}
-    </div>
   </div>
 
-  <div class="dice-scene group" 
-       id="dice-scene" 
-       style="perspective: 1000px; --dice-grayscale: {{ $grayscale }}%; --dice-contrast: {{ $contrast }}; --dice-grayscale-hover: {{ $grayscaleHover }}%; --dice-contrast-hover: {{ $contrastHover }};">
-    <div class="dice-cube" id="dice-cube">
+  <!-- Team Grid -->
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-{{ len $teamMembers }} gap-8 md:gap-10 px-4 max-w-6xl">
+    
+    {{ range $teamMembers }}
+      {{/* Get the team member's photo - check for params.photo, featured image, or fallback */}}
+      {{ $photo := "/img/logo.webp" }}
+      {{ if .Params.photo }}
+        {{ $photo = .Params.photo }}
+      {{ else if .Resources.GetMatch "photo.*" }}
+        {{ $photo = (.Resources.GetMatch "photo.*").RelPermalink }}
+      {{ else if .Resources.GetMatch "*.{jpg,jpeg,png,webp}" }}
+        {{ $photo = (.Resources.GetMatch "*.{jpg,jpeg,png,webp}").RelPermalink }}
+      {{ end }}
 
-      <!-- Front face -->
-      <div class="{{ $faceClasses }} dice-front">
-        <img src="/img/team/dice/face-1.webp"
-             alt="Location Sound Collective Team"
-             class="dice-face-img p-3 w-64 h-auto animate-spin [animation-duration:30s] object-cover pointer-events-none"
-             width="300" height="300" loading="lazy"
-             onerror="this.onerror=null; this.src='/img/logo.webp';">
-        <a href="/team/" class="dice-link px-3 py-1 md:px-4 md:py-1.5 rounded-full border text-xs md:text-sm font-semibold uppercase tracking-wide whitespace-nowrap no-underline">The Team</a>
-      </div>
+      <a href="{{ .RelPermalink }}" class="team-member group flex flex-col items-center text-center no-underline">
+        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-accent mb-3 transition-all duration-300 group-hover:border-4 group-hover:shadow-[0_0_20px_rgba(var(--color-accent-rgb),0.5)]">
+          <img src="{{ $photo }}"
+               alt="{{ .Title }}"
+               class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+               loading="lazy">
+        </div>
+        <p class="text-sm md:text-base font-medium text-text group-hover:text-accent transition-colors">{{ .Title }}</p>
+        {{/*  {{ with .Params.role }}
+          <p class="text-xs text-text/60">{{ . }}</p>
+        {{ end }}  */}}
+      </a>
+    {{ end }}
 
-      <!-- Back face -->
-      <div class="{{ $faceClasses }} dice-back">
-        <img src="/img/team/dice/face-2.webp"
-             alt="William Langdale - Sound Recordist"
-             class="dice-face-img p-3 w-64 h-auto object-cover pointer-events-none"
-             width="300" height="300" loading="lazy"
-             onerror="this.onerror=null; this.src='/img/logo.webp';">
-        <a href="/team/william-langdale/" class="dice-link px-3 py-1 md:px-4 md:py-1.5 rounded-full border text-xs md:text-sm font-semibold uppercase tracking-wide whitespace-nowrap no-underline">William Langdale</a>
-      </div>
-
-      <!-- Right face -->
-      <div class="{{ $faceClasses }} dice-right">
-        <img src="/img/team/dice/rich-morgan-circle.webp"
-             alt="Rich Morgan - Sound Recordist"
-             class="dice-face-img p-3 w-64 h-auto object-cover pointer-events-none"
-             width="300" height="300" loading="lazy"
-             onerror="this.onerror=null; this.src='/img/logo.webp';">
-        <a href="/team/rich-morgan/" class="dice-link px-3 py-1 md:px-4 md:py-1.5 rounded-full border text-xs md:text-sm font-semibold uppercase tracking-wide whitespace-nowrap no-underline">Rich Morgan</a>
-      </div>
-
-      <!-- Left face -->
-      <div class="{{ $faceClasses }} dice-left">
-        <img src="/img/team/dice/edouard-puhl-circle.webp"
-             alt="Edouard Puhl - Sound Recordist"
-             class="dice-face-img p-3 w-64 h-auto object-cover pointer-events-none"
-             width="300" height="300" loading="lazy"
-             onerror="this.onerror=null; this.src='/img/logo.webp';">
-        <a href="/team/edouard-puhl/" class="dice-link px-3 py-1 md:px-4 md:py-1.5 rounded-full border text-xs md:text-sm font-semibold uppercase tracking-wide whitespace-nowrap no-underline">Edouard Puhl</a>
-      </div>
-
-      <!-- Top face -->
-      <div class="{{ $faceClasses }} dice-top">
-        <img src="/img/team/dice/nick-gladwin-circle.webp"
-             alt="Nick Gladwin - Sound Recordist"
-             class="dice-face-img p-3 w-64 h-auto object-cover pointer-events-none"
-             width="300" height="300" loading="lazy"
-             onerror="this.onerror=null; this.src='/img/logo.webp';">
-        <a href="/team/nick-gladwin/" class="dice-link px-3 py-1 md:px-4 md:py-1.5 rounded-full border text-xs md:text-sm font-semibold uppercase tracking-wide whitespace-nowrap no-underline">Nick Gladwin</a>
-      </div>
-
-      <!-- Bottom face -->
-      <div class="{{ $faceClasses }} dice-bottom">
-        <img src="/img/team/dice/steve-llewellyn-circle.webp"
-             alt="Steve Llewellyn - Sound Recordist"
-             class="dice-face-img p-3 w-64 h-auto object-cover pointer-events-none"
-             width="300" height="300" loading="lazy"
-             onerror="this.onerror=null; this.src='/img/logo.webp';">
-        <a href="/team/steve-llewellyn/" class="dice-link px-3 py-1 md:px-4 md:py-1.5 rounded-full border text-xs md:text-sm font-semibold uppercase tracking-wide whitespace-nowrap no-underline">Steve Llewellyn</a>
-      </div>
-
-    </div>
   </div>
-  
-  <p class="mt-2 summary italic tracking-wider">
-    Drag or click to spin • Click name to view profile
-  </p>
+
+  <!-- CTA Buttons -->
+  <div class="flex flex-wrap justify-center gap-4 mt-10">
+    {{ partial "menu-item.html" (dict 
+        "URL" "/work" 
+        "Name" "Latest Work" 
+        "Icon" "movie"
+        "Width" "200px"
+        "Class" "") }}
+  </div>
+
 </section>

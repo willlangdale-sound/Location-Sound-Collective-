@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html class="" lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<html class="dark" lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
 <head>
   {{ partial "head.html" . }}
 </head>
 <body class="bg-base transition-colors duration-200">
   <!-- CRT Overlay -->
-  <div class="crt ">
+  <div class="crt active">
     <div class="crt-shake-wrapper">
       <div class="screen-glow"></div>
-      <div class="scanline"></div>
     </div>
     <div class="vignette"></div>
   </div>
+  <div class="scanline-overlay"></div>
 
-  <header class="transition-colors duration-200 pb-10">
+  <header class="transition-colors duration-200 md:pb-0 md:pt-10 ">
     {{ partial "header.html" . }}
   </header>
+  {{ partial "divider.html" (dict "style" "double" "width" "lg" ) }}
   <main class="flex justify-center glow ">
     <div class="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
       {{ block "main" . }}

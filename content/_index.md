@@ -14,7 +14,6 @@ layout: 'coming-soon'
 ---
 
 
-We are a dedicated group of sound recordists who are passionate about capturing the perfect audio for your projects.
 
 
 
