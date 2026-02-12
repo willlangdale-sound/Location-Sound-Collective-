@@ -113,7 +113,7 @@
       
       <!-- Main Carousel Container -->
       <!-- Mobile: portrait aspect ratio, Desktop: landscape -->
-      <div class="z-10000 tv-carousel-container relative overflow-hidden rounded-2xl aspect-[3/4] md:aspect-video w-full md:w-3/4 mx-auto">
+      <div class="z-10000 tv-carousel-container relative overflow-hidden rounded-2xl aspect-video w-full md:w-3/4 mx-auto">
         {{ range $index, $image := $images }}
         <div class="tv-carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out bg-transparant {{ if eq $index 0 }}opacity-100{{ end }}"
              data-slide-index="{{ $index }}">
@@ -139,7 +139,7 @@
             <img 
               src="{{ $src }}"
               alt="{{ $image.alt }}"
-              class="w-full h-full object-contain"
+              class="w-full h-full object-cover"
               {{ if eq $index 0 }}loading="eager"{{ else }}loading="lazy"{{ end }}
               onerror="this.onerror=null; this.src='/img/logo.webp';">
           {{ end }}

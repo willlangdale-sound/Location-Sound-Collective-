@@ -50,6 +50,7 @@
       "animate-[spin_3s_ease-in-out]",
       "aspect-[3/4]",
       "aspect-square",
+      "aspect-video",
       "backdrop-blur-md",
       "benefits-list",
       "bg-accent",
