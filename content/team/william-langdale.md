@@ -3,8 +3,8 @@ draft: false
 title: 'William Langdale'
 weight: 1
 role: 'Sound Recordist'
-profile_picture: '/img/team/william-langdale.jpg'
-photo: ''
+profile_picture: '/img/team/william-langdale.webp'
+photo: '/img/team/william-langdale-circle.webp'
 
 # SEO
 keywords:
