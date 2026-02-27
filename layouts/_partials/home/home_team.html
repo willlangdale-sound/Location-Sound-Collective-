@@ -15,7 +15,7 @@
   </div>
 
   <!-- Team Grid -->
-  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-{{ len $teamMembers }} gap-8 md:gap-10 px-4 max-w-6xl">
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-{{ len $teamMembers }} gap-8 md:gap-50 px-4 max-w-6xl">
     
     {{ range $teamMembers }}
       {{/* Get the team member's photo - check for params.photo, featured image, or fallback */}}
@@ -29,7 +29,7 @@
       {{ end }}
 
       <a href="{{ .RelPermalink }}" class="team-member group flex flex-col items-center text-center no-underline">
-        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-accent mb-3 transition-all duration-300 group-hover:border-4 group-hover:shadow-[0_0_20px_rgba(var(--color-accent-rgb),0.5)]">
+        <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-accent mb-3 transition-all duration-300 group-hover:border-4 group-hover:shadow-[0_0_20px_rgba(var(--color-accent-rgb),0.5)]">
           <img src="{{ $photo }}"
                alt="{{ .Title }}"
                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
@@ -40,6 +40,7 @@
           <p class="text-xs text-text/60">{{ . }}</p>
         {{ end }}  */}}
       </a>
+
     {{ end }}
 
   </div>
@@ -53,5 +54,6 @@
         "Width" "200px"
         "Class" "") }}
   </div>
+
 
 </section>

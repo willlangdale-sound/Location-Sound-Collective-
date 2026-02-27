@@ -1,7 +1,7 @@
 ---
 draft: false
 title: 'Rich Morgan'
-weight: 1
+weight: 2
 role: 'Sound Recordist'
 profile_picture: '/img/team/rich-morgan.webp'
 profile_picture_circle: '/img/team/rich-morgan-circle.webp'

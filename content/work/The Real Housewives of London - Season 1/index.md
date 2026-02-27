@@ -36,6 +36,8 @@ categories:
 # Display settings
 weight: 10       # Lower numbers appear first in listings
 featured: false  # Set to true to highlight this project
+youtube_link:
+
 ---
 ## The Real Housewives of London -- Season 1
 ---

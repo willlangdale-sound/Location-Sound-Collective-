@@ -1,7 +1,7 @@
 ---
 draft: false
 title: 'Edouard Puhl'
-weight: 1
+weight: 2
 role: 'Sound Recordist'
 profile_picture: '/img/team/edouard-puhl.webp'
 profile_picture_circle: '/img/team/edouard-puhl-circle.webp'

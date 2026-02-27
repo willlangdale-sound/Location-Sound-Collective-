@@ -1,7 +1,7 @@
 ---
 draft: false
 title: 'Steve Llewellyn'
-weight: 1
+weight: 2
 role: 'Sound Recordist'
 profile_picture: '/img/team/steve-llewellyn.webp'
 photo: '/img/team/steve-llewellyn-circle.webp'

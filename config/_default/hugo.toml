@@ -45,7 +45,8 @@ enableRobotsTXT = true
   # Author information
   [params.author]
     name = "Location Sound Collective"
-    email = "info@lsc.com"
+    email = "info@locationsouncollective.com"
+    phone = "07856091964"
 
   # Social media handles (just the username, not full URL)
   [params.social]

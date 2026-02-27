@@ -2,7 +2,9 @@
 draft: false
 title: 'William Langdale'
 weight: 1
-role: 'Sound Recordist'
+role: 
+  - 'Bookking Manager'
+  - 'Sound Recordist'
 profile_picture: '/img/team/william-langdale.webp'
 photo: '/img/team/william-langdale-circle.webp'
 

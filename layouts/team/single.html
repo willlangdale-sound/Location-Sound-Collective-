@@ -41,7 +41,13 @@
       <h1 class="glitch mb-2" data-text="{{ .Title }}">{{ .Title }}</h1>
       
       {{ with .Params.role }}
-      <p class="text-2xl text-accent italic mb-4">{{ . }}</p>
+      <p class="text-accent italic text-2xl mb-3">
+        {{ if reflect.IsSlice . }}
+          {{ delimit . " · " }}
+        {{ else }}
+          {{ . }}
+        {{ end }}
+      </p>
       {{ end }}
 
       {{ with .Params.specializations }}

@@ -53,7 +53,14 @@
       {{ if $profilePic }}
         {{ $altText := printf "%s - Location Sound Collective Team Member" .Title }}
         {{ if .Params.role }}
-          {{ $altText = printf "%s, %s - Location Sound Collective Team Member" .Title .Params.role }}
+          {{ $altText := printf "%s - Location Sound Collective Team Member" .Title }}
+          {{ with .Params.role }}
+            {{ $roleStr := . }}
+            {{ if reflect.IsSlice . }}
+              {{ $roleStr = delimit . ", " }}
+            {{ end }}
+            {{ $altText = printf "%s, %s - Location Sound Collective Team Member" $.Title $roleStr }}
+          {{ end }}
         {{ end }}
         {{ partial "image.html" (dict
           "src" $profilePic
@@ -81,7 +88,13 @@
       <h3 class="mb-1 text-xl">{{ .Title }}</h3>
       
       {{ with .Params.role }}
-      <p class="text-accent italic text-sm mb-3">{{ . }}</p>
+      <p class="text-accent italic text-sm mb-3">
+        {{ if reflect.IsSlice . }}
+          {{ delimit . " · " }}
+        {{ else }}
+          {{ . }}
+        {{ end }}
+      </p>
       {{ end }}
 
       <div class="mb-4">

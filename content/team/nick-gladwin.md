@@ -1,7 +1,7 @@
 ---
 draft: false
 title: 'Nick Gladwin'
-weight: 1
+weight: 2
 role: 'Sound Recordist'
 profile_picture: '/img/team/nick-gladwin.webp'
 profile_picture_circle: '/img/team/nick-gladwin-circle.webp'
