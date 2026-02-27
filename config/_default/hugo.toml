@@ -1,6 +1,6 @@
 # config/_default/hugo.toml
 
-baseURL = 'https://lscollective.netlify.app'
+baseURL = 'https://locationsoundcollective.co.uk/'
 languageCode = 'en-uk'
 title = 'Location Sound Collective'
 
@@ -45,7 +45,7 @@ enableRobotsTXT = true
   # Author information
   [params.author]
     name = "Location Sound Collective"
-    email = "info@locationsouncollective.com"
+    email = "info@locationsouncollective.co.uk"
     phone = "07856091964"
 
   # Social media handles (just the username, not full URL)
