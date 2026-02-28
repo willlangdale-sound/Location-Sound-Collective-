@@ -16,9 +16,9 @@ description: "Steve Llewellyn - Professional Sound Recordist at Location Sound C
 
 # Quick info tags
 specializations:
-  - "Location Recording"
-  - "Boom Operating"
-  - "Sound Mixing"
+  # - "Location Recording"
+  # - "Boom Operating"
+  # - "Sound Mixing"
 
 # Contact (optional)
 contact:

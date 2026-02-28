@@ -86,8 +86,8 @@
   <!-- DEBUG: {{ .baseName }} | landscape: {{ .landscape | default "MISSING" }} | vertical: {{ .vertical | default "MISSING" }} -->
 {{ end }}
 */}}
-
-{{ $categories := slice "Multi-cam" "PSC" "Reality TV" "Game show" "Fixed rig" }}
+{{/*  potential tag under the category  */}}
+{{ $categories := slice "" }}
 
 <section class="work-tv-section bg-base">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -98,12 +98,18 @@
         Social / Branded
       </h3>
       <div class="flex flex-wrap justify-center gap-2">
-        {{ range $categories }}
-        <span class="inline-flex items-center gap-2 px-3 py-1 text-md text-base-text">
-          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-          {{ . }}
-        </span>
-        {{ end }}
+        <div class="flex flex-wrap justify-center gap-2">
+          {{ with $categories }}
+          {{ range $categories }}
+          {{ if (trim . " ") }}
+            <span class="inline-flex items-center gap-2 px-3 py-1 text-md text-base-text">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+              {{ . }}
+            </span>
+          {{ end }}
+          {{ end }}
+          {{ end }}
+        </div>
       </div>
     </div>
 

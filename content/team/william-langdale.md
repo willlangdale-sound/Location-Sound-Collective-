@@ -18,9 +18,9 @@ description: "William Langdale - Professional Sound Recordist at Location Sound 
 
 # Quick info tags
 specializations:
-  - "Location Recording"
-  - "Boom Operating"
-  - "Sound Mixing"
+  # - "Location Recording"
+  # - "Boom Operating"
+  # - "Sound Mixing"
 
 # Contact (optional)
 contact:

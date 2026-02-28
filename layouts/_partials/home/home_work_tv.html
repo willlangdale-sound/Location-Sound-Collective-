@@ -86,8 +86,8 @@
   <!-- DEBUG: {{ .baseName }} | landscape: {{ .landscape | default "MISSING" }} | vertical: {{ .vertical | default "MISSING" }} -->
 {{ end }}
 */}}
-
-{{ $categories := slice "Multi-cam" "PSC" "Reality TV" "Game show" "Fixed rig" }}
+{{/*  potential tage under the category  */}}
+{{ $categories := slice "" }}
 
     <!-- Section Title -->
     <div class="text-center mb-8">
@@ -105,12 +105,19 @@
         Broadcast TV
       </h3>
       <div class="flex flex-wrap justify-center gap-2">
-        {{ range $categories }}
-        <span class="inline-flex items-center gap-2 px-3 py-1 text-md text-base-text">
-          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-          {{ . }}
-        </span>
-        {{ end }}
+
+        <div class="flex flex-wrap justify-center gap-2">
+          {{ with $categories }}
+          {{ range $categories }}
+          {{ if (trim . " ") }}
+            <span class="inline-flex items-center gap-2 px-3 py-1 text-md text-base-text">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+              {{ . }}
+            </span>
+          {{ end }}
+          {{ end }}
+          {{ end }}
+        </div>
       </div>
     </div>
 
