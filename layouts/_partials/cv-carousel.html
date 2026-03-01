@@ -16,7 +16,10 @@
 {{ $images := slice }}
 
 {{/* Read all files in the static folder */}}
-{{ $files := readDir $fullPath }}
+{{ $files := slice }}
+{{ if fileExists $fullPath }}
+  {{ $files = readDir $fullPath }}
+{{ end }}
 
 {{/* Filter files by member slug */}}
 {{ range $files }}
