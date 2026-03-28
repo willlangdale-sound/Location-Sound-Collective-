@@ -39,8 +39,6 @@ featured: false  # Set to true to highlight this project
 youtube_link:
 
 ---
-## The Real Housewives of London -- Season 1
----
 ### Sound Department Technical Overview
 The creative brief for *The Real Housewives of London* was clear: the show needed to feel **real, organic, and free-flowing**. The cast had to be fully immersed in their environments, with production responding to events as they unfolded rather than controlling them. Scenes ranged from intimate two-person conversations to large-scale dinners and parties involving anywhere from eight to fifteen cast members. Once filming began, we allowed moments to play out naturally—often rolling continuously for several hours and only stopping once a scene had organically concluded. All filming took place in **live locations** with live music, paying customers, and the full range of ambient noise that comes with uncontrolled environments. This presented very different challenges compared to working on locked-off or controlled sets.
 
