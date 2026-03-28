@@ -1,50 +1,26 @@
-<!-- Header: Mobile stacked | Tablet/Desktop horizontal -->
-<div class="flex flex-col md:flex-row justify-center md:justify-around items-center gap-4 pt-2 pb-2 grayscale-30 max-w-screen-xl mx-auto px-4 lg:px-8">
-  
-  <!-- Logo -->
+<!-- Header: LSC text left, nav right -->
+<div class="flex flex-row justify-center md:justify-start items-center gap-6 pt-4 pb-4 px-4 lg:px-8 max-w-screen-xl mx-auto">
+
+  <!-- LSC text (no logo image in header) -->
   <a href="{{ .Site.BaseURL }}" class="flex-shrink-0">
-    <img id="logo" src="/img/logo.webp" alt="{{ .Site.Title }}" 
-         class="w-40 md:w-36 lg:w-50 h-auto p-2 animate-[spin_3s_ease-in-out] img-glow" 
-         width="150" height="150" fetchpriority="high">
+    <span class="text-5xl md:text-6xl text-[#E2E6C7]" style="font-family: 'Anton', sans-serif;">LSC</span>
   </a>
-  
+
+  <!-- Desktop nav (always visible on md+) -->
+  <nav class="hidden md:flex z-50 ml-auto transition-colors duration-200">
+    {{ partial "nav.html" . }}
+  </nav>
+
   <!-- Mobile menu toggle (hidden on md+) -->
-  <button class="menu-toggle md:hidden pt-2 scale-150">
+  <button class="menu-toggle md:hidden ml-6 pt-2 scale-150">
     <span class="material-symbols-outlined text-base-text">
       instant_mix
     </span>
   </button>
-  
-  <!-- Desktop nav (always visible on md+) -->
-  <nav class="hidden md:flex z-50 transition-colors duration-200">
-    {{ partial "nav.html" . }}
-  </nav>
+
 </div>
 
 <!-- Mobile nav (toggleable, only on mobile) -->
 <nav id="nav" class="z-50 hidden md:hidden transition-colors duration-200">
   {{ partial "nav.html" . }}
 </nav>
-
-<h1 class="md:hidden glitch flex text-center glow justify-center" data-text="{{ .Site.Title }}">
-  {{ .Site.Title }}
-</h1>
-<!-- Contact info (mobile only) -->
-{{/*  <div class="md:hidden flex flex-col items-center gap-1 text-sm opacity-70 mt-2">
-  {{ with .Site.Params.author.phone }}
-  <p>
-    <a href="tel:{{ . }}" class="hover:opacity-100 transition-opacity text-accent glow">
-      <span class="material-symbols-outlined text-sm align-middle">call</span>
-      {{ . }}
-    </a>
-  </p>
-  {{ end }}
-  {{ with .Site.Params.author.email }}
-  <p>
-    <a href="mailto:{{ . }}" class="hover:opacity-100 transition-opacity text-accent glow">
-      <span class="material-symbols-outlined text-sm align-middle">mail</span>
-      {{ . }}
-    </a>
-  </p>
-  {{ end }}
-</div>  */}}
