@@ -2,9 +2,11 @@
 draft: false
 title: 'William Langdale'
 weight: 1
-role: 'Sound Recordist'
-profile_picture: '/img/team/william-langdale.jpg'
-photo: ''
+role: 
+  - 'Bookking Manager'
+  - 'Sound Recordist'
+profile_picture: '/img/team/william-langdale.webp'
+photo: '/img/team/william-langdale-circle.webp'
 
 # SEO
 keywords:
@@ -16,9 +18,9 @@ description: "William Langdale - Professional Sound Recordist at Location Sound 
 
 # Quick info tags
 specializations:
-  - "Location Recording"
-  - "Boom Operating"
-  - "Sound Mixing"
+  # - "Location Recording"
+  # - "Boom Operating"
+  # - "Sound Mixing"
 
 # Contact (optional)
 contact:

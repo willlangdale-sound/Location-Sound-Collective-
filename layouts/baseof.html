@@ -4,20 +4,11 @@
   {{ partial "head.html" . }}
 </head>
 <body class="bg-base transition-colors duration-200">
-  <!-- CRT Overlay -->
-  <div class="crt active">
-    <div class="crt-shake-wrapper">
-      <div class="screen-glow"></div>
-    </div>
-    <div class="vignette"></div>
-  </div>
-  <div class="scanline-overlay"></div>
-
   <header class="transition-colors duration-200 md:pb-0 md:pt-10 ">
     {{ partial "header.html" . }}
   </header>
-  {{ partial "divider.html" (dict "style" "double" "width" "lg" ) }}
-  <main class="flex justify-center glow ">
+  {{ partial "divider.html" (dict "style" "double" "width" "xl" ) }}
+  <main class="flex justify-center">
     <div class="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
       {{ block "main" . }}
       {{ end }}

@@ -15,7 +15,7 @@
 {{ $categories := slice
   (dict "folder" "broadcast" "name" "Broadcast TV" "icon" "tv")
   (dict "folder" "film-promo" "name" "Film & Promo" "icon" "movie")
-  (dict "folder" "social-media" "name" "Social Media" "icon" "share")
+  (dict "folder" "social-media" "name" "Social Media" "icon" "devices")
   (dict "folder" "sports" "name" "Sports" "icon" "sports_soccer")
 }}
 
@@ -71,12 +71,12 @@
             alt="{{ $image.alt }}"
             class="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110"
             loading="lazy"
-            onerror="this.onerror=null; this.src='/img/logo.webp';">
+            onerror="this.onerror=null; this.src='/img/logo_centered.png';">
           
           <!-- Hover overlay with title -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+          {{/*  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
             <span class="text-white text-sm font-medium line-clamp-2">{{ $image.alt }}</span>
-          </div>
+          </div>  */}}
         </div>
         {{ end }}
       </div>

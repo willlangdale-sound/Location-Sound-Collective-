@@ -14,7 +14,7 @@
       </h1>
       
       <!-- Access profile_picture_circle from team member -->
-      {{ $circle := "/img/logo.webp" }}
+      {{ $circle := "/img/logo_centered.png" }}
       {{ $recordistSlug := .Title | urlize }}
       {{ range where .Site.Pages "Section" "team" }}
         {{ if eq (.Title | urlize) $recordistSlug }}
@@ -31,7 +31,7 @@
         width="160"
         height="160"
         fetchpriority="high"
-        onerror="this.onerror=null; this.src='/img/logo.webp';"/>
+        onerror="this.onerror=null; this.src='/img/logo_centered.png';"/>
       
       <!-- Access role from team member -->
       {{ $recordistSlug := .Title | urlize }}
@@ -113,7 +113,7 @@
           height="600">
       {{ else }}
         <img
-          src="/img/logo.webp"
+          src="/img/logo_centered.png"
           alt="{{ .Title }} - Sound Recording Project"
           class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out hover:scale-105"
           loading="lazy"

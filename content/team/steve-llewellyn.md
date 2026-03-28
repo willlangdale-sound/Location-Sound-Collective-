@@ -1,7 +1,7 @@
 ---
 draft: false
 title: 'Steve Llewellyn'
-weight: 1
+weight: 2
 role: 'Sound Recordist'
 profile_picture: '/img/team/steve-llewellyn.webp'
 photo: '/img/team/steve-llewellyn-circle.webp'
@@ -16,9 +16,9 @@ description: "Steve Llewellyn - Professional Sound Recordist at Location Sound C
 
 # Quick info tags
 specializations:
-  - "Location Recording"
-  - "Boom Operating"
-  - "Sound Mixing"
+  # - "Location Recording"
+  # - "Boom Operating"
+  # - "Sound Mixing"
 
 # Contact (optional)
 contact:

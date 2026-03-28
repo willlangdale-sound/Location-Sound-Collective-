@@ -18,7 +18,7 @@
       <h3 class="mb-2">{{ .Page.Title }}</h3>
       
       <!-- Find the matching team member and get their profile_picture_circle -->
-      {{ $circle := "/img/logo.webp" }}
+      {{ $circle := "/img/logo_centered.png" }}
       {{ $recordistSlug := .Page.Title | urlize }}
       {{ range where $.Site.Pages "Section" "team" }}
         {{ if eq (.Title | urlize) $recordistSlug }}
@@ -35,7 +35,7 @@
         width="160"
         height="160"
         loading="lazy"
-        onerror="this.onerror=null; this.src='/img/logo.webp';"/>
+        onerror="this.onerror=null; this.src='/img/logo_centered.png';"/>
       
       <p class="text-accent italic">{{ .Count }} project{{ if ne .Count 1 }}s{{ end }}</p>
     </a>

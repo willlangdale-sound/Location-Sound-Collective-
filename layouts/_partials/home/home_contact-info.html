@@ -1,0 +1,19 @@
+<!-- Contact info (mobile only) -->
+<div class="flex flex-col md:flex-row md:gap-6 items-center gap-2 opacity-70 m-2 mb-3 text-xl md:text-2xl">
+  {{ with .Site.Params.author.phone }}
+  <p>
+    <a href="tel:{{ . }}" class="hover:opacity-100 hover:text-accent transition-all duration-200">
+      <span class="material-symbols-outlined text-base align-middle">call</span>
+      {{ . }}
+    </a>
+  </p>
+  {{ end }}
+  {{ with .Site.Params.author.email }}
+  <p>
+    <a href="mailto:{{ . }}" class="hover:opacity-100 hover:text-accent transition-all duration-200">
+      <span class="material-symbols-outlined text-base align-middle">mail</span>
+      {{ . }}
+    </a>
+  </p>
+  {{ end }}
+</div>

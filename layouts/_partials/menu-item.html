@@ -4,23 +4,23 @@
             text-lg font-normal bg-transparent overflow-hidden transition-all duration-100 {{ .Class }}">
 
     <!-- Left animated border -->
-    <span class="absolute left-0 h-full w-8 border-y border-l border-secondary
+    <span class="absolute left-0 h-full w-8 border-y border-l border-accent
                   transition-all duration-700 group-hover:w-full"></span>
 
     <!-- Label -->
     <h4 class="absolute text-base-text transition-all duration-200
-               group-hover:opacity-0 group-hover:-translate-x-full">
+               group-hover:text-accent group-hover:opacity-0 group-hover:-translate-x-full">
       {{ .Name }}
     </h4>
 
     <!-- Icon appearing on hover -->
     <span class="absolute translate-x-full translate-y-1 opacity-0 transition-all duration-200
                  group-hover:translate-x-0 group-hover:opacity-100">
-      <span class="material-icons text-base-text">{{ .Icon | default "arrow_forward" }}</span>
+      <span class="material-icons text-accent">{{ .Icon | default "arrow_forward" }}</span>
     </span>
 
     <!-- Right animated border -->
-    <span class="absolute right-0 h-full w-8 border-y border-r border-secondary
+    <span class="absolute right-0 h-full w-8 border-y border-r border-accent
                   transition-all duration-700 group-hover:w-full"></span>
 
   </a>

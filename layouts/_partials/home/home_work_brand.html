@@ -86,24 +86,30 @@
   <!-- DEBUG: {{ .baseName }} | landscape: {{ .landscape | default "MISSING" }} | vertical: {{ .vertical | default "MISSING" }} -->
 {{ end }}
 */}}
-
-{{ $categories := slice "Multi-cam" "PSC" "Reality TV" "Game show" "Fixed rig" }}
+{{/*  potential tag under the category  */}}
+{{ $categories := slice "" }}
 
 <section class="work-tv-section bg-base">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Category Header -->
     <div class="text-center mb-6">
-      <h3 class="text-2xl md:text-3xl mb-4 italic font-bold text-base-text">
+      <h3 class="mb-4 italic text-center">
         Social / Branded
       </h3>
       <div class="flex flex-wrap justify-center gap-2">
-        {{ range $categories }}
-        <span class="inline-flex items-center gap-2 px-3 py-1 text-md text-base-text">
-          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-          {{ . }}
-        </span>
-        {{ end }}
+        <div class="flex flex-wrap justify-center gap-2">
+          {{ with $categories }}
+          {{ range $categories }}
+          {{ if (trim . " ") }}
+            <span class="inline-flex items-center gap-2 px-3 py-1 text-md text-base-text">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+              {{ . }}
+            </span>
+          {{ end }}
+          {{ end }}
+          {{ end }}
+        </div>
       </div>
     </div>
 
@@ -113,7 +119,7 @@
       
       <!-- Main Carousel Container -->
       <!-- Mobile: portrait aspect ratio, Desktop: landscape -->
-      <div class="z-10000 tv-carousel-container relative overflow-hidden rounded-2xl aspect-[3/4] md:aspect-video w-full md:w-3/4 mx-auto">
+      <div class="z-10000 tv-carousel-container relative overflow-hidden rounded-2xl aspect-video w-full md:w-3/4 mx-auto">
         {{ range $index, $image := $images }}
         <div class="tv-carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out bg-transparant {{ if eq $index 0 }}opacity-100{{ end }}"
              data-slide-index="{{ $index }}">
@@ -135,13 +141,13 @@
             </picture>
           {{ else }}
             {{/* Only one orientation - use single img tag */}}
-            {{ $src := $image.landscape | default $image.vertical | default "/img/logo.webp" }}
+            {{ $src := $image.landscape | default $image.vertical | default "/img/logo_centered.png" }}
             <img 
               src="{{ $src }}"
               alt="{{ $image.alt }}"
-              class="w-full h-full object-contain"
+              class="w-full h-full object-cover"
               {{ if eq $index 0 }}loading="eager"{{ else }}loading="lazy"{{ end }}
-              onerror="this.onerror=null; this.src='/img/logo.webp';">
+              onerror="this.onerror=null; this.src='/img/logo_centered.png';">
           {{ end }}
           
           <!-- Title overlay -->

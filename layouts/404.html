@@ -1,5 +1,5 @@
 {{ define "main" }}
-<div class="w-screen h-screen bg-base fixed top-0 right-0 left-0 bottom-0 flex flex-col gap-4 justify-center items-center">
+<div class="w-screen h-screen bg-base fixed top-0 right-0 left-0 bottom-0 z-[9999] flex flex-col gap-4 justify-center items-center">
   <h1 class="m-2 glitch glitch_error" data-text="Looks like we lost transmition">
     Looks like we lost transmission
   </h1>
@@ -7,24 +7,24 @@
     class="group relative flex items-center justify-center p-3 h-10 w-[200px]
            text-lg font-normal bg-transparent overflow-hidden transition-all duration-100">
     <!-- Left border animation -->
-    <span class="absolute left-0 h-full w-8 border-y border-l border-secondary
+    <span class="absolute left-0 h-full w-8 border-y border-l border-accent
                  transition-all duration-700 group-hover:w-full"></span>
     <!-- Default label -->
-    <h4 class="absolute text-base-text transition-all duration-200
+    <h4 class="absolute text-accent transition-all duration-200
                group-hover:opacity-0 group-hover:-translate-x-full">
       Home
     </h4>
     <!-- Hover icon -->
     <span class="absolute translate-x-full translate-y-1 opacity-0 transition-all duration-200
                  group-hover:translate-x-0 group-hover:opacity-100">
-      <span class="material-icons text-base-text">home</span>
+      <span class="material-icons text-accent">home</span>
     </span>
     <!-- Right border animation -->
-    <span class="absolute right-0 h-full w-8 border-y border-r border-secondary
+    <span class="absolute right-0 h-full w-8 border-y border-r border-accent
                  transition-all duration-700 group-hover:w-full"></span>
   </a>
   <div class="w-100 h-100">
-    <img src="/img/logo.webp" alt="{{ .Site.Title }} logo" class="coin">
+    <img src="/img/logo_centered.png" alt="{{ .Site.Title }} logo" class="coin">
   </div>
 </div>
 {{ end }}

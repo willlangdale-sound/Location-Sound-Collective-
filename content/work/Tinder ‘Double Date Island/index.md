@@ -1,5 +1,5 @@
 ---
-title: 'Tinder ‘Double Date Island’'
+title: 'Tinder ‘Double Date Island'
 date: 2025-11-28T10:15:37+01:00
 draft: false
 type: 'work'
@@ -37,6 +37,8 @@ categories:
 # Display settings
 weight: 10       # Lower numbers appear first in listings
 featured: false  # Set to true to highlight this project
+
+youtube_link:
 ---
 ## Social Media Shoot | Ibiza
 
@@ -53,5 +55,6 @@ Extremely challenging setups for the guys but Will and Steve approached it with 
 Will and Steve provided A and B mixing streams to be fed back to the gallery for the director and producers who were chasing story. Off-site dates also required water-proofing mics and packs for water activities as well as being completely self-sufficient for the day as there was often no access to power for battery charging.
 
 Up to 18 Ultrasync timecode units were provided to ensure all cameras were in sync for every step of the shoot, allowing for a streamlined and fast-paced edit for the client.
+
 
 ---

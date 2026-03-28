@@ -1,10 +1,6 @@
 // ============================================
 // GLOBAL STATE
 // ============================================
-let crtActive = false;
-let crtToggleButton;
-let crtToggleIcon;
-let crtToggleTvIcon;
 
 // ============================================
 // MENU TOGGLE
@@ -59,69 +55,6 @@ function initTheme() {
   // Always force dark mode
   document.documentElement.classList.add('dark');
   localStorage.setItem('theme', 'dark');
-}
-
-// ============================================
-// CRT EFFECT TOGGLE
-// ============================================
-function initCrt() {
-  crtToggleButton = document.getElementById('crt-toggle');
-  if (!crtToggleButton) return;
-
-  crtToggleIcon = crtToggleButton.querySelector('.crt-icon-toggle');
-  crtToggleTvIcon = crtToggleButton.querySelector('.crt-icon-tv');
-
-  // Load saved CRT preference - DEFAULT TO TRUE on first visit
-  const savedCrtState = localStorage.getItem('crtMode');
-  if (savedCrtState === null) {
-    // First visit - default to ON
-    crtActive = true;
-  } else {
-    crtActive = savedCrtState === 'true';
-  }
-
-  // Apply initial state
-  applyCrtState(crtActive);
-
-  // Toggle on click
-  crtToggleButton.addEventListener('click', function() {
-    applyCrtState(!crtActive);
-  });
-}
-
-function applyCrtState(active) {
-  crtActive = active;
-  const crtOverlay = document.querySelector('.crt');
-  
-  if (crtOverlay) {
-    if (active) {
-      crtOverlay.classList.add('active');
-    } else {
-      crtOverlay.classList.remove('active');
-    }
-  }
-  
-  // Save preference
-  localStorage.setItem('crtMode', active);
-  
-  // Update UI
-  updateCrtToggleUi();
-}
-
-function updateCrtToggleUi() {
-  if (!crtToggleIcon || !crtToggleTvIcon) return;
-  
-  if (crtActive) {
-    // CRT is ON
-    crtToggleIcon.textContent = 'toggle_off';
-    crtToggleTvIcon.style.opacity = '1';
-    if (crtToggleButton) crtToggleButton.setAttribute('aria-pressed', 'true');
-  } else {
-    // CRT is OFF
-    crtToggleIcon.textContent = 'toggle_on';
-    crtToggleTvIcon.style.opacity = '0.6';
-    if (crtToggleButton) crtToggleButton.setAttribute('aria-pressed', 'false');
-  }
 }
 
 // ============================================
@@ -844,7 +777,6 @@ function initDice() {
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
   initTheme();
-  initCrt();
   initCarousel();
   initHomeCarousels();
   initTvCarousel();

@@ -2,10 +2,10 @@
 enableWorkSection = true
 enableRecordistsTaxonomy = false
 
-[author]
-name = "Aurel"
-email = "info@lsc.com"
-phone = "07685499"
+# [author]
+# name = "Aurel"
+# email = "info@lsc.com"
+# phone = "07685499"
 
 [menu]
 homeContactButtonColor = "green"
@@ -21,9 +21,7 @@ keywords = "sound recording, location sound, audio post-production, sound design
 enableRecordistsTaxonomy = true
 enableWorkSection = true
 
-[params.author]
-name = "Location Sound Collective"
-email = ""
+
 
 [params.social]
 instagram = ""

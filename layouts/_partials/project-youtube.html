@@ -14,11 +14,11 @@
 
           {{ if $videoId }}
           <div>
-            <div class="youtube-container relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg border-2 border-accent">
+            <div class="youtube-container relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg border-5 border-accent">
               <iframe 
                 src="https://www.youtube-nocookie.com/embed/{{ $videoId }}?rel=0"
                 title="{{ $.Title }} - Final Result"
-                class="absolute inset-0 w-full h-full"
+                class="absolute inset-0 w-full h-full block"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
@@ -28,6 +28,8 @@
           </div>
           {{ end }}   
       {{ end }}
+
+      
   </section>
   {{ end }}
 {{ end }}

@@ -24,7 +24,7 @@ publish_mode: editorial_workflow
 # Site URL (optional, helps with preview)
 site_url: https://lscollective.netlify.app
 display_url: https://lscollective.netlify.app
-logo_url: /img/logo.webp
+logo_url: /img/logo_centered.png
 
 # Search functionality
 search: true
