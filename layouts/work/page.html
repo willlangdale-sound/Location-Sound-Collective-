@@ -1,10 +1,6 @@
 {{ define "main" }}
 {{ if .Site.Params.features.enableWorkSection }}
 <!-- Feature is ENABLED - Show work page -->
-{{/*  <div class="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
-  {{ partial "breadcrumb.html" . }}
-</div>  */}}
-
 <main class="w-full">
 
   <!-- Hero Section - Find cover image from bundle -->
@@ -42,7 +38,7 @@
         width="800"
         height="600">
     {{ else }}
-      <img src="/img/logo.webp" alt="{{ .Title }}" class="w-full h-auto" width="800" height="600" fetchpriority="high">
+      <img src="/img/logo_centered.png" alt="{{ .Title }}" class="w-full h-auto" width="800" height="600" fetchpriority="high">
     {{ end }}
     <div class="bg-secondary p-6">
       <h1 class="mb-2 text-base-text break-words hyphens-auto">{{ .Title }}</h1>
@@ -72,7 +68,7 @@
         width="1920"
         height="1080">
     {{ else }}
-      <img src="/img/logo.webp" alt="{{ .Title }}" class="absolute inset-0 w-full h-full object-cover object-center" width="1920" height="1080" fetchpriority="high">
+      <img src="/img/logo_centered.png" alt="{{ .Title }}" class="absolute inset-0 w-full h-full object-cover object-center" width="1920" height="1080" fetchpriority="high">
     {{ end }}
     <div class="absolute inset-0 flex flex-col justify-end">
       <div class="mask-t-from-50% bg-secondary p-8">
@@ -161,9 +157,7 @@
 </script>
 
 <div class="w-screen h-screen bg-base fixed top-0 right-0 left-0 bottom-0 flex flex-col gap-4 justify-center items-center">
-  <h1 class="glitch" data-text="Redirecting...">
-    Redirecting...
-  </h1>
+  <h1>Redirecting...</h1>
   <p class="text-base-text">This content is currently unavailable. Redirecting you to the home page...</p>
   <a href="/"
       class="group relative flex items-center justify-center p-3 h-10 w-[200px]

@@ -12,6 +12,7 @@
 .bg-surface-hover { background-color: hsl(var(--color-surface-hover)); }
 .bg-primary       { background-color: hsl(var(--color-primary)); }
 .bg-accent        { background-color: hsl(var(--color-accent)); }
+.bg-divider       { background-color: hsl(var(--color-divider)); }
 .bg-error         { background-color: hsl(var(--color-error)); }
 .bg-success       { background-color: hsl(var(--color-success)); }
 .bg-warning       { background-color: hsl(var(--color-warning)); }
@@ -23,6 +24,13 @@
 .text-primary   { color: hsl(var(--color-primary)); }
 .text-secondary { color: hsl(var(--color-secondary)); }
 .text-accent    { color: hsl(var(--color-accent)); }
+.text-divider   { color: hsl(var(--color-divider)); }
+
+/* === TEXT SHADOW === */
+.text-shadow-cream { text-shadow: 1px 1px 0px rgba(232, 234, 209, 0.7); }
+
+/* === GRADIENT === */
+.via-divider { --tw-gradient-via: hsl(var(--color-divider)); }
 
 /* === BORDER === */
 .border-primary   { border-color: hsl(var(--color-primary)); }

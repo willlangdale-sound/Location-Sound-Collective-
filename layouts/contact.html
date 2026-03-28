@@ -3,7 +3,7 @@
   {{ partial "breadcrumb.html" . }}
 </div>  */}}
 <div class="text-center mb-4">
-  <h1 class="glitch" data-text="Contact Us">{{ .Title }}</h1>
+  <h1>{{ .Title }}</h1>
 </div>
 <div class="max-w-3xl mx-auto indent-8 text-justify">
   {{ .Content }}
@@ -39,41 +39,41 @@
         {{ $inputClasses := "shadow-sm bg-base border text-accent rounded-lg focus:border-accent focus:border-2 focus:ring-accent focus:outline-none block w-full p-2.5 border-accent transition-all duration-200" }}
 
         <fieldset class="border border-2 border-accent rounded-lg p-4 space-y-4">
-          <legend class="font-semibold text-accent">Contact Details</legend>
+          <legend class="font-semibold text-accent italic text-base text-shadow-cream">Contact Details</legend>
 
           <div>
-            <label for="firstName" class="block mb-2 text-accent">First Name</label>
+            <label for="firstName" class="block mb-2 text-accent italic text-base text-shadow-cream">First Name</label>
             <input type="text" id="firstName" name="firstName" placeholder="John" required
                    class="{{ $inputClasses }}">
           </div>
 
           <div>
-            <label for="lastName" class="block mb-2 text-accent">Last Name</label>
+            <label for="lastName" class="block mb-2 text-accent italic text-base text-shadow-cream">Last Name</label>
             <input type="text" id="lastName" name="lastName" placeholder="Doe" required
                    class="{{ $inputClasses }}">
           </div>
 
           <div>
-            <label for="email" class="block mb-2 text-accent">Email</label>
+            <label for="email" class="block mb-2 text-accent italic text-base text-shadow-cream">Email</label>
             <input type="email" id="email" name="email" placeholder="name@example.com" required
                    class="{{ $inputClasses }}">
           </div>
         </fieldset>
 
         <div>
-          <label for="phone" class="block mb-2 text-accent">Phone (optional)</label>
+          <label for="phone" class="block mb-2 text-accent italic text-base text-shadow-cream">Phone (optional)</label>
           <input type="tel" id="phone" name="phone" placeholder="+44 20 1234 5678"
                  class="{{ $inputClasses }}">
         </div>
 
         <div>
-          <label for="inquiry-subject" class="block mb-2 text-accent">Subject</label>
+          <label for="inquiry-subject" class="block mb-2 text-accent italic text-base text-shadow-cream">Subject</label>
           <input type="text" id="inquiry-subject" name="inquiry-subject" placeholder="Let us know how we can help you" required
                  class="{{ $inputClasses }}">
         </div>
 
         <div>
-          <label for="message" class="block mb-2 text-accent">Message</label>
+          <label for="message" class="block mb-2 text-accent italic text-base text-shadow-cream">Message</label>
           <textarea id="message" name="message" rows="6" maxlength="250" placeholder="What's your project about..." required
                     class="{{ $inputClasses }}"></textarea>
         </div>

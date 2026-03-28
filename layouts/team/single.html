@@ -1,9 +1,4 @@
 {{ define "main" }}
-
-{{/*  <div class="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
-  {{ partial "breadcrumb.html" . }}
-</div>  */}}
-
 <main class="w-full max-w-4xl mx-auto">
 
   <!-- Profile Header -->
@@ -25,20 +20,21 @@
           ) }}
         {{ else }}
           <img
-            src="{{ .Params.profile_picture | default "/img/logo.webp" }}"
+            src="{{ .Params.profile_picture | default "/img/logo_centered.png" }}"
             alt="{{ .Title }} - {{ .Params.role }}"
             class="w-full h-full object-cover object-center"
             width="600"
             height="900"
+            loading="eager"
             fetchpriority="high"
-            onerror="this.onerror=null; this.src='/img/logo.webp';">
+            onerror="this.onerror=null; this.src='/img/logo_centered.png';">
         {{ end }}
       </div>
     </div>
 
     <!-- Basic Info -->
     <div class="md:w-2/3 w-full flex flex-col justify-center">
-      <h1 class="glitch mb-2" data-text="{{ .Title }}">{{ .Title }}</h1>
+      <h1 class="mb-2">{{ .Title }}</h1>
       
       {{ with .Params.role }}
       <p class="text-accent italic text-2xl mb-3">

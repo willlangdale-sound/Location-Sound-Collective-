@@ -94,7 +94,7 @@
     
     <!-- Category Header -->
     <div class="text-center mb-6">
-      <h3 class="text-2xl md:text-3xl mb-4 italic font-bold text-base-text">
+      <h3 class="mb-4 italic text-center">
         Social / Branded
       </h3>
       <div class="flex flex-wrap justify-center gap-2">
@@ -141,13 +141,13 @@
             </picture>
           {{ else }}
             {{/* Only one orientation - use single img tag */}}
-            {{ $src := $image.landscape | default $image.vertical | default "/img/logo.webp" }}
+            {{ $src := $image.landscape | default $image.vertical | default "/img/logo_centered.png" }}
             <img 
               src="{{ $src }}"
               alt="{{ $image.alt }}"
               class="w-full h-full object-cover"
               {{ if eq $index 0 }}loading="eager"{{ else }}loading="lazy"{{ end }}
-              onerror="this.onerror=null; this.src='/img/logo.webp';">
+              onerror="this.onerror=null; this.src='/img/logo_centered.png';">
           {{ end }}
           
           <!-- Title overlay -->

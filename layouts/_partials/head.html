@@ -52,7 +52,7 @@
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:site_name" content="{{ $siteTitle }}">
 
-{{ $ogImage := "/img/og-logo.webp" | absURL }}
+{{ $ogImage := "/img/og-logo.png" | absURL }}
 {{ with .Params.featured_image }}
   {{ $ogImage = . | absURL }}
 {{ end }}
@@ -60,6 +60,8 @@
   {{ $ogImage = .Permalink }}
 {{ end }}
 <meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
 <!-- ============================================
      SEO: TWITTER CARD
@@ -72,20 +74,18 @@
 <!-- ============================================
      FAVICON
      ============================================ -->
-<!-- Modern browsers: SVG favicon (scalable, small file) -->
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-
 <!-- Fallback: ICO for legacy browsers -->
 <link rel="icon" href="/favicon.ico" sizes="32x32">
+
+<!-- PNG favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 
 <!-- Apple devices -->
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <!-- Web App Manifest (PWA support) -->
 <link rel="manifest" href="/site.webmanifest">
-
-<!-- Additional PNG favicons for various contexts -->
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
 
 <!-- ============================================
      CSS & FONTS
@@ -98,8 +98,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <!-- Preload critical text fonts -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Syne:wght@400..800&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;700&display=swap" rel="stylesheet">
 
 <!-- Load icon fonts asynchronously (non-render-blocking) -->
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" media="print" onload="this.media='all'">

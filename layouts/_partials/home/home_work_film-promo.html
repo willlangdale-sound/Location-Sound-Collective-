@@ -139,13 +139,13 @@
             </picture>
           {{ else }}
             {{/* Only one orientation - use single img tag */}}
-            {{ $src := $image.landscape | default $image.vertical | default "/img/logo.webp" }}
+            {{ $src := $image.landscape | default $image.vertical | default "/img/logo_centered.png" }}
             <img 
               src="{{ $src }}"
               alt="{{ $image.alt }}"
               class="w-full h-full object-contain"
               {{ if eq $index 0 }}loading="eager"{{ else }}loading="lazy"{{ end }}
-              onerror="this.onerror=null; this.src='/img/logo.webp';">
+              onerror="this.onerror=null; this.src='/img/logo_centered.png';">
           {{ end }}
           
           <!-- Title overlay -->

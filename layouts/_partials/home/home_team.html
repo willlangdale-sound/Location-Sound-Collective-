@@ -19,7 +19,7 @@
     
     {{ range $teamMembers }}
       {{/* Get the team member's photo - check for params.photo, featured image, or fallback */}}
-      {{ $photo := "/img/logo.webp" }}
+      {{ $photo := "/img/logo_centered.png" }}
       {{ if .Params.photo }}
         {{ $photo = .Params.photo }}
       {{ else if .Resources.GetMatch "photo.*" }}

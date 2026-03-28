@@ -34,6 +34,7 @@
 {{/* Width classes */}}
 {{ $widthClass := "max-w-4xl" }}
 {{ if eq $width "full" }}{{ $widthClass = "max-w-full" }}
+{{ else if eq $width "xl" }}{{ $widthClass = "w-[92vw]" }}
 {{ else if eq $width "md" }}{{ $widthClass = "max-w-2xl" }}
 {{ else if eq $width "sm" }}{{ $widthClass = "max-w-xl" }}
 {{ end }}
@@ -43,81 +44,81 @@
     
     {{/* Line Style (default) */}}
     {{ if eq $style "line" }}
-    <div class="h-px bg-accent opacity-30"></div>
+    <div class="h-px bg-divider opacity-70"></div>
     {{ end }}
-    
+
     {{/* Dots Style */}}
     {{ if eq $style "dots" }}
     <div class="flex justify-center items-center gap-3">
-      <span class="w-1.5 h-1.5 rounded-full bg-accent opacity-40"></span>
-      <span class="w-2 h-2 rounded-full bg-accent opacity-60"></span>
-      <span class="w-2.5 h-2.5 rounded-full bg-accent"></span>
-      <span class="w-2 h-2 rounded-full bg-accent opacity-60"></span>
-      <span class="w-1.5 h-1.5 rounded-full bg-accent opacity-40"></span>
+      <span class="w-1.5 h-1.5 rounded-full bg-divider opacity-50"></span>
+      <span class="w-2 h-2 rounded-full bg-divider opacity-70"></span>
+      <span class="w-2.5 h-2.5 rounded-full bg-divider"></span>
+      <span class="w-2 h-2 rounded-full bg-divider opacity-70"></span>
+      <span class="w-1.5 h-1.5 rounded-full bg-divider opacity-50"></span>
     </div>
     {{ end }}
-    
+
     {{/* Gradient Style */}}
     {{ if eq $style "gradient" }}
-    <div class="h-px bg-linear-to-r from-transparent via-accent to-transparent opacity-50"></div>
+    <div class="h-px bg-linear-to-r from-transparent via-divider to-transparent opacity-80"></div>
     {{ end }}
-    
+
     {{/* Wave Style */}}
     {{ if eq $style "wave" }}
     <div class="flex justify-center">
-      <svg class="w-32 h-4 text-accent opacity-30" viewBox="0 0 128 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 8C0 8 16 0 32 8C48 16 64 0 80 8C96 16 112 0 128 8" 
-              stroke="currentColor" 
+      <svg class="w-32 h-4 text-divider opacity-70" viewBox="0 0 128 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 8C0 8 16 0 32 8C48 16 64 0 80 8C96 16 112 0 128 8"
+              stroke="currentColor"
               stroke-width="2"/>
       </svg>
     </div>
     {{ end }}
-    
+
     {{/* Glitch Style */}}
     {{ if eq $style "glitch" }}
     <div class="relative h-px">
-      <div class="absolute inset-0 bg-accent opacity-30"></div>
-      <div class="absolute inset-0 bg-accent opacity-20 translate-x-0.5 -translate-y-px"></div>
-      <div class="absolute inset-0 bg-accent opacity-20 -translate-x-0.5 translate-y-px"></div>
+      <div class="absolute inset-0 bg-divider opacity-70"></div>
+      <div class="absolute inset-0 bg-divider opacity-50 translate-x-0.5 -translate-y-px"></div>
+      <div class="absolute inset-0 bg-divider opacity-50 -translate-x-0.5 translate-y-px"></div>
     </div>
     {{ end }}
-    
+
     {{/* Double Line Style */}}
     {{ if eq $style "double" }}
     <div class="flex flex-col gap-1">
-      <div class="h-px bg-accent opacity-20"></div>
-      <div class="h-px bg-accent opacity-40"></div>
+      <div class="h-px bg-divider opacity-40"></div>
+      <div class="h-px bg-divider opacity-80"></div>
     </div>
     {{ end }}
-    
+
     {{/* Icon Style */}}
     {{ if eq $style "icon" }}
     <div class="flex items-center gap-4">
-      <div class="flex-1 h-px bg-accent opacity-30"></div>
-      <span class="material-symbols-outlined text-accent opacity-50">
+      <div class="flex-1 h-px bg-divider opacity-70"></div>
+      <span class="material-symbols-outlined text-divider opacity-80">
         graphic_eq
       </span>
-      <div class="flex-1 h-px bg-accent opacity-30"></div>
+      <div class="flex-1 h-px bg-divider opacity-70"></div>
     </div>
     {{ end }}
-    
+
     {{/* Sound Wave Style (themed for audio site) */}}
     {{ if eq $style "soundwave" }}
     <div class="flex justify-center items-end gap-1 h-6">
-      <div class="w-1 h-2 bg-accent opacity-20 rounded-full"></div>
-      <div class="w-1 h-4 bg-accent opacity-30 rounded-full"></div>
-      <div class="w-1 h-3 bg-accent opacity-40 rounded-full"></div>
-      <div class="w-1 h-6 bg-accent opacity-50 rounded-full"></div>
-      <div class="w-1 h-4 bg-accent opacity-50 rounded-full"></div>
-      <div class="w-1 h-5 bg-accent opacity-50 rounded-full"></div>
-      <div class="w-1 h-3 bg-accent opacity-50 rounded-full"></div>
-      <div class="w-1 h-6 bg-accent opacity-50 rounded-full"></div>
-      <div class="w-1 h-2 bg-accent opacity-50 rounded-full"></div>
-      <div class="w-1 h-5 bg-accent opacity-50 rounded-full"></div>
-      <div class="w-1 h-4 bg-accent opacity-50 rounded-full"></div>
-      <div class="w-1 h-3 bg-accent opacity-40 rounded-full"></div>
-      <div class="w-1 h-5 bg-accent opacity-30 rounded-full"></div>
-      <div class="w-1 h-2 bg-accent opacity-20 rounded-full"></div>
+      <div class="w-1 h-2 bg-divider opacity-40 rounded-full"></div>
+      <div class="w-1 h-4 bg-divider opacity-55 rounded-full"></div>
+      <div class="w-1 h-3 bg-divider opacity-65 rounded-full"></div>
+      <div class="w-1 h-6 bg-divider opacity-80 rounded-full"></div>
+      <div class="w-1 h-4 bg-divider opacity-80 rounded-full"></div>
+      <div class="w-1 h-5 bg-divider opacity-80 rounded-full"></div>
+      <div class="w-1 h-3 bg-divider opacity-80 rounded-full"></div>
+      <div class="w-1 h-6 bg-divider opacity-80 rounded-full"></div>
+      <div class="w-1 h-2 bg-divider opacity-80 rounded-full"></div>
+      <div class="w-1 h-5 bg-divider opacity-80 rounded-full"></div>
+      <div class="w-1 h-4 bg-divider opacity-80 rounded-full"></div>
+      <div class="w-1 h-3 bg-divider opacity-65 rounded-full"></div>
+      <div class="w-1 h-5 bg-divider opacity-55 rounded-full"></div>
+      <div class="w-1 h-2 bg-divider opacity-40 rounded-full"></div>
     </div>
     {{ end }}
     
