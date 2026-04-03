@@ -37,7 +37,7 @@
       <h1 class="mb-2">{{ .Title }}</h1>
       
       {{ with .Params.role }}
-      <p class="text-accent italic text-2xl mb-3">
+      <p class="text-accent text-shadow-cream italic text-2xl mb-3">
         {{ if reflect.IsSlice . }}
           {{ delimit . " · " }}
         {{ else }}

@@ -1,161 +1,128 @@
 ---
 title: "Privacy Policy"
-date: 2025-01-15
-draft: true
+date: 2026-03-01
+draft: false
 ---
 
-**Effective Date:** January 15, 2025  
-**Last Updated:** January 15, 2025
+*Last updated: March 2026 · locationsoundcollective.co.uk*
 
-## Who We Are
+Location Sound Collective ('we', 'us', 'our') is committed to protecting your privacy. This policy explains how we collect, use and protect your personal data when you visit our website or contact us, in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.
 
-Location Sound Collective is a professional sound recording and production service based in London, UK. This privacy policy explains how we handle your personal information when you use our website or contact us about our services.
+---
 
-**Contact:** [your-email@lscollective.com]
+### 1. Who We Are
 
-## What Information We Collect
+Location Sound Collective is a collective of freelance sound recording professionals based in the United Kingdom. We are the data controller for personal information collected through this website.
 
-### When You Contact Us
-When you submit our contact form, we collect:
-- Your name (first and last)
-- Email address
-- Phone number (optional)
-- Your message and project details
+**Contact:** info@locationsoundcollective.co.uk
 
-### Website Preferences (Stored Locally)
-Our website remembers your display preferences using browser localStorage:
-- Theme selection (light/dark mode)
-- CRT screen effect toggle (on/off)
-- Menu state (open/closed)
+---
 
-**Important:** These preferences are stored only in your browser and never sent to us or any third party.
+### 2. What Personal Data We Collect
 
-### Automatically Collected Information
-When you visit our website, we may collect basic technical information:
-- Browser type and version
-- Device type and operating system
-- IP address (for security purposes)
-- Pages you visit and when
+We may collect the following types of personal data:
 
-## How We Use Your Information
+- **Contact form submissions:** your name, email address, phone number (if provided) and the content of your message.
+- **Email correspondence:** if you contact us directly by email.
+- **Technical data:** IP address, browser type and version, pages visited, time and date of visit — collected automatically by our hosting provider (Netlify) as part of standard server logs.
 
-We use your information to:
-- Respond to your inquiries about our services
-- Discuss and deliver sound recording projects
-- Send you updates about your project (if you become a client)
-- Improve our website functionality
-- Protect our website from security threats
+---
 
-**We will never:**
-- Sell your information to anyone
-- Send you marketing emails without your permission
-- Share your details with third parties except as described below
+### 3. How We Use Your Personal Data
 
-## Third-Party Services
+We use your data solely for the following purposes:
 
-Our website uses these external services:
+- To respond to your enquiries and booking requests.
+- To manage our business relationship with you.
+- To monitor the technical performance of our website via server-side analytics.
+- To comply with our legal obligations.
 
-**Netlify** (Website Hosting & Forms)
-- Processes contact form submissions
-- Provides secure website hosting
-- [Netlify Privacy Policy](https://www.netlify.com/privacy/)
+We do not use any third-party tracking tools, advertising platforms or behavioural analytics. No cookies are placed on your device for tracking or marketing purposes.
 
-**Google Fonts & Icons**
-- Delivers typography and icons for our website
-- May collect basic usage information
-- [Google Privacy Policy](https://policies.google.com/privacy)
+---
 
-## How We Store Your Information
+### 4. Legal Basis for Processing (UK GDPR)
 
-**Contact form submissions:** Stored securely through Netlify for up to 2 years or until you request deletion.
+We process your data on the following legal bases:
 
-**Client project records:** If you become a client, we keep project records for 7 years for business and tax compliance.
+- **Legitimate interests** — to respond to enquiries and manage professional relationships.
+- **Contractual necessity** — where processing is necessary to provide services you have requested.
+- **Legal obligation** — where we are required to process data to comply with the law.
 
-**Website preferences:** Stored only in your browser's localStorage - we never see this data.
+---
 
-## Your Rights
+### 5. Cookies
 
-Under UK data protection law (UK GDPR), you have the right to:
+This website does not use tracking cookies or third-party analytics cookies. Our hosting provider (Netlify) may set strictly essential cookies required for the website to function correctly. These do not collect personal information and do not require your consent under UK PECR regulations.
 
-- **Access** - Request a copy of the personal data we hold about you
-- **Correction** - Ask us to correct inaccurate information
-- **Deletion** - Request we delete your information (subject to legal requirements)
-- **Object** - Stop us using your data for certain purposes
-- **Portability** - Receive your data in a common format
+---
 
-To exercise any of these rights, email us at: [your-email@lscollective.com]
+### 6. How Long We Keep Your Data
 
-We'll respond within 30 days of receiving your request.
+We retain personal data only for as long as necessary:
 
-## Data Security
+- **Contact form messages:** up to 12 months from the date of receipt.
+- **Client correspondence:** up to 6 years, in line with standard UK business record-keeping practices.
+- **Server logs:** as defined by Netlify's data retention policy.
 
-We protect your information using:
-- Secure HTTPS encryption for all website connections
-- Password-protected systems for client records
-- Limited access - only authorized team members can view your data
-- Regular security reviews
+---
 
-While we take security seriously, no internet transmission is 100% secure. We cannot guarantee absolute security but will always notify you of any data breach affecting your information.
+### 7. Sharing Your Data With Third Parties
 
-## How Long We Keep Your Information
+We do not sell, rent or share your personal data with third parties for commercial purposes. Your data may be processed by the following trusted service providers solely to operate this website:
 
-| Type of Information | Retention Period |
-|---------------------|------------------|
-| Contact form inquiries (non-clients) | 2 years from last contact |
-| Active client projects | Duration of project + 7 years |
-| Website technical logs | 90 days |
-| Browser preferences (localStorage) | Until you clear browser data |
+- **Netlify** — website hosting and contact form processing. Privacy policy: [netlify.com/privacy](https://www.netlify.com/privacy/)
 
+All third-party processors are contractually required to handle your data in compliance with applicable data protection laws.
 
-## Children's Privacy
+---
 
-Our services are for professional use and not intended for anyone under 18. We do not knowingly collect information from children. If you believe a child has provided us with information, please contact us immediately.
+### 8. Your Rights Under UK GDPR
 
-## International Data Transfers
+You have the right to:
 
-Your information may be processed on servers located outside the UK (such as Netlify's hosting infrastructure). When this happens, we ensure appropriate safeguards are in place to protect your data in accordance with UK law.
+- Access the personal data we hold about you.
+- Request correction of inaccurate or incomplete data.
+- Request erasure of your data ('right to be forgotten').
+- Object to processing based on legitimate interests.
+- Request restriction of processing in certain circumstances.
+- Receive your data in a portable, machine-readable format.
+- Withdraw consent at any time, where processing is based on consent.
 
-## Changes to This Policy
+To exercise any of these rights, please contact us at info@locationsoundcollective.co.uk. We will respond within 30 days. You also have the right to lodge a complaint with the **Information Commissioner's Office (ICO)** at [ico.org.uk](https://ico.org.uk/make-a-complaint/) or by calling 0303 123 1113.
 
-We may update this privacy policy occasionally. Any changes will be posted on this page with a new "Last Updated" date. If we make significant changes, we'll notify active clients by email.
+---
 
-Continued use of our website after changes means you accept the updated policy.
+### 9. Third-Party Imagery & Intellectual Property
 
-## Cookies & Tracking
+The show titles, film posters, broadcast imagery and brand assets displayed throughout this website are the intellectual property of their respective owners, including but not limited to production companies, broadcasters, distributors and brands. Location Sound Collective makes no claim of ownership over any third-party imagery. All materials are used in a strictly editorial capacity to identify productions on which our team members have provided professional location sound services.
 
-Our website does **not** use traditional tracking cookies or analytics tools.
+If you are a rights holder and have concerns regarding any imagery displayed on this site, please contact us at info@locationsoundcollective.co.uk and we will respond promptly.
 
-We only use browser localStorage to remember your display preferences (theme, CRT effect, menu state). These are considered "strictly necessary" for the website to function as you've configured it, and no consent banner is required.
+---
 
-If you want to clear these preferences, you can:
-- Clear your browser's localStorage through browser settings
-- Use your browser's privacy/incognito mode
+### 10. External Links
 
-## Legal Basis for Processing
+Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of those sites and encourage you to review their policies before providing any personal data.
 
-We process your personal data under these legal bases:
+---
 
-- **Consent** - When you submit our contact form
-- **Contract performance** - To deliver services you've requested
-- **Legitimate interests** - To respond to inquiries and improve our website
-- **Legal obligation** - To keep business records as required by law
+### 11. Security
 
-## Making a Complaint
+We take appropriate technical and organisational measures to protect your personal data against accidental loss, alteration or unauthorised disclosure. Our website is served over HTTPS and hosted on Netlify, which maintains industry-standard security practices.
 
-If you're unhappy with how we've handled your data, please contact us first so we can try to resolve the issue.
+---
 
-You also have the right to complain to the UK's data protection regulator:
+### 12. Changes to This Policy
 
-**Information Commissioner's Office (ICO)**  
-Website: https://ico.org.uk/make-a-complaint/ 
+We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date. We encourage you to review this policy periodically.
 
-## Contact Us
+---
 
-For any questions about this privacy policy or how we handle your data:
+### 13. Contact Us
+
+For any questions about this Privacy Policy or how we handle your personal data:
 
 **Location Sound Collective**  
-Email: [your-email@lscollective.com]  
-
----
-
-*By submitting our contact form, you consent to us processing your information as described in this privacy policy.*
+Email: info@locationsoundcollective.co.uk  
+Website: locationsoundcollective.co.uk
