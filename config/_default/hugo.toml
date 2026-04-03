@@ -50,7 +50,7 @@ enableRobotsTXT = true
 
   # Social media handles (just the username, not full URL)
   [params.social]
-    instagram = ""    # e.g., "lscollective"
+    instagram = "location_sound_collective"    # e.g., "lscollective"
     twitter = ""      # e.g., "lscollective"
     facebook = ""     # e.g., "Locationsoundcollective"
     linkedin = ""     # e.g., "company/Location-sound-collective"
