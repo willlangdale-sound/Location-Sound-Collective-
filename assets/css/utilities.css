@@ -27,7 +27,8 @@
 .text-divider   { color: hsl(var(--color-divider)); }
 
 /* === TEXT SHADOW === */
-.text-shadow-cream { text-shadow: 1px 1px 0px rgba(232, 234, 209, 0.7); }
+.text-shadow-cream  { text-shadow: 1px 1px 0px rgba(232, 234, 209, 0.7); }
+.text-shadow-accent { text-shadow: 1px 1px 0px hsl(var(--color-accent) / 0.7); }
 
 /* === GRADIENT === */
 .via-divider { --tw-gradient-via: hsl(var(--color-divider)); }
