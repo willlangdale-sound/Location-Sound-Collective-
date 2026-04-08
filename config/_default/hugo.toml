@@ -1,7 +1,7 @@
 # config/_default/hugo.toml
 
 baseURL = 'https://locationsoundcollective.co.uk/'
-languageCode = 'en-uk'
+languageCode = 'en-GB'
 title = 'Location Sound Collective'
 
 [taxonomies]
@@ -45,7 +45,7 @@ enableRobotsTXT = true
   # Author information
   [params.author]
     name = "Location Sound Collective"
-    email = "info@locationsouncollective.co.uk"
+    email = "info@locationsoundcollective.co.uk"
     phone = "07856091964"
 
   # Social media handles (just the username, not full URL)
