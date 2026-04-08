@@ -42,6 +42,9 @@
      SEO: CANONICAL URL
      ============================================ -->
 <link rel="canonical" href="{{ .Permalink }}">
+{{- if or (eq .Type "recordists") (eq .RelPermalink "/thank-you/") }}
+<meta name="robots" content="noindex, nofollow">
+{{- end }}
 
 <!-- ============================================
      SEO: OPEN GRAPH (Facebook, LinkedIn)
@@ -120,7 +123,4 @@
 <meta name="keywords" content="{{ . }}">
 {{ end }}
 {{ end }}
-
-<!-- Netlify Identity Widget (for Decap CMS) -->
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 

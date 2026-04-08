@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /thank-you/
+
+Sitemap: https://locationsoundcollective.co.uk/sitemap.xml
