@@ -124,7 +124,8 @@
       "name": "Home",
       "item": "{{ .Site.BaseURL }}"
     }
-    {{- $ancestors := .Ancestors.Reverse }}
+    {{- $ancestors := slice }}
+    {{- range .Ancestors.Reverse }}{{- if not .IsHome }}{{- $ancestors = $ancestors | append . }}{{- end }}{{- end }}
     {{- range $i, $page := $ancestors }},
     {
       "@type": "ListItem",
@@ -135,7 +136,7 @@
     {{- end }},
     {
       "@type": "ListItem",
-      "position": {{ add (len .Ancestors) 2 }},
+      "position": {{ add (len $ancestors) 2 }},
       "name": "{{ .Title }}",
       "item": "{{ .Permalink }}"
     }
