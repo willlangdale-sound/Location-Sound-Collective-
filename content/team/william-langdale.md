@@ -14,7 +14,7 @@ keywords:
   - "location sound"
   - "film audio"
   - "William Langdale"
-description: "William Langdale - Professional Sound Recordist at Location Sound Collective"
+description: "William Langdale is a London-based location sound recordist with credits across BBC, ITV, Channel 4, and major brands including Nike, Spotify and Apple."
 
 # Quick info tags
 specializations:

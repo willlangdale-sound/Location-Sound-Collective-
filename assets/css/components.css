@@ -1,6 +1,18 @@
 /* assets/css/components.css */
 
 /* =========================================================================
+   NAV LABEL — semantic replacement for h4 in menu-item partial
+   Reproduces h4 styles (Anton font, text-2xl) without using a heading tag
+   ========================================================================= */
+
+.nav-label {
+  font-family: "Anton", sans-serif;
+  font-size: 1.5rem; /* text-2xl */
+  line-height: 2rem;
+  font-weight: 600; /* matches @tailwindcss/typography :where(h4) rule */
+}
+
+/* =========================================================================
    CAROUSEL COMPONENT
    ========================================================================= */
 

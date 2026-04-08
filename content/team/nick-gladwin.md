@@ -13,7 +13,7 @@ keywords:
   - "location sound"
   - "film audio"
   - "Nick Gladwin"
-description: "Nick Gladwin - Professional Sound Recordist at Location Sound Collective"
+description: "Nick Gladwin is a London-based sound recordist and qualified drone operator, with credits including Emmy-nominated 3 Body Problem and BAFTA-winning A Very British Scandal."
 
 # Quick info tags
 specializations:

@@ -9,7 +9,7 @@ type: 'work'
 # Hugo will automatically find it using .Resources.GetMatch
 
 # Project metadata
-description: ""  # Brief 1-2 sentence summary (used for SEO and previews)
+description: "Location sound for Tinder Double Date Island — branded content in Ibiza with 2 recordists capturing audio for 8 YouTube creators using Sound Devices recorders."  # Brief 1-2 sentence summary (used for SEO and previews)
 summary: "We partnered with Hotcam for this shoot to provide flawless audio recording for 8YouTube stars and their 8 companions in Ibiza. Tinder wanted to promote their new double-dating feature on their app and so the shoots were framed around that idea.To help support the shoot we provided 2 x dedicated sound recordists (Will Langdale andSteve Llewellyn) with Sound Devices mixer/recorders."      # Longer summary shown on listing pages (optional, defaults to description)
 
 # Project details
