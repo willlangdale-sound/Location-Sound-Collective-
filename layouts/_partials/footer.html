@@ -2,7 +2,7 @@
     <a href="{{ .Site.BaseURL }}">
       <img src="/img/logo_centered.png" alt="{{ .Site.Title }}" class="w-24 h-auto">
     </a>
-    <p>© 2025 {{ .Site.Title}} <span class="italic">All rights reserved</span> </p>
+    <p>© {{ now.Year }} {{ .Site.Title}} <span class="italic">All rights reserved</span> </p>
     <ul class="flex flex-wrap flex-row gap-3">
         {{ range .Site.Menus.footer }}
           {{ $showItem := true }}
