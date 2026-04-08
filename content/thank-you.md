@@ -4,7 +4,6 @@ draft: false
 title: 'Thank You'
 description: "Thank you for contacting Location Sound Collective."
 layout: "thank-you"
-noindex: true
 ---
 
 We'll get back to you very soon !!! 
