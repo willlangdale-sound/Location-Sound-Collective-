@@ -13,7 +13,7 @@ keywords:
   - "location sound"
   - "film audio"
   - "Edouard Puhl"
-description: "Edouard Puhl - Professional Sound Recordist at Location Sound Collective"
+description: "Edouard Puhl is a multi-discipline sound engineer specialising in location sound for TV and film, live stages, and broadcast, bringing technical precision to every project."
 
 # Quick info tags
 specializations:

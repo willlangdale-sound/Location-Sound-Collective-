@@ -16,7 +16,7 @@ keywords:
   - "location sound"
   - "film audio"
   - "Rich Morgan"
-description: "Rich Morgan - Professional Sound Recordist at Location Sound Collective"
+description: "Rich Morgan is a London-based PSC sound recordist with credits including Emmy-winning Masters of the Air, BAFTA-nominated short films, and major TVCs."
 
 # Quick info tags
 specializations:

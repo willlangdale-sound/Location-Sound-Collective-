@@ -12,7 +12,7 @@ keywords:
   - "location sound"
   - "film audio"
   - "Steve Llewellyn"
-description: "Steve Llewellyn - Professional Sound Recordist at Location Sound Collective"
+description: "Steven Llewellyn is a location sound recordist and mixer offering full audio services from broadcast-quality field recording to post-production, ADR, and sound design."
 
 # Quick info tags
 specializations:
