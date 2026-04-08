@@ -5,9 +5,6 @@ languageCode = 'en-GB'
 title = 'Location Sound Collective'
 
 [taxonomies]
-  #====comment to disable Taxonomies! =====
-  tag = "tags"
-  category = "categories"
   recordist = "recordists"
 
 # ============================================

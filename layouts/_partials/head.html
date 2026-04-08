@@ -42,6 +42,9 @@
      SEO: CANONICAL URL
      ============================================ -->
 <link rel="canonical" href="{{ .Permalink }}">
+{{- if or (eq .Type "recordists") (eq .RelPermalink "/thank-you/") }}
+<meta name="robots" content="noindex, nofollow">
+{{- end }}
 
 <!-- ============================================
      SEO: OPEN GRAPH (Facebook, LinkedIn)
