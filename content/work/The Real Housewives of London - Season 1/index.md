@@ -13,7 +13,7 @@ description: "The creative brief for *The Real Housewives of London* was clear: 
 summary: "The creative brief for *The Real Housewives of London* was clear: the show needed to feel real, organic, and free-flowing. The cast had to be fully immersed in their environments, with production responding to events as they unfolded rather than controlling them. Scenes ranged from intimate two-person conversations to large-scale dinners and parties involving anywhere from eight to fifteen cast members."      # Longer summary shown on listing pages (optional, defaults to description)
 
 # Project details
-location: "Lodon - Scotland"
+location: "London - Scotland"
 recordists:
 #   - "William Langdale"
 #   - "Rich Morgan"
