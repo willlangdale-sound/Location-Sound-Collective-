@@ -4,50 +4,7 @@
    KEYFRAMES
    ========================================================================= */
 
-   @keyframes flicker {
-    0%   { opacity: 0.27861; }
-    5%   { opacity: 0.34861; }
-    10%  { opacity: 0.30861; }
-    15%  { opacity: 0.34861; }
-    20%  { opacity: 0.26861; }
-    25%  { opacity: 0.34861; }
-    30%  { opacity: 0.28861; }
-    35%  { opacity: 0.27861; }
-    40%  { opacity: 0.26861; }
-    45%  { opacity: 0.27861; }
-    50%  { opacity: 0.28861; }
-    55%  { opacity: 0.27861; }
-    60%  { opacity: 0.27861; }
-    65%  { opacity: 0.26861; }
-    70%  { opacity: 0.27861; }
-    75%  { opacity: 0.42861; }
-    80%  { opacity: 0.30861; }
-    85%  { opacity: 0.42861; }
-    90%  { opacity: 0.28861; }
-    95%  { opacity: 0.27861; }
-    100% { opacity: 0.27861; }
-  }
-  
-  @keyframes scanline {
-    0%   { bottom: 100%; }
-    100% { bottom: -100%; }
-  }
-  
-  @keyframes crt-shake {
-    0%   { transform: translate(0, 0); }
-    10%  { transform: translate(-0.5px, 0.5px); }
-    20%  { transform: translate(0.5px, -0.5px); }
-    30%  { transform: translate(-0.5px, -0.5px); }
-    40%  { transform: translate(0.5px, 0.5px); }
-    50%  { transform: translate(-0.5px, 0.5px); }
-    60%  { transform: translate(0.5px, -0.5px); }
-    70%  { transform: translate(-0.5px, -0.5px); }
-    80%  { transform: translate(0.5px, 0.8px); }
-    90%  { transform: translate(-0.5px, -0.5px); }
-    100% { transform: translate(0, 0); }
-  }
-  
-  @keyframes glitch-anim {
+   @keyframes glitch-anim {
     0%   { clip: rect(61px, 9999px, 50px, 0); }
     5%   { clip: rect(33px, 9999px, 144px, 0); }
     10%  { clip: rect(121px, 9999px, 115px, 0); }

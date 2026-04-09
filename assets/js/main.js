@@ -604,12 +604,17 @@ function initDice() {
   
   if (!scene || !cube) return;
 
+  const DRAG_SENSITIVITY = 0.5;
+  const SPIN_VELOCITY_X = 30;
+  const SPIN_VELOCITY_Y = 20;
+  const MOMENTUM_THRESHOLD = 0.5;
+
   let isDragging = false;
   let startX = 0;
   let startY = 0;
   let rotationX = -15;
   let rotationY = -15;
-  
+
   let velocityX = 0;
   let velocityY = 0;
   let lastX = 0;
@@ -670,8 +675,8 @@ function initDice() {
       cancelAnimationFrame(animationId);
     }
     
-    velocityX = (Math.random() - 0.5) * 30;
-    velocityY = (Math.random() - 0.5) * 20;
+    velocityX = (Math.random() - 0.5) * SPIN_VELOCITY_X;
+    velocityY = (Math.random() - 0.5) * SPIN_VELOCITY_Y;
     
     applyMomentum();
   }
@@ -721,11 +726,11 @@ function initDice() {
       const deltaX = pos.x - lastX;
       const deltaY = pos.y - lastY;
       
-      velocityX = deltaX * 0.5;
-      velocityY = deltaY * 0.5;
-      
-      rotationY += deltaX * 0.5;
-      rotationX -= deltaY * 0.5;
+      velocityX = deltaX * DRAG_SENSITIVITY;
+      velocityY = deltaY * DRAG_SENSITIVITY;
+
+      rotationY += deltaX * DRAG_SENSITIVITY;
+      rotationX -= deltaY * DRAG_SENSITIVITY;
       
       updateCube();
     }
@@ -751,7 +756,7 @@ function initDice() {
       return;
     }
     
-    if (Math.abs(velocityX) > 0.5 || Math.abs(velocityY) > 0.5) {
+    if (Math.abs(velocityX) > MOMENTUM_THRESHOLD || Math.abs(velocityY) > MOMENTUM_THRESHOLD) {
       applyMomentum();
     } else {
       setTimeout(startAutoRotate, 2000);
