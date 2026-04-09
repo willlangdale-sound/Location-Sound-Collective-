@@ -4,16 +4,6 @@
         <ol class="flex flex-wrap items-center gap-2 text-sm" 
         itemscope itemtype="https://schema.org/BreadcrumbList">
         
-        <!-- Home -->
-        {{/*  <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-            <a href="{{ .Site.BaseURL }}" 
-            itemprop="item"
-            class="text-accent border-2 rounded-xl p-2 bg-surface-hover transition-colors">
-            <span itemprop="name">Home</span>
-        </a>
-        <meta itemprop="position" content="1" />
-    </li>  */}}
-    
     {{ $currentPage := . }}
     {{ $pages := slice }}
     
@@ -37,11 +27,10 @@
     {{ end }}
 
     <!-- Current page -->
-    <li class="flex items-center gap-2" 
-    itemprop="itemListElement" 
-    itemscope 
+    <li class="flex items-center gap-2"
+    itemprop="itemListElement"
+    itemscope
     itemtype="https://schema.org/ListItem">
-    {{/*  <span class="text-base-text opacity-50">></span>  */}}
     <span itemprop="item">
         <span itemprop="name" class="text-accent border-2 rounded-xl p-2 bg-surface-hover transition-colors  uppercase " aria-current="page">
             {{ .Title }}

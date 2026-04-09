@@ -81,11 +81,6 @@
 {{ end }}
 {{ $images = sort $images "baseName" }}
 
-{{/* DEBUG: Uncomment to see what images are grouped
-{{ range $images }}
-  <!-- DEBUG: {{ .baseName }} | landscape: {{ .landscape | default "MISSING" }} | vertical: {{ .vertical | default "MISSING" }} -->
-{{ end }}
-*/}}
 {{/*  potential tag under the category  */}}
 {{ $categories := slice "" }}
 
@@ -150,12 +145,6 @@
               onerror="this.onerror=null; this.src='/img/logo_centered.png';">
           {{ end }}
           
-          <!-- Title overlay -->
-          {{/*  <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 md:p-6">
-            <span class="text-white text-lg md:text-xl font-bold uppercase tracking-wider">
-              {{ $image.alt }}
-            </span>
-          </div>  */}}
         </div>
         {{ end }}
       </div>

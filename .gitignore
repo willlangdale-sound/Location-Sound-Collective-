@@ -4,6 +4,7 @@
 
 # Hugo cache
 .hugo_build.lock
+hugo_stats.json
 
 # Node modules (if using npm for Tailwind)
 /node_modules/
