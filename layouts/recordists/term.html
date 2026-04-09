@@ -1,9 +1,6 @@
 {{ define "main" }}
 {{ if .Site.Params.features.enableRecordistsTaxonomy }}
 <!-- Feature is ENABLED - Show recordist's projects -->
-{{/*  <div class="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
-  {{ partial "breadcrumb.html" . }}
-</div>  */}}
 <main class="w-full">
   
   <!-- Recordist header -->
@@ -57,20 +54,6 @@
   <section class="flex flex-col gap-12">
     {{ range .Pages.ByDate.Reverse }}
     <article class="project-card flex flex-col md:flex-row bg-secondary rounded-2xl shadow-md overflow-hidden hover:scale-[1.01] transition-all duration-300">
-
-    <!-- Cover image -->
-      {{ $cover := .Resources.GetMatch "cover.*" }}
-      {{ if not $cover }}
-        {{ $cover = .Resources.GetMatch "cover*" }}
-      {{ end }}
-      {{ if not $cover }}
-        {{ $cover = .Resources.GetMatch "featured*" }}
-      {{ end }}
-      {{ if not $cover }}
-        {{ if .Params.cover }}
-          {{ $cover = .Resources.GetMatch .Params.cover }}
-        {{ end }}
-      {{ end }}
 
   <!-- Cover image -->
   {{ $cover := "" }}
