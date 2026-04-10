@@ -1,7 +1,7 @@
 ---
 draft: false
-title: 'Edouard Puhl'
-weight: 2
+title: 'Eduardo Puhl'
+weight: 3
 role: 'Sound Recordist'
 profile_picture: '/img/team/edouard-puhl.webp'
 profile_picture_circle: '/img/team/edouard-puhl-circle.webp'
@@ -12,8 +12,8 @@ keywords:
   - "sound recordist"
   - "location sound"
   - "film audio"
-  - "Edouard Puhl"
-description: "Edouard Puhl is a multi-discipline sound engineer specialising in location sound for TV and film, live stages, and broadcast, bringing technical precision to every project."
+  - "Eduardo Puhl"
+description: "Eduardo Puhl is a multi-discipline sound engineer specialising in location sound for TV and film, live stages, and broadcast, bringing technical precision to every project."
 
 # Quick info tags
 specializations:

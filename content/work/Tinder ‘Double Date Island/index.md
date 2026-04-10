@@ -17,7 +17,7 @@ location: "Ibiza"
 recordists:
 #   - "William Langdale"
 #   - "Rich Morgan"
-#   - "Edouard Puhl"
+#   - "Eduardo Puhl"
 #   - "Nick Gladwin"
 #   - "Steve Llewellyn"
      # e.g., ["John Doe", "Jane Smith"]
