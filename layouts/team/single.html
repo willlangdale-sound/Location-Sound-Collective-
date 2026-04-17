@@ -130,10 +130,9 @@
         {{ end }}
         {{ end }}
 
-        <!-- View Projects Button - Only show if enableRecordistsTaxonomy is true -->
-        {{ if .Site.Params.features.enableRecordistsTaxonomy }}
-        {{ $recordistSlug := .Title | urlize }}
-        <a href="/recordists/{{ $recordistSlug }}"
+        <!-- View Projects Button - Only show if enableWorkSection is true -->
+        {{ if .Site.Params.features.enableWorkSection }}
+        <a href="/work"
            class="group relative flex items-center justify-center p-3 h-10 w-[200px]
                   text-lg font-normal bg-transparent overflow-hidden transition-all duration-100">
 
