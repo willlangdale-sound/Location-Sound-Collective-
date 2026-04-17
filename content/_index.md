@@ -9,7 +9,7 @@ keywords:
   - "sound design"
   - "film sound"
   - "Location sound recordist"
-featured_image: "/img/logo_left_aligned.png"
+featured_image: "/img/og-logo.png"
 # layout: 'coming-soon'
 ---
 
